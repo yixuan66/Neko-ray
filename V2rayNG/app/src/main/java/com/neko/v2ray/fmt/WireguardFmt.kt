@@ -6,6 +6,7 @@ import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.V2rayConfig.OutboundBean
 import com.neko.v2ray.extension.idnHost
+import com.neko.v2ray.extension.removeWhiteSpace
 import com.neko.v2ray.util.Utils
 import java.net.URI
 
@@ -132,14 +133,14 @@ object WireguardFmt : FmtBase() {
 
         dicQuery["publickey"] = config.publicKey.orEmpty()
         if (config.reserved != null) {
-            dicQuery["reserved"] = Utils.removeWhiteSpace(config.reserved).orEmpty()
+            dicQuery["reserved"] = config.reserved.removeWhiteSpace().orEmpty()
         }
-        dicQuery["address"] = Utils.removeWhiteSpace(config.localAddress).orEmpty()
+        dicQuery["address"] = config.localAddress.removeWhiteSpace().orEmpty()
         if (config.mtu != null) {
             dicQuery["mtu"] = config.mtu.toString()
         }
         if (config.preSharedKey != null) {
-            dicQuery["presharedkey"] = Utils.removeWhiteSpace(config.preSharedKey).orEmpty()
+            dicQuery["presharedkey"] = config.preSharedKey.removeWhiteSpace().orEmpty()
         }
 
         return toUri(config, config.secretKey, dicQuery)

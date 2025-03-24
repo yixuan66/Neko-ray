@@ -8,9 +8,9 @@ import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.NetworkType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.ServerConfig
+import com.neko.v2ray.extension.removeWhiteSpace
 import com.neko.v2ray.handler.MmkvManager.decodeServerConfig
 import com.neko.v2ray.util.JsonUtil
-import com.neko.v2ray.util.Utils
 
 object MigrateManager {
     private const val ID_SERVER_CONFIG = "SERVER_CONFIG"
@@ -92,7 +92,7 @@ object MigrateManager {
         config.insecure = tlsSettings?.allowInsecure
         config.sni = tlsSettings?.serverName
         config.fingerPrint = tlsSettings?.fingerprint
-        config.alpn = Utils.removeWhiteSpace(tlsSettings?.alpn?.joinToString(",")).toString()
+        config.alpn = tlsSettings?.alpn?.joinToString(",").removeWhiteSpace().toString()
 
         config.publicKey = tlsSettings?.publicKey
         config.shortId = tlsSettings?.shortId
@@ -137,10 +137,10 @@ object MigrateManager {
 
         outbound.settings?.let { wireguard ->
             config.secretKey = wireguard.secretKey
-            config.localAddress = Utils.removeWhiteSpace((wireguard.address as List<*>).joinToString(",")).toString()
+            config.localAddress =  (wireguard.address as List<*>).joinToString(",").removeWhiteSpace().toString()
             config.publicKey = wireguard.peers?.getOrNull(0)?.publicKey
             config.mtu = wireguard.mtu
-            config.reserved = Utils.removeWhiteSpace(wireguard.reserved?.joinToString(",")).toString()
+            config.reserved = wireguard.reserved?.joinToString(",").removeWhiteSpace().toString()
         }
         return config
     }
@@ -158,7 +158,7 @@ object MigrateManager {
         outbound.streamSettings?.tlsSettings?.let { tlsSetting ->
             config.insecure = tlsSetting.allowInsecure
             config.sni = tlsSetting.serverName
-            config.alpn = Utils.removeWhiteSpace(tlsSetting.alpn?.joinToString(",")).orEmpty()
+            config.alpn = tlsSetting.alpn?.joinToString(",").removeWhiteSpace().orEmpty()
 
         }
         config.obfsPassword = outbound.settings?.obfsPassword
