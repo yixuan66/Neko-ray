@@ -1,6 +1,5 @@
 package com.neko.v2ray.service
 
-import android.annotation.TargetApi
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -9,6 +8,7 @@ import android.graphics.drawable.Icon
 import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
@@ -16,7 +16,7 @@ import com.neko.v2ray.util.MessageUtil
 import com.neko.v2ray.util.Utils
 import java.lang.ref.SoftReference
 
-@TargetApi(Build.VERSION_CODES.N)
+@RequiresApi(Build.VERSION_CODES.N)
 class QSTileService : TileService() {
 
     /**
