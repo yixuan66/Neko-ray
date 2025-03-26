@@ -12,6 +12,7 @@
         android:layout_height="@dimen/server_height"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="invisible"
         android:orientation="horizontal"
         android:padding="5dp">
 

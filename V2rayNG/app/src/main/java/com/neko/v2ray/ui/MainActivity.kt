@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -212,7 +213,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
 
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        if (MmkvManager.decodeSettingsBool(AppConfig.PREF_DOUBLE_COLUMN_DISPLAY, false)) {
+            binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            binding.recyclerView.layoutManager = GridLayoutManager(this, 1)
+        }
         addCustomDividerToRecyclerView(binding.recyclerView, this, R.drawable.custom_divider)
         binding.recyclerView.adapter = adapter
 

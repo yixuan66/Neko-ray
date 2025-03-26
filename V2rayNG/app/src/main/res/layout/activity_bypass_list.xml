@@ -218,7 +218,7 @@
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.cardview.widget.CardView>

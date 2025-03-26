@@ -12,6 +12,14 @@
         <item>Sao chép thành cấu hình tùy chỉnh</item>
     </string-array>
 
+    <string-array name="share_method_more">
+         <item>QRcode</item>
+         <item>Export to clipboard</item>
+         <item>Export full configuration to clipboard</item>
+         <item>Edit</item>
+         <item>Delete</item>
+     </string-array>
+
     <string-array name="share_sub_method">
         <item>Xuất gói ra mã QR (Chụp màn hình để lưu)</item>
         <item>Xuất gói vào Clipboard</item>

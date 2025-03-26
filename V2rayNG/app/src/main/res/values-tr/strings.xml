@@ -210,6 +210,9 @@
     <string name="title_pref_append_http_proxy">VPNe HTTP Proxy ekle</string>
     <string name="summary_pref_append_http_proxy">HTTP proxy doğrudan (tarayıcı/ bazı desteklenen uygulamalar) tarafından kullanılacak, sanal NIC cihazından geçmeden (Android 10+)</string>
 
+    <string name="title_pref_double_column_display">Enable double column display</string>
+    <string name="summary_pref_double_column_display">The profile list is displayed in double columns, allowing more content to be displayed on the screen. You need to restart the application to take effect.</string>
+
     <!-- AboutActivity -->
     <string name="title_pref_feedback">Geri bildirim</string>
     <string name="summary_pref_feedback">Iyilestirmeler veya hatalar icin GitHuba geri bildirimde bulunun</string>

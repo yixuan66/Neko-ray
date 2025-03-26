@@ -12,6 +12,14 @@
         <item>匯出完整設定至剪貼簿</item>
     </string-array>
 
+    <string-array name="share_method_more">
+         <item>QR Code</item>
+         <item>匯出至剪貼簿</item>
+         <item>匯出完整設定至剪貼簿</item>
+         <item>編輯</item>
+         <item>刪除</item>
+     </string-array>
+
     <string-array name="share_sub_method">
         <item>QR Code</item>
         <item>匯出至剪貼簿</item>
