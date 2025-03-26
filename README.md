@@ -4,12 +4,12 @@ A V2Ray client for Android, support [Xray core](https://github.com/XTLS/Xray-cor
 
 [![Platform](https://img.shields.io/badge/android-platform?style=flat&label=platform&labelColor=21262d&color=6e7681)](https://www.android.com)
 [![API](https://img.shields.io/badge/27%2B-level?style=flat&logo=android&logoColor=3cd382&label=API&labelColor=21262d&color=ff663b)](https://developer.android.com/studio/releases/platforms)
-[![Release](https://img.shields.io/github/v/release/UWU-TEAM/Neko-ray?display_name=tag&style=flat&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/UWU-TEAM/Neko-ray/releases/latest)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/UWU-TEAM/Neko-ray?style=flat&logo=Github)](https://github.com/UWU-TEAM/Neko-ray/commits/main)
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/UWU-TEAM/Neko-ray/total?style=flat&logo=Github&label=Download%40latest&color=green)](https://github.com/UWU-TEAM/Neko-ray/releases)
+[![Release](https://img.shields.io/github/v/release/MRT-project/Neko-ray?display_name=tag&style=flat&logo=github&labelColor=21262d&color=1f6feb)](https://github.com/MRT-project/Neko-ray/releases/latest)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MRT-project/Neko-ray?style=flat&logo=Github)](https://github.com/MRT-project/Neko-ray/commits/main)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/MRT-project/Neko-ray/total?style=flat&logo=Github&label=Download%40latest&color=green)](https://github.com/MRT-project/Neko-ray/releases)
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/neko_ray_uwu)
 
-![Banner](https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/image/uwu_banner.png)
+![Banner](https://raw.githubusercontent.com/MRT-project/Neko-ray/main/image/uwu_banner.png)
 
 > [!NOTE]
 >
@@ -25,12 +25,12 @@ A V2Ray client for Android, support [Xray core](https://github.com/XTLS/Xray-cor
   <summary>ScreenShoot</summary>
 
 **Light**
-![Screenshot](https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/image/screenshoot1.png)
-![Screenshot](https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/image/screenshoot2.png)
+![Screenshot](https://raw.githubusercontent.com/MRT-project/Neko-ray/main/image/screenshoot1.png)
+![Screenshot](https://raw.githubusercontent.com/MRT-project/Neko-ray/main/image/screenshoot2.png)
 
 **Dark**
-![Screenshot](https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/image/screenshoot3.png)
-![Screenshot](https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/image/screenshoot4.png)
+![Screenshot](https://raw.githubusercontent.com/MRT-project/Neko-ray/main/image/screenshoot3.png)
+![Screenshot](https://raw.githubusercontent.com/MRT-project/Neko-ray/main/image/screenshoot4.png)
 
 </details>
 
