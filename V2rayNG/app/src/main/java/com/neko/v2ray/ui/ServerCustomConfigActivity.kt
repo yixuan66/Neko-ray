@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.blacksquircle.ui.editorkit.utils.EditorTheme
 import com.blacksquircle.ui.language.json.JsonLanguage
 import com.neko.v2ray.R
@@ -20,8 +17,9 @@ import com.neko.v2ray.extension.toast
 import com.neko.v2ray.fmt.CustomFmt
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.util.Utils
-import me.drakeet.support.toast.ToastCompat
 
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.neko.imageslider.ImageSlider
 import com.neko.imageslider.constants.ActionTypes
 import com.neko.imageslider.constants.AnimationTypes

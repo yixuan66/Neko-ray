@@ -116,7 +116,7 @@ class AboutActivity : BaseActivity() {
         }
     }
 
-    fun backupConfiguration(outputZipFilePos: String): Pair<Boolean, String> {
+    private fun backupConfiguration(outputZipFilePos: String): Pair<Boolean, String> {
         val dateFormated = SimpleDateFormat(
             "yyyy-MM-dd-HH-mm-ss",
             Locale.getDefault()
@@ -137,7 +137,7 @@ class AboutActivity : BaseActivity() {
         }
     }
 
-    fun restoreConfiguration(zipFile: File): Boolean {
+    private fun restoreConfiguration(zipFile: File): Boolean {
         val backupDir = this.cacheDir.absolutePath + "/${System.currentTimeMillis()}"
 
         if (!ZipUtil.unzipToFolder(zipFile, backupDir)) {

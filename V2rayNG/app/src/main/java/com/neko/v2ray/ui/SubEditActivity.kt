@@ -32,8 +32,8 @@ class SubEditActivity : BaseActivity() {
     private val binding by lazy {ActivitySubEditBinding.inflate(layoutInflater)}
     private lateinit var softInputAssist: SoftInputAssist
 
-    var del_config: MenuItem? = null
-    var save_config: MenuItem? = null
+    private var del_config: MenuItem? = null
+    private var save_config: MenuItem? = null
 
     private val editSubId by lazy { intent.getStringExtra("subId").orEmpty() }
 
@@ -91,7 +91,7 @@ class SubEditActivity : BaseActivity() {
     }
 
     /**
-     * bingding seleced server config
+     * binding selected server config
      */
     private fun bindingServer(subItem: SubscriptionItem): Boolean {
         binding.etRemarks.text = Utils.getEditable(subItem.remarks)

@@ -1,5 +1,6 @@
 package com.neko.v2ray.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -99,6 +100,7 @@ class SubSettingActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun refreshData() {
         subscriptions = MmkvManager.decodeSubscriptions()
         adapter.notifyDataSetChanged()
