@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:id="@+id/item_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16.0dip"
+    android:layout_marginLeft="8.0dip"
     android:layout_marginTop="8.0dip"
-    android:layout_marginRight="16.0dip"
-    android:layout_marginBottom="8.0dip"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginRight="8.0dip"
+    android:layout_marginBottom="8.0dip">
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foreground="?android:selectableItemBackground">
+            android:foreground="?android:selectableItemBackgroundBorderless">
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/layout_indicator"
@@ -44,8 +43,9 @@
                             android:gravity="center_vertical"
                             android:layout_gravity="center_vertical"
                             android:paddingLeft="12.0dip"
-                            android:paddingTop="8.0dip"
-                            android:paddingBottom="8.0dip"
+                            android:paddingRight="12.0dip"
+                            android:paddingTop="12.0dip"
+                            android:paddingBottom="6.0dip"
                             android:layout_width="0.0dip"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0">
@@ -62,7 +62,7 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:id="@+id/layout_edit"
-                            android:background="?android:selectableItemBackground"
+                            android:background="?android:selectableItemBackgroundBorderless"
                             android:padding="12.0dip"
                             android:focusable="true"
                             android:clickable="true"
@@ -78,7 +78,7 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:id="@+id/layout_share"
-                            android:background="?android:selectableItemBackground"
+                            android:background="?android:selectableItemBackgroundBorderless"
                             android:padding="12.0dip"
                             android:focusable="true"
                             android:clickable="true"
@@ -94,7 +94,7 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:id="@+id/layout_remove"
-                            android:background="?android:selectableItemBackground"
+                            android:background="?android:selectableItemBackgroundBorderless"
                             android:padding="12.0dip"
                             android:focusable="true"
                             android:clickable="true"
@@ -106,46 +106,67 @@
                                 android:src="@drawable/uwu_ic_delete_24dp"
                                 app:tint="?android:textColorPrimary" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:id="@+id/layout_more"
+                            android:background="?android:selectableItemBackgroundBorderless"
+                            android:padding="12.0dip"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="@dimen/png_height"
+                                android:layout_height="@dimen/png_height"
+                                android:src="@drawable/ic_more_vert_24dp"
+                                app:tint="?android:textColorPrimary" />
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="12.0dip"
-                        android:paddingEnd="12.0dip">
+                        android:paddingLeft="12.0dip"
+                        android:paddingRight="12.0dip"
+                        android:paddingTop="6.0dip"
+                        android:paddingBottom="6.0dip">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_subscription"
+                            android:layout_width="24.0dip"
+                            android:layout_height="24.0dip"
+                            android:background="@drawable/ic_circle"
+                            android:layout_marginEnd="4.0dip"
+                            app:tint="?attr/colorThemeUwu">
+                            <TextView
+                                android:textSize="14.0sp"
+                                android:textColor="?android:textColorSecondary"
+                                android:id="@+id/tv_subscription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <TextView
                             android:textSize="14.0sp"
                             android:textColor="?android:textColorSecondary"
                             android:id="@+id/tv_statistics"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:maxLines="2"
-                            android:minLines="1" />
+                            android:lines="1"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="0.0dip"
-                        android:paddingEnd="16.0dip">
-                        <LinearLayout
-                            android:layout_width="0.0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.0" />
-                        <TextView
-                            android:textSize="12.0sp"
-                            android:textColor="?android:textColorSecondary"
-                            android:id="@+id/tv_subscription"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:paddingBottom="12.0dip"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="12.0dip"
-                        android:paddingEnd="16.0dip">
+                        android:paddingLeft="12.0dip"
+                        android:paddingRight="12.0dip"
+                        android:paddingTop="6.0dip"
+                        android:paddingBottom="12.0dip">
                         <TextView
                             android:textSize="14.0sp"
                             android:textColor="?attr/colorThemeUwu"
