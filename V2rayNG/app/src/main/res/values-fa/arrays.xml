@@ -13,12 +13,12 @@
     </string-array>
 
     <string-array name="share_method_more">
-         <item>QRcode</item>
-         <item>Export to clipboard</item>
-         <item>Export full configuration to clipboard</item>
-         <item>Edit</item>
-         <item>Delete</item>
-     </string-array>
+        <item>QRcode</item>
+        <item>صادر کردن به کلیپ بورد</item>
+        <item>صادر کردن پیکربندی کامل به کلیپ بورد</item>
+        <item>ویرایش کردن</item>
+        <item>حذف کردن</item>
+    </string-array>
 
     <string-array name="share_sub_method">
         <item>QRcode</item>
