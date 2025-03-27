@@ -13,12 +13,12 @@
     </string-array>
 
     <string-array name="share_method_more">
-         <item>QRcode</item>
-         <item>Export to clipboard</item>
-         <item>Export full configuration to clipboard</item>
-         <item>Edit</item>
-         <item>Delete</item>
-     </string-array>
+        <item>QR-код</item>
+        <item>Экспорт в буфер обмена</item>
+        <item>Экспорт всей конфигурации в буфер обмена</item>
+        <item>Изменить</item>
+        <item>Удалить</item>
+    </string-array>
 
     <string-array name="share_sub_method">
         <item>QR-код</item>
