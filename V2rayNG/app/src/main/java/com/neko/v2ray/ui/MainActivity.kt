@@ -35,6 +35,7 @@ import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityMainBinding
 import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
 import com.neko.v2ray.handler.AngConfigManager
 import com.neko.v2ray.handler.MigrateManager
 import com.neko.v2ray.handler.MmkvManager
@@ -628,13 +629,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         }
 
                         countSub > 0 -> initGroupTab()
-                        else -> toast(R.string.toast_failure)
+                        else -> toastError(R.string.toast_failure)
                     }
                     binding.pbWaiting.hide()
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    toast(R.string.toast_failure)
+                    toastError(R.string.toast_failure)
                     binding.pbWaiting.hide()
                 }
                 e.printStackTrace()
@@ -738,7 +739,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     toast(getString(R.string.title_update_config_count, count))
                     mainViewModel.reloadServerList()
                 } else {
-                    toast(R.string.toast_failure)
+                    toastError(R.string.toast_failure)
                 }
                 binding.pbWaiting.hide()
             }
@@ -754,7 +755,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 if (ret > 0)
                     toast(getString(R.string.title_export_config_count, ret))
                 else
-                    toast(R.string.toast_failure)
+                    toastError(R.string.toast_failure)
                 binding.pbWaiting.hide()
             }
         }
@@ -905,9 +906,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 //            }
 //            if (mainViewModel.appendCustomConfigServer(server)) {
 //                mainViewModel.reloadServerList()
-//                toast(R.string.toast_success)
+//                toastSuccess(R.string.toast_success)
 //            } else {
-//                toast(R.string.toast_failure)
+//                toastError(R.string.toast_failure)
 //            }
 //            //adapter.notifyItemInserted(mainViewModel.serverList.lastIndex)
 //        } catch (e: Exception) {

@@ -16,6 +16,7 @@ import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityBypassListBinding
 import com.neko.v2ray.dto.AppInfo
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.extension.v2RayApplication
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
@@ -170,7 +171,7 @@ class PerAppProxyActivity : BaseActivity() {
             launch(Dispatchers.Main) {
                 Log.d(ANG_PACKAGE, content)
                 selectProxyApp(content, true)
-                toast(R.string.toast_success)
+                toastSuccess(R.string.toast_success)
                 binding.pbWaiting.hide()
             }
         }
@@ -180,7 +181,7 @@ class PerAppProxyActivity : BaseActivity() {
         val content = Utils.getClipboard(applicationContext)
         if (TextUtils.isEmpty(content)) return
         selectProxyApp(content, false)
-        toast(R.string.toast_success)
+        toastSuccess(R.string.toast_success)
     }
 
     private fun exportProxyApp() {
@@ -190,7 +191,7 @@ class PerAppProxyActivity : BaseActivity() {
             lst = lst + System.getProperty("line.separator") + it
         }
         Utils.setClipboard(applicationContext, lst)
-        toast(R.string.toast_success)
+        toastSuccess(R.string.toast_success)
     }
 
     @SuppressLint("NotifyDataSetChanged")

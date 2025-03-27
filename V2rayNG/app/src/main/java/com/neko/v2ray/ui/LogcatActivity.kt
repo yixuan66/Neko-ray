@@ -14,6 +14,7 @@ import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityLogcatBinding
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.util.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -123,7 +124,7 @@ class LogcatActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.copy_all -> {
             Utils.setClipboard(this, logsets.joinToString("\n"))
-            toast(R.string.toast_success)
+            toastSuccess(R.string.toast_success)
             true
         }
 

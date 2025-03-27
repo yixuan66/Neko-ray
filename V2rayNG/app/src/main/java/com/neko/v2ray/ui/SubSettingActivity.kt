@@ -14,6 +14,8 @@ import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivitySubSettingBinding
 import com.neko.v2ray.dto.SubscriptionItem
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.AngConfigManager
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.helper.SimpleItemTouchHelperCallback
@@ -85,9 +87,9 @@ class SubSettingActivity : BaseActivity() {
                 delay(500L)
                 launch(Dispatchers.Main) {
                     if (count > 0) {
-                        toast(R.string.toast_success)
+                        toastSuccess(R.string.toast_success)
                     } else {
-                        toast(R.string.toast_failure)
+                        toastError(R.string.toast_failure)
                     }
                     binding.pbWaiting.hide()
                 }

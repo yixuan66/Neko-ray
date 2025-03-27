@@ -19,6 +19,8 @@ import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.ServersCache
 import com.neko.v2ray.extension.serializable
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.AngConfigManager
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
@@ -419,12 +421,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 }
 
                 AppConfig.MSG_STATE_START_SUCCESS -> {
-                    getApplication<AngApplication>().toast(R.string.toast_services_success)
+                    getApplication<AngApplication>().toastSuccess(R.string.toast_services_success)
                     isRunning.value = true
                 }
 
                 AppConfig.MSG_STATE_START_FAILURE -> {
-                    getApplication<AngApplication>().toast(R.string.toast_services_failure)
+                    getApplication<AngApplication>().toastError(R.string.toast_services_failure)
                     isRunning.value = false
                 }
 

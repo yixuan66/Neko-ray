@@ -14,6 +14,8 @@ import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityAboutBinding
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.SpeedtestManager
 import com.neko.v2ray.util.Utils
 import com.neko.v2ray.util.ZipUtil
@@ -50,9 +52,9 @@ class AboutActivity : BaseActivity() {
         binding.layoutBackup.setOnClickListener {
             val ret = backupConfiguration(extDir.absolutePath)
             if (ret.first) {
-                toast(R.string.toast_success)
+                toastSuccess(R.string.toast_success)
             } else {
-                toast(R.string.toast_failure)
+                toastError(R.string.toast_failure)
             }
         }
 
@@ -72,7 +74,7 @@ class AboutActivity : BaseActivity() {
                     )
                 )
             } else {
-                toast(R.string.toast_failure)
+                toastError(R.string.toast_failure)
             }
         }
 
@@ -175,13 +177,13 @@ class AboutActivity : BaseActivity() {
                         }
                     }
                     if (restoreConfiguration(targetFile)) {
-                        toast(R.string.toast_success)
+                        toastSuccess(R.string.toast_success)
                     } else {
-                        toast(R.string.toast_failure)
+                        toastError(R.string.toast_failure)
                     }
                 } catch (e: Exception) {
                     Log.e(AppConfig.ANG_PACKAGE, "Error during file restore: ${e.message}", e)
-                    toast(R.string.toast_failure)
+                    toastError(R.string.toast_failure)
                 }
             }
         }

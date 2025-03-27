@@ -14,6 +14,7 @@ import com.neko.v2ray.databinding.ActivityServerCustomConfigBinding
 import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.fmt.CustomFmt
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.util.Utils
@@ -146,7 +147,7 @@ class ServerCustomConfigActivity : BaseActivity() {
 
         MmkvManager.encodeServerConfig(editGuid, config)
         MmkvManager.encodeServerRaw(editGuid, binding.editor.text.toString())
-        toast(R.string.toast_success)
+        toastSuccess(R.string.toast_success)
         finish()
         return true
     }

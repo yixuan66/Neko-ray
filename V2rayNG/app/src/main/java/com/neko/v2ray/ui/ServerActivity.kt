@@ -32,19 +32,11 @@ import com.neko.v2ray.dto.NetworkType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.extension.isNotNullEmpty
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.MmkvManager
-import com.neko.v2ray.util.SoftInputAssist
 import com.neko.v2ray.util.JsonUtil
+import com.neko.v2ray.util.SoftInputAssist
 import com.neko.v2ray.util.Utils
-
-import com.neko.imageslider.ImageSlider
-import com.neko.imageslider.constants.ActionTypes
-import com.neko.imageslider.constants.AnimationTypes
-import com.neko.imageslider.constants.ScaleTypes
-import com.neko.imageslider.interfaces.ItemChangeListener
-import com.neko.imageslider.interfaces.ItemClickListener
-import com.neko.imageslider.interfaces.TouchListener
-import com.neko.imageslider.models.SlideModel
 
 class ServerActivity : BaseActivity() {
 
@@ -538,7 +530,7 @@ class ServerActivity : BaseActivity() {
         }
         Log.d(ANG_PACKAGE, JsonUtil.toJsonPretty(config) ?: "")
         MmkvManager.encodeServerConfig(editGuid, config)
-        toast(R.string.toast_success)
+        toastSuccess(R.string.toast_success)
         finish()
         return true
     }

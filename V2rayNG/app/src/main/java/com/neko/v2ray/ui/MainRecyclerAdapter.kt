@@ -19,6 +19,8 @@ import com.neko.v2ray.databinding.ItemRecyclerMainBinding
 import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.AngConfigManager
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.helper.ItemTouchHelperAdapter
@@ -206,9 +208,9 @@ class MainRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapter<Mai
      */
     private fun share2Clipboard(guid: String) {
         if (AngConfigManager.share2Clipboard(mActivity, guid) == 0) {
-            mActivity.toast(R.string.toast_success)
+            mActivity.toastSuccess(R.string.toast_success)
         } else {
-            mActivity.toast(R.string.toast_failure)
+            mActivity.toastError(R.string.toast_failure)
         }
     }
 
@@ -218,9 +220,9 @@ class MainRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapter<Mai
      */
     private fun shareFullContent(guid: String) {
         if (AngConfigManager.shareFullContent2Clipboard(mActivity, guid) == 0) {
-            mActivity.toast(R.string.toast_success)
+            mActivity.toastSuccess(R.string.toast_success)
         } else {
-            mActivity.toast(R.string.toast_failure)
+            mActivity.toastError(R.string.toast_failure)
         }
     }
 

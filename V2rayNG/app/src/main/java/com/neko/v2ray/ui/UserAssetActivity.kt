@@ -28,6 +28,8 @@ import com.neko.v2ray.databinding.ItemRecyclerUserAssetBinding
 import com.neko.v2ray.dto.AssetUrlItem
 import com.neko.v2ray.extension.toTrafficString
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
 import com.neko.v2ray.util.HttpUtil
@@ -141,7 +143,7 @@ class UserAssetActivity : BaseActivity() {
                     copyFile(uri)
                 }
             }.onFailure {
-                toast(R.string.toast_asset_copy_failed)
+                toastError(R.string.toast_asset_copy_failed)
                 MmkvManager.removeAssetUrl(assetId)
             }
         }
@@ -152,7 +154,7 @@ class UserAssetActivity : BaseActivity() {
         contentResolver.openInputStream(uri).use { inputStream ->
             targetFile.outputStream().use { fileOut ->
                 inputStream?.copyTo(fileOut)
-                toast(R.string.toast_success)
+                toastSuccess(R.string.toast_success)
                 refreshData()
             }
         }

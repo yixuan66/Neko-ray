@@ -13,13 +13,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityRoutingSettingBinding
 import com.neko.v2ray.dto.RulesetItem
 import com.neko.v2ray.extension.toast
+import com.neko.v2ray.extension.toastError
+import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
 import com.neko.v2ray.helper.SimpleItemTouchHelperCallback
@@ -28,6 +28,9 @@ import com.neko.v2ray.util.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.appbar.CollapsingToolbarLayout
 
 class RoutingSettingActivity : BaseActivity() {
     private val binding by lazy { ActivityRoutingSettingBinding.inflate(layoutInflater) }
@@ -109,7 +112,7 @@ class RoutingSettingActivity : BaseActivity() {
                             SettingsManager.resetRoutingRulesetsFromPresets(this@RoutingSettingActivity, i)
                             launch(Dispatchers.Main) {
                                 refreshData()
-                                toast(R.string.toast_success)
+                                toastSuccess(R.string.toast_success)
                             }
                         }
                     } catch (e: Exception) {
@@ -130,7 +133,7 @@ class RoutingSettingActivity : BaseActivity() {
                     Utils.getClipboard(this)
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    toast(R.string.toast_failure)
+                    toastError(R.string.toast_failure)
                     return@setPositiveButton
                 }
                 lifecycleScope.launch(Dispatchers.IO) {
@@ -138,9 +141,9 @@ class RoutingSettingActivity : BaseActivity() {
                     withContext(Dispatchers.Main) {
                         if (result) {
                             refreshData()
-                            toast(R.string.toast_success)
+                            toastSuccess(R.string.toast_success)
                         } else {
-                            toast(R.string.toast_failure)
+                            toastError(R.string.toast_failure)
                         }
                     }
                 }
@@ -154,10 +157,10 @@ class RoutingSettingActivity : BaseActivity() {
     private fun export2Clipboard() {
         val rulesetList = MmkvManager.decodeRoutingRulesets()
         if (rulesetList.isNullOrEmpty()) {
-            toast(R.string.toast_failure)
+            toastError(R.string.toast_failure)
         } else {
             Utils.setClipboard(this, JsonUtil.toJson(rulesetList))
-            toast(R.string.toast_success)
+            toastSuccess(R.string.toast_success)
         }
     }
 
@@ -175,9 +178,9 @@ class RoutingSettingActivity : BaseActivity() {
                     withContext(Dispatchers.Main) {
                         if (result) {
                             refreshData()
-                            toast(R.string.toast_success)
+                            toastSuccess(R.string.toast_success)
                         } else {
-                            toast(R.string.toast_failure)
+                            toastError(R.string.toast_failure)
                         }
                     }
                 }
