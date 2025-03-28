@@ -4,7 +4,7 @@ package com.neko.v2ray
 object AppConfig {
     /** UWU **/
     const val UWU_UPDATE_URL = "https://raw.githubusercontent.com/MRT-project/Neko-ray/main/release.json"
-    const val UWU_CHANGELOG_URL = "https://gist.github.com/AnGgIt886/#file-changelog-md"
+    const val UWU_CHANGELOG_URL = "https://github.com/MRT-project/Neko-ray/blob/main/CHANGELOG.md"
 
     /** The application's package name. */
     const val ANG_PACKAGE = BuildConfig.APPLICATION_ID
@@ -95,10 +95,10 @@ object AppConfig {
         "https://raw.githubusercontent.com/2dust/androidpackagenamelist/master/proxy.txt"
     const val v2rayCustomRoutingListUrl =
         "https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/"
-    const val v2rayNGUrl = "https://github.com/UWU-TEAM/Neko-ray"
+    const val v2rayNGUrl = "https://github.com/MRT-project/Neko-ray"
     const val v2rayNGIssues = "$v2rayNGUrl/issues"
     const val v2rayNGWikiMode = "$v2rayNGUrl/wiki/Mode"
-    const val v2rayNGPrivacyPolicy = "https://raw.githubusercontent.com/UWU-TEAM/Neko-ray/main/CR.md"
+    const val v2rayNGPrivacyPolicy = "https://raw.githubusercontent.com/MRT-project/Neko-ray/main/CR.md"
     const val PromotionUrl = "https://9.234456.xyz/abc.html?t=1703789826882"
     const val GeoUrl = "https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/"
     const val TgChannelUrl = "https://t.me/neko_ray_uwu"
