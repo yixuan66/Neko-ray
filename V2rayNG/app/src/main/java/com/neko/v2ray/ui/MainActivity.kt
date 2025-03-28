@@ -52,7 +52,6 @@ import android.content.Context
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.AttrRes
-import android.annotation.SuppressLint
 import android.app.AppOpsManager
 import androidx.core.app.ActivityCompat
 import com.neko.appupdater.AppUpdater

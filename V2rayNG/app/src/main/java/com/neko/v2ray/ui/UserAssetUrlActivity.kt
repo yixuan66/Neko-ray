@@ -26,6 +26,7 @@ import com.neko.imageslider.interfaces.ItemChangeListener
 import com.neko.imageslider.interfaces.ItemClickListener
 import com.neko.imageslider.interfaces.TouchListener
 import com.neko.imageslider.models.SlideModel
+import com.neko.v2ray.util.SoftInputAssist
 
 class UserAssetUrlActivity : BaseActivity() {
     // Receive QRcode URL from UserAssetActivity
