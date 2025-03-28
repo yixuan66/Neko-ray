@@ -13,7 +13,6 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityLogcatBinding
-import com.neko.v2ray.extension.toast
 import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.util.Utils
 import kotlinx.coroutines.Dispatchers

@@ -18,7 +18,6 @@ import com.neko.v2ray.R
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.ServersCache
 import com.neko.v2ray.extension.serializable
-import com.neko.v2ray.extension.toast
 import com.neko.v2ray.extension.toastError
 import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.AngConfigManager

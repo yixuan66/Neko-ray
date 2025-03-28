@@ -61,6 +61,7 @@ class UserAssetUrlActivity : BaseActivity() {
                 binding.etRemarks.setText(assetNameQrcode)
                 binding.etUrl.setText(assetUrlQrcode)
             }
+
             else -> clearAsset()
         }
         softInputAssist = SoftInputAssist(this)
