@@ -1,7 +1,7 @@
 name: Update Gradle wrapper
 
 on:
-  schedule: [{cron: "0 16 * * *"}]
+  schedule: [{cron: "0 4 * * 1"}]
   workflow_dispatch:
     branches:
       - main
