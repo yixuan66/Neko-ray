@@ -38,7 +38,7 @@ object SpeedtestManager {
         return try {
             Libv2ray.measureOutboundDelay(config, SettingsManager.getDelayTestUrl())
         } catch (e: Exception) {
-            Log.d(AppConfig.ANG_PACKAGE, "realPing: $e")
+            Log.d(AppConfig.TAG, "realPing: $e")
             -1L
         }
     }
@@ -57,7 +57,7 @@ object SpeedtestManager {
                 }
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Failed to ping URL: $url", e)
         }
         return "-1ms"
     }
@@ -77,11 +77,11 @@ object SpeedtestManager {
             socket.close()
             return time
         } catch (e: UnknownHostException) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Unknown host: $url", e)
         } catch (e: IOException) {
-            Log.d(AppConfig.ANG_PACKAGE, "socketConnectTime IOException: $e")
+            Log.d(AppConfig.TAG, "socketConnectTime IOException: $e")
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Failed to establish socket connection to $url:$port", e)
         }
         return -1
     }
@@ -116,15 +116,13 @@ object SpeedtestManager {
                 )
             }
         } catch (e: IOException) {
-            // network exception
-            Log.d(AppConfig.ANG_PACKAGE, "testConnection IOException: " + Log.getStackTraceString(e))
+            Log.d(AppConfig.TAG, "testConnection IOException: " + Log.getStackTraceString(e))
             result = context.getString(R.string.connection_test_error, e.message)
         } catch (e: Exception) {
-            // library exception, eg sumsung
-            Log.d(AppConfig.ANG_PACKAGE, "testConnection Exception: " + Log.getStackTraceString(e))
+            Log.d(AppConfig.TAG, "testConnection Exception: " + Log.getStackTraceString(e))
             result = context.getString(R.string.connection_test_error, e.message)
         } finally {
-            conn?.disconnect()
+            conn.disconnect()
         }
 
         return Pair(elapsed, result)

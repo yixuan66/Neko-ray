@@ -13,7 +13,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.neko.v2ray.AngApplication
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.R
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.ServersCache
@@ -63,7 +62,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         getApplication<AngApplication>().unregisterReceiver(mMsgReceiver)
         tcpingTestScope.coroutineContext[Job]?.cancelChildren()
         SpeedtestManager.closeAllTcpSockets()
-        Log.i(ANG_PACKAGE, "Main ViewModel is cleared")
+        Log.d(AppConfig.TAG, "Main ViewModel is cleared")
         super.onCleared()
     }
 

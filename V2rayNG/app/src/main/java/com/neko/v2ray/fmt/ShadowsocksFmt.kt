@@ -1,5 +1,7 @@
 package com.neko.v2ray.fmt
 
+import android.util.Log
+import com.neko.v2ray.AppConfig
 import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.NetworkType
 import com.neko.v2ray.dto.ProfileItem
@@ -82,7 +84,7 @@ object ShadowsocksFmt : FmtBase() {
                 config.remarks =
                     Utils.urlDecode(result.substring(indexSplit + 1, result.length))
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e(AppConfig.TAG, "Failed to decode remarks in SS legacy URL", e)
             }
 
             result = result.substring(0, indexSplit)

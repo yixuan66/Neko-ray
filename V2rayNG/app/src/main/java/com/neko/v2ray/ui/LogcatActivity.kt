@@ -2,6 +2,7 @@ package com.neko.v2ray.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.neko.v2ray.AppConfig
 import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityLogcatBinding
@@ -72,7 +74,7 @@ class LogcatActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
                 }
             }
         } catch (e: IOException) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Failed to get logcat", e)
         }
     }
 
@@ -93,7 +95,7 @@ class LogcatActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
                 }
             }
         } catch (e: IOException) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Failed to clear logcat", e)
         }
     }
 

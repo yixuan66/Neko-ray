@@ -4,11 +4,13 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.blacksquircle.ui.editorkit.utils.EditorTheme
 import com.blacksquircle.ui.language.json.JsonLanguage
+import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityServerCustomConfigBinding
 import com.neko.v2ray.dto.EConfigType
@@ -133,7 +135,7 @@ class ServerCustomConfigActivity : BaseActivity() {
         val profileItem = try {
             CustomFmt.parse(binding.editor.text.toString())
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e(AppConfig.TAG, "Failed to parse custom configuration", e)
             toast("${getString(R.string.toast_malformed_josn)} ${e.cause?.message}")
             return false
         }

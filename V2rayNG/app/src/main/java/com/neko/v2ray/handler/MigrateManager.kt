@@ -3,7 +3,6 @@ package com.neko.v2ray.handler
 import android.util.Log
 import com.tencent.mmkv.MMKV
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.NetworkType
 import com.neko.v2ray.dto.ProfileItem
@@ -21,7 +20,7 @@ object MigrateManager {
             return false
         }
         val serverList = serverStorage.allKeys() ?: return false
-        Log.d(ANG_PACKAGE, "migrateServerConfig2Profile-" + serverList.count())
+        Log.d(AppConfig.TAG, "migrateServerConfig2Profile-" + serverList.count())
 
         for (guid in serverList) {
             var configOld = decodeServerConfigOld(guid) ?: continue
@@ -38,9 +37,9 @@ object MigrateManager {
             //check and remove old
             decodeServerConfig(guid) ?: continue
             serverStorage.remove(guid)
-            Log.d(ANG_PACKAGE, "migrateServerConfig2Profile-" + config.remarks)
+            Log.d(AppConfig.TAG, "migrateServerConfig2Profile-" + config.remarks)
         }
-        Log.d(ANG_PACKAGE, "migrateServerConfig2Profile-end")
+        Log.d(AppConfig.TAG, "migrateServerConfig2Profile-end")
         return true
     }
 

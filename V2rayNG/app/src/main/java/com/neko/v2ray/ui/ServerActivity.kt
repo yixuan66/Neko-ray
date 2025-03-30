@@ -18,7 +18,6 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.textfield.TextInputLayout
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.AppConfig.DEFAULT_PORT
 import com.neko.v2ray.AppConfig.PREF_ALLOW_INSECURE
 import com.neko.v2ray.AppConfig.REALITY
@@ -35,7 +34,6 @@ import com.neko.v2ray.extension.toast
 import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.util.JsonUtil
-import com.neko.v2ray.util.SoftInputAssist
 import com.neko.v2ray.util.Utils
 
 import com.neko.imageslider.ImageSlider
@@ -537,7 +535,7 @@ class ServerActivity : BaseActivity() {
         if (config.subscriptionId.isEmpty() && !subscriptionId.isNullOrEmpty()) {
             config.subscriptionId = subscriptionId.orEmpty()
         }
-        Log.d(ANG_PACKAGE, JsonUtil.toJsonPretty(config) ?: "")
+        //Log.d(AppConfig.TAG, JsonUtil.toJsonPretty(config) ?: "")
         MmkvManager.encodeServerConfig(editGuid, config)
         toastSuccess(R.string.toast_success)
         finish()

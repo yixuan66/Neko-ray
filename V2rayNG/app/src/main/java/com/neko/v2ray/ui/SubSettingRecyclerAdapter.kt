@@ -3,11 +3,13 @@ package com.neko.v2ray.ui
 import android.content.Intent
 import android.graphics.Color
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.recyclerview.widget.RecyclerView
+import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ItemQrcodeBinding
 import com.neko.v2ray.databinding.ItemRecyclerSubSettingBinding
@@ -81,7 +83,7 @@ class SubSettingRecyclerAdapter(val activity: SubSettingActivity) : RecyclerView
                                 else -> mActivity.toast("else")
                             }
                         } catch (e: Exception) {
-                            e.printStackTrace()
+                            Log.e(AppConfig.TAG, "Share subscription failed", e)
                         }
                     }.show()
             }

@@ -357,7 +357,7 @@ object MmkvManager {
 
     //region Others
     fun encodeStartOnBoot(startOnBoot: Boolean) {
-        MmkvManager.encodeSettings(PREF_IS_BOOTED, startOnBoot)
+        encodeSettings(PREF_IS_BOOTED, startOnBoot)
     }
     fun decodeStartOnBoot(): Boolean {
         return decodeSettingsBool(PREF_IS_BOOTED, false)
