@@ -9,7 +9,7 @@ import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
 import com.google.gson.reflect.TypeToken
-import com.v2ray.ang.AppConfig
+import com.neko.v2ray.AppConfig
 import java.lang.reflect.Type
 
 object JsonUtil {

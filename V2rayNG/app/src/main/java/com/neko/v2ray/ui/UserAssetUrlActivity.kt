@@ -3,12 +3,14 @@ package com.neko.v2ray.ui
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AlertDialog
+import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityUserAssetUrlBinding
 import com.neko.v2ray.dto.AssetUrlItem
@@ -130,7 +132,11 @@ class UserAssetUrlActivity : BaseActivity() {
             // remove file associated with the asset
             val file = extDir.resolve(assetItem.remarks)
             if (file.exists()) {
-                file.delete()
+                try {
+                    file.delete()
+                } catch (e: Exception) {
+                    Log.e(AppConfig.TAG, "Failed to delete asset file: ${file.path}", e)
+                }
             }
         } else {
             assetId = Utils.getUuid()

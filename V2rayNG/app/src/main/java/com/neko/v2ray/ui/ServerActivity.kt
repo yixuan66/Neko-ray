@@ -44,6 +44,7 @@ import com.neko.imageslider.interfaces.ItemChangeListener
 import com.neko.imageslider.interfaces.ItemClickListener
 import com.neko.imageslider.interfaces.TouchListener
 import com.neko.imageslider.models.SlideModel
+import com.neko.v2ray.util.SoftInputAssist
 
 class ServerActivity : BaseActivity() {
 
@@ -535,7 +536,7 @@ class ServerActivity : BaseActivity() {
         if (config.subscriptionId.isEmpty() && !subscriptionId.isNullOrEmpty()) {
             config.subscriptionId = subscriptionId.orEmpty()
         }
-        //Log.d(AppConfig.TAG, JsonUtil.toJsonPretty(config) ?: "")
+        //Log.i(AppConfig.TAG, JsonUtil.toJsonPretty(config) ?: "")
         MmkvManager.encodeServerConfig(editGuid, config)
         toastSuccess(R.string.toast_success)
         finish()

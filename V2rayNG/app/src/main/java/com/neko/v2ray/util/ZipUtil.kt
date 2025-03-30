@@ -1,7 +1,7 @@
 package com.neko.v2ray.util
 
 import android.util.Log
-import com.v2ray.ang.AppConfig
+import com.neko.v2ray.AppConfig
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
