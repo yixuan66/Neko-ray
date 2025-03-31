@@ -217,7 +217,7 @@
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginTop="0.0dip"
                         android:layout_marginRight="20.0dip"
-                        android:layout_marginBottom="8.0dip"
+                        android:layout_marginBottom="0.0dip"
                         android:minHeight="?attr/actionBarSize"
                         android:backgroundTint="@color/uwu_bg_card"
                         app:tabGravity="fill"
