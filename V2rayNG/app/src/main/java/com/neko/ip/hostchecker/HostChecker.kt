@@ -1,6 +1,5 @@
 package com.neko.ip.hostchecker
 
-import adrt.ADRTLogCatReader
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -79,7 +78,6 @@ class HostChecker : BaseActivity() {
     }
 
     override fun onCreate(bundle: Bundle?) {
-        ADRTLogCatReader.onContext(this, "com.neko.v2ray")
         super.onCreate(bundle)
         setContentView(R.layout.uwu_activity_hostchecker)
         initialize(bundle)
@@ -112,11 +110,11 @@ class HostChecker : BaseActivity() {
         btnSubmit = findViewById<View>(R.id.buttonSearch) as Button
         btnSubmit.setOnClickListener(View.OnClickListener {
             if (bugHost.text.toString() == "") {
-                Toast.makeText(applicationContext, "Please Fill The URL", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, R.string.uwu_hostcheck_url, Toast.LENGTH_SHORT).show()
             } else if (direct.isChecked) {
                 start()
             } else if (proxy.text.toString() == "") {
-                Toast.makeText(applicationContext, "fill the proxy if you want to check or select the direct to check the url", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, R.string.uwu_hostcheck_url2, Toast.LENGTH_SHORT).show()
             } else {
                 start()
             }
@@ -196,9 +194,9 @@ class HostChecker : BaseActivity() {
                 } else {
                     arrayList.add("")
                     arrayList.add("Stopped")
-                    arrayList.add("Please make sure that your connected to (Mobile data)")
+                    Toast.makeText(applicationContext, R.string.uwu_hostcheck_internet_problem, Toast.LENGTH_SHORT).show()
                     adapter.notifyDataSetChanged()
-                    showMessage("<u><#ffffff>Please connect to internet</#ffffff></u>")
+                    Toast.makeText(applicationContext, R.string.uwu_hostcheck_no_internet, Toast.LENGTH_SHORT).show()
                     btnSubmit.isEnabled = true
                 }
             }

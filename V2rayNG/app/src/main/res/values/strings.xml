@@ -434,5 +434,14 @@
     <string name="uwu_backup_summary">Backup, Restore, or Share your config</string>
     <string name="uwu_hostip_summary">Host to IP conversion</string>
     <string name="uwu_issue_summary">Report your issue</string>
+    <string name="uwu_hostcheck_url">Please Fill The URL</string>
+    <string name="uwu_hostcheck_url2">Fill the proxy if you want to check or select the direct to check the URL</string>
+    <string name="uwu_hostcheck_internet_problem">Please make sure that your connected to (Mobile data)</string>
+    <string name="uwu_hostcheck_no_internet">Please connect to internet</string>
+    <string name="uwu_hostcheck_hostname">Input hostname here</string>
+    <string name="uwu_hostcheck_button">Check</string>
+    <string name="uwu_hostcheck_proxy">Input proxy here (ip:port)</string>
+    <string name="uwu_hostcheck_direct">Direct Request</string>
+    <string name="uwu_hostcheck_result">Results :</string>
     <!-- Neko strings -->
 </resources>

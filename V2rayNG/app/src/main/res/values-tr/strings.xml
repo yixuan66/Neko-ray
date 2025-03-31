@@ -432,6 +432,14 @@
     <string name="uwu_backup_summary">Backup, Restore, or Share your config</string>
     <string name="uwu_hostip_summary">Host to IP conversion</string>
     <string name="uwu_issue_summary">Report your issue</string>
+    <string name="uwu_hostcheck_url">Lütfen URL yi doldurun</string>
+    <string name="uwu_hostcheck_url2">Kontrol etmek istiyorsanız proxy yi doldurun veya URL yi kontrol etmek için doğrudan seçin</string>
+    <string name="uwu_hostcheck_internet_problem">Lütfen (Mobil veri) ye bağlı olduğunuzdan emin olun</string>
+    <string name="uwu_hostcheck_no_internet">Lütfen internete bağlanın</string>
+    <string name="uwu_hostcheck_hostname">Buraya ana bilgisayar adını girin</string>
+    <string name="uwu_hostcheck_button">Etmek</string>
+    <string name="uwu_hostcheck_proxy">Proxy yi buraya girin (ip:port)</string>
+    <string name="uwu_hostcheck_direct">Doğrudan İstek</string>
+    <string name="uwu_hostcheck_result">Sonuçlar :</string>
     <!-- Neko strings -->
-
 </resources>
