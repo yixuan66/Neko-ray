@@ -13,6 +13,15 @@
     <dimen name="padding_end">16dp</dimen>
     <dimen name="cardview_margin">2dp</dimen>
 
+    <dimen name="padding_spacing_dp4">4dp</dimen>
+    <dimen name="padding_spacing_dp8">8dp</dimen>
+    <dimen name="padding_spacing_dp16">16dp</dimen>
+    <dimen name="image_size_dp24">24dp</dimen>
+    <dimen name="view_height_dp36">36dp</dimen>
+    <dimen name="view_height_dp48">48dp</dimen>
+    <dimen name="view_height_dp64">64dp</dimen>
+    <dimen name="view_height_dp160">160dp</dimen>
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>

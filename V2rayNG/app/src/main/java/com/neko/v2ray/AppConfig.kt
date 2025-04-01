@@ -61,6 +61,7 @@ object AppConfig {
     const val PREF_LOGLEVEL = "pref_core_loglevel"
     const val PREF_MODE = "pref_mode"
     const val PREF_IS_BOOTED = "pref_is_booted"
+    const val PREF_CHECK_UPDATE_PRE_RELEASE = "pref_check_update_pre_release"
 
     /** Cache keys. */
     const val CACHE_SUBSCRIPTION_ID = "cache_subscription_id"
@@ -97,6 +98,7 @@ object AppConfig {
     const val v2rayCustomRoutingListUrl =
         "https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/"
     const val v2rayNGUrl = "https://github.com/MRT-project/Neko-ray"
+    const val v2rayNGAPIUrl = "https://api.github.com/repos/2dust/v2rayNG/releases"
     const val v2rayNGIssues = "$v2rayNGUrl/issues"
     const val v2rayNGWikiMode = "$v2rayNGUrl/wiki/Mode"
     const val v2rayNGPrivacyPolicy = "https://raw.githubusercontent.com/MRT-project/Neko-ray/main/CR.md"

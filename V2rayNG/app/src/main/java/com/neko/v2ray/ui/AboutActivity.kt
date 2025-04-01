@@ -6,19 +6,25 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.lifecycle.lifecycleScope
 import com.tencent.mmkv.MMKV
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityAboutBinding
+import com.neko.v2ray.dto.CheckUpdateResult
 import com.neko.v2ray.extension.toast
 import com.neko.v2ray.extension.toastError
 import com.neko.v2ray.extension.toastSuccess
+import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SpeedtestManager
+import com.neko.v2ray.handler.UpdateCheckerManager
 import com.neko.v2ray.util.Utils
 import com.neko.v2ray.util.ZipUtil
+import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -96,6 +102,15 @@ class AboutActivity : BaseActivity() {
                 requestPermissionLauncher.launch(permission)
             }
         }
+
+        binding.layoutCheckUpdate.setOnClickListener {
+            checkForUpdates(binding.checkPreRelease.isChecked)
+        }
+
+        binding.checkPreRelease.setOnCheckedChangeListener { _, isChecked ->
+            MmkvManager.encodeSettings(AppConfig.PREF_CHECK_UPDATE_PRE_RELEASE, isChecked)
+        }
+        binding.checkPreRelease.isChecked = MmkvManager.decodeSettingsBool(AppConfig.PREF_CHECK_UPDATE_PRE_RELEASE, false)
 
         binding.layoutSoureCcode.setOnClickListener {
             Utils.openUri(this, AppConfig.v2rayNGUrl)
@@ -187,4 +202,28 @@ class AboutActivity : BaseActivity() {
                 }
             }
         }
+
+    private fun checkForUpdates(includePreRelease: Boolean) {
+        lifecycleScope.launch {
+            val result = UpdateCheckerManager.checkForUpdate(includePreRelease)
+            if (result.hasUpdate) {
+                showUpdateDialog(result)
+            } else {
+                toast(R.string.update_already_latest_version)
+            }
+        }
+    }
+
+    private fun showUpdateDialog(result: CheckUpdateResult) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.update_new_version_found, result.latestVersion))
+            .setMessage(result.releaseNotes)
+            .setPositiveButton(R.string.update_now) { _, _ ->
+                result.downloadUrl?.let {
+                    Utils.openUri(this, it)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
 }

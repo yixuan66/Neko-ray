@@ -318,6 +318,12 @@
     <string name="title_pref_fragment_interval">Fragment Interval (min-max)</string>
     <string name="title_pref_fragment_enabled">Enable Fragment</string>
 
+    <string name="update_check_for_update">Check for update</string>
+    <string name="update_already_latest_version">Already on the latest version</string>
+    <string name="update_new_version_found">New version found: %s</string>
+    <string name="update_now">Update now</string>
+    <string name="update_check_pre_release">Check Pre-release</string>
+
     <!-- Neko strings -->
     <string name="title_theme_settings">Theme Settings</string>
     <string name="title_choose_theme">Choose Color Theme</string>
@@ -382,7 +388,6 @@
     <string name="homepage_widget_battery_title">Battery</string>
     <string name="homepage_widget_storage_title">Storage</string>
     <string name="changelog_title">Changelog</string>
-
     <string name="appupdater_update_available">New update available!</string>
     <string name="appupdater_update_available_description_dialog">Update %1$s is available to download. By downloading the latest update you will get the latest features, improvements and bug fixes for %2$s.</string>
     <string name="appupdater_update_available_description_dialog_before_release_notes">Update %1$s is available to download.\n\nYou can get these new features:\n%2$s</string>

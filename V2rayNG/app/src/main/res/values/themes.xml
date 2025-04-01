@@ -48,6 +48,10 @@
         <!--<item name="colorAccent">@color/colorAccent</item>-->
     </style>
 
+    <style name="BrandedSwitch" parent="AppTheme">
+        <item name="colorAccent">@color/color_fab_active</item>
+    </style>
+
     <style name="AppTheme.SearchView" parent="">
         <item name="android:editTextColor">@color/colorText_ActionBar</item>
         <item name="android:textColorHint">@color/colorText_ActionBar</item>
