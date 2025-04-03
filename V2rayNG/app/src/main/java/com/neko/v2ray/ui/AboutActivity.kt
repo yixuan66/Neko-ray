@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -22,6 +23,7 @@ import com.neko.v2ray.extension.toastSuccess
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SpeedtestManager
 import com.neko.v2ray.handler.UpdateCheckerManager
+import com.neko.v2ray.util.AppManagerUtil
 import com.neko.v2ray.util.Utils
 import com.neko.v2ray.util.ZipUtil
 import kotlinx.coroutines.launch
@@ -103,6 +105,14 @@ class AboutActivity : BaseActivity() {
             }
         }
 
+        //If it is the Google Play version, not be displayed within 2 days after update
+        // if (Utils.isGoogleFlavor()) {
+            val lastUpdateTime = AppManagerUtil.getLastUpdateTime(this)
+            val currentTime = System.currentTimeMillis()
+            if ((currentTime - lastUpdateTime) < 2 * 24 * 60 * 60 * 1000L) {
+                binding.layoutCheckUpdate.visibility = View.GONE
+            }
+        // }
         binding.layoutCheckUpdate.setOnClickListener {
             checkForUpdates(binding.checkPreRelease.isChecked)
         }

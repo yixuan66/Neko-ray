@@ -17,8 +17,8 @@ import android.webkit.URLUtil
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.AppConfig.LOOPBACK
+import com.neko.v2ray.BuildConfig
 import java.io.IOException
 import java.net.ServerSocket
 import java.net.URLDecoder
@@ -486,7 +486,14 @@ object Utils {
      *
      * @return True if the package is Xray, false otherwise.
      */
-    fun isXray(): Boolean = ANG_PACKAGE.startsWith("com.neko.v2ray")
+    fun isXray(): Boolean = BuildConfig.APPLICATION_ID.startsWith("com.neko.v2ray")
+
+    /**
+     * Check if it is the Google Play version.
+     *
+     * @return True if the package is Google Play, false otherwise.
+     */
+    // fun isGoogleFlavor(): Boolean = BuildConfig.FLAVOR == "playstore"
 
 }
 
