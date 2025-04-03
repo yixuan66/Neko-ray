@@ -7,10 +7,6 @@ plugins {
     alias(libs.plugins.aboutlibraries)
 }
 
-configurations {
-    create("defaultRuntimeOnly")
-}
-
 android {
     namespace = "com.neko.v2ray"
     compileSdk = 35
@@ -24,26 +20,21 @@ android {
         versionName = "1.9.43"
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
-        splits {
-            abi {
-                isEnable = true
-                include(
-                    "arm64-v8a",
-                    "armeabi-v7a",
-                    "x86_64",
-                    "x86"
-                )
-                isUniversalApk = true
-            }
+
+        splits.abi {
+            isEnable = true
+            include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+            isUniversalApk = true
         }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         val formattedDate = SimpleDateFormat("dd, MMMM yyyy").format(Date())
-        val variant = this
-        resValue("string", "neko_build_date", "$formattedDate")
-        resValue("string", "neko_app_version", "${variant.versionName} (${variant.versionCode})")
-        resValue("string", "neko_min_sdk_version", "${variant.minSdk} (Android 8, Oreo)")
-        resValue("string", "neko_target_sdk_version", "${variant.targetSdk} (Android 15, Vanilla Ice Cream)")
-        resValue("string", "neko_packagename", "${variant.applicationId}")
+        resValue("string", "neko_build_date", formattedDate)
+        resValue("string", "neko_app_version", "$versionName ($versionCode)")
+        resValue("string", "neko_min_sdk_version", "$minSdk (Android 8, Oreo)")
+        resValue("string", "neko_target_sdk_version", "$targetSdk (Android 15, Vanilla Ice Cream)")
+        resValue("string", "neko_packagename", "$applicationId")
     }
 
     compileOptions {
@@ -53,25 +44,24 @@ android {
     }
 
     signingConfigs {
-        getByName("debug") {
-            storeFile = file("../platform.keystore")
-            storePassword = "password"
+        val signingFile = file("../platform.keystore")
+        val signingPassword = "password"
+
+        create("release") {
+            storeFile = signingFile
+            storePassword = signingPassword
             keyAlias = "platform"
-            keyPassword = "password"
+            keyPassword = signingPassword
             enableV1Signing = true
             enableV2Signing = true
             enableV3Signing = true
             enableV4Signing = true
         }
-        create("release") {
-            storeFile = file("../platform.keystore")
-            storePassword = "password"
+        getByName("debug").apply {
+            storeFile = signingFile
+            storePassword = signingPassword
             keyAlias = "platform"
-            keyPassword = "password"
-            enableV1Signing = true
-            enableV2Signing = true
-            enableV3Signing = true
-            enableV4Signing = true
+            keyPassword = signingPassword
         }
     }
 
@@ -91,18 +81,11 @@ android {
         }
     }
 
-    sourceSets {
-        getByName("main") {
-            jniLibs.srcDirs("libs")
-        }
-    }
+    sourceSets["main"].jniLibs.srcDirs("libs")
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
 
     applicationVariants.all {
-        val variant = this
         val versionCodes = mapOf(
             "armeabi-v7a" to 4,
             "arm64-v8a" to 4,
@@ -111,20 +94,18 @@ android {
             "universal" to 4
         )
 
-        outputs
-            .map { it as com.android.build.gradle.internal.api.ApkVariantOutputImpl }
-            .forEach { output ->
-                val abi = output.getFilter("ABI") ?: "universal"
-                output.outputFileName = "Neko-ray_${variant.versionName}_$abi.apk"
+        outputs.forEach { output ->
+            (output as com.android.build.gradle.internal.api.ApkVariantOutputImpl).apply {
+                val abi = getFilter("ABI") ?: "universal"
+                outputFileName = "Neko-ray_${versionName}_$abi.apk"
                 if (abi in versionCodes) {
-                    output.versionCodeOverride = 1000000 + variant.versionCode
+                    versionCodeOverride = 1000000 + versionCode
                 }
             }
+        }
     }
 
-    lint {
-        disable += "MissingTranslation"
-    }
+    lint.disable += "MissingTranslation"
 
     buildFeatures {
         buildConfig = true
@@ -132,9 +113,7 @@ android {
         viewBinding = true
     }
 
-    dataBinding {
-        addKtx = true
-    }
+    dataBinding.addKtx = true
 
     packaging {
         resources.excludes.add("META-INF/*")
@@ -149,11 +128,9 @@ if (file("user.gradle").exists()) {
 dependencies {
     // Core Libraries
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
-
-    // Include Project
     implementation(project(":library"))
 
-    // AndroidX Core Libraries
+    // AndroidX
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
@@ -168,35 +145,35 @@ dependencies {
     implementation(libs.editorkit)
     implementation(libs.flexbox)
 
-    // Data and Storage Libraries
+    // Data & Storage
     implementation(libs.mmkv.static)
     implementation(libs.gson)
 
-    // Reactive and Utility Libraries
+    // Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
 
-    // Language and Processing Libraries
+    // Language Processing
     implementation(libs.language.base)
     implementation(libs.language.json)
 
-    // Intent and Utility Libraries
+    // Utility Libraries
     implementation(libs.quickie.foss)
     implementation(libs.core)
 
-    // AndroidX Lifecycle and Architecture Components
+    // AndroidX Lifecycle
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.runtime.ktx)
 
-    // Background Task Libraries
+    // Background Tasks
     implementation(libs.work.runtime.ktx)
     implementation(libs.work.multiprocess)
 
-    // Multidex Support
+    // Multidex
     implementation(libs.multidex)
 
-    // Testing Libraries
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -204,7 +181,7 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
-    // Misc
+    // Miscellaneous
     implementation(libs.okhttp)
     implementation(libs.jsoup)
     implementation(libs.webkit)
