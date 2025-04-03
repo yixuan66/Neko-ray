@@ -7,45 +7,44 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.google.android.material.card.MaterialCardView
 
 class ExpandableLayout(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs), View.OnClickListener {
-    private lateinit var arrowIcon: ImageView
-    private lateinit var expandableContent: ExpandableView
+    
+    private val animationDuration = 300L
+    
+    private val arrowIcon: ImageView by lazy { findViewById(getResourceId("id/arrow_button")) }
+    private val cardbg: MaterialCardView by lazy { findViewById(getResourceId("id/card_bg")) }
+    private val expandableContent: ExpandableView by lazy { findViewById(getResourceId("id/expandable_view")) }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        val context = context
-        expandableContent = findViewById(getResources(context, "id/expandable_view"))
-        arrowIcon = findViewById(getResources(context, "id/arrow_button"))
-        arrowIcon.setOnClickListener(this)
+        listOf(arrowIcon, cardbg).forEach { it.setOnClickListener(this) }
         initializeLogic()
     }
 
     override fun onClick(view: View) {
-        setOnclick(view)
+        toggleExpansion()
     }
 
-    private fun setOnclick(view: View) {
-        if (expandableContent.isExpanded) {
-            expandableContent.collapse()
-            expandableContent.orientation = ExpandableView.VERTICAL
-            arrowIcon.animate().setDuration(300L).rotation(0.0f)
-            return
+    private fun toggleExpansion() {
+        expandableContent.apply {
+            if (isExpanded) collapse() else expand()
+            orientation = ExpandableView.VERTICAL
         }
-        expandableContent.expand()
-        expandableContent.orientation = ExpandableView.VERTICAL
-        arrowIcon.animate().setDuration(300L).rotation(90.0f)
+        arrowIcon.animate().setDuration(animationDuration)
+            .rotation(if (expandableContent.isExpanded) 90.0f else 0.0f)
     }
 
     private fun initializeLogic() {
         expandableContent.setExpansion(false)
-        arrowIcon.background = RippleDrawable(ColorStateList(arrayOf(intArrayOf()), intArrayOf(-0x8a8a8b)), null, null)
-        arrowIcon.isClickable = true
+        arrowIcon.apply {
+            background = RippleDrawable(ColorStateList.valueOf(-0x8a8a8b), null, null)
+            isClickable = true
+        }
     }
 
-    companion object {
-        fun getResources(context: Context, str: String): Int {
-            return context.resources.getIdentifier(str, null, context.packageName)
-        }
+    private fun getResourceId(name: String): Int {
+        return context.resources.getIdentifier(name, "id", context.packageName)
     }
 }
