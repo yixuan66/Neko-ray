@@ -337,6 +337,7 @@
     <string name="uwu_network_switcher_title">Network Switcher</string>
     <string name="uwu_host_to_ip_title">Host to ip</string>
     <string name="uwu_ip_location_title">IP Location</string>
+    <string name="uwu_ip_location_summary">Check Your Location On Ip Address Here</string>
     <string name="uwu_exit_title">Exit</string>
     <string name="uwu_maintainer_title">This app is under maintenance</string>
     <string name="uwu_border_about_title">Additional Options</string>
@@ -392,6 +393,7 @@
     <string name="appupdater_btn_dismiss">Dismiss</string>
     <string name="appupdater_channel_name">Update notifications</string>
     <string name="uwu_host_checker">Host checker</string>
+    <string name="uwu_host_checker_summary">Check Your Hostname Here</string>
     <string name="uwu_license_title">License</string>
     <string name="version">Version</string>
     <string name="uwu_group">Group</string>
@@ -440,5 +442,7 @@
     <string name="uwu_hostcheck_proxy">Input proxy here (ip:port)</string>
     <string name="uwu_hostcheck_direct">Direct Request</string>
     <string name="uwu_hostcheck_result">Results :</string>
+    <string name="uwu_hostname_finder_tittle">Hostname Finder</string>
+    <string name="uwu_hostname_finder_summary">Find Other Websites Hosted on a Web Server Here</string>
     <!-- Neko strings -->
 </resources>
