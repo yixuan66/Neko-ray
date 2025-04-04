@@ -79,7 +79,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/uwu_header_title"
                                 android:singleLine="true" />
-                            <com.neko.marquee.text.Grettings
+                            <com.neko.marquee.text.Greetings
                                 android:textSize="17.0sp"
                                 android:textColor="?attr/colorText"
                                 android:layout_width="match_parent"
