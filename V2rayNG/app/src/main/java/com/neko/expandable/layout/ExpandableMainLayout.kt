@@ -37,7 +37,7 @@ class ExpandableMainLayout(context: Context, attrs: AttributeSet?) : LinearLayou
     }
 
     private fun initializeLogic() {
-        expandableContent.setExpansion(false)
+        expandableContent.setExpansion(0f)
         arrowIcon.apply {
             background = RippleDrawable(ColorStateList.valueOf(-0x8a8a8b), null, null)
             isClickable = true

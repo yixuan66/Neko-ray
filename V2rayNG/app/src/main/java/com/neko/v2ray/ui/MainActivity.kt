@@ -190,7 +190,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         title = getString(R.string.app_name)
         setSupportActionBar(binding.toolbar)
         expandableConnection = findViewById(R.id.uwu_connection_expanded)
-        expandableConnection.setExpansion(false)
+        expandableConnection.setExpansion(0f)
 
         binding.fab.setOnClickListener {
             if (mainViewModel.isRunning.value == true) {
@@ -317,7 +317,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 binding.fab.setImageResource(R.drawable.ic_stop_24dp)
                 expandableConnection.expand()
                 expandableConnection.orientation = ExpandableView.HORIZONTAL
-                expandableConnection.setExpansion(true)
+                expandableConnection.setExpansion(1f)
                 // binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_orange))
                 setTestState(getString(R.string.connection_connected))
                 binding.layoutTest.isFocusable = true
@@ -325,7 +325,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 binding.fab.setImageResource(R.drawable.ic_play_24dp)
                 expandableConnection.collapse()
                 expandableConnection.orientation = ExpandableView.HORIZONTAL
-                expandableConnection.setExpansion(false)
+                expandableConnection.setExpansion(0f)
                 // binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_grey))
                 setTestState(getString(R.string.connection_not_connected))
                 binding.layoutTest.isFocusable = false
@@ -391,7 +391,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
         expandableConnection.collapse()
         expandableConnection.orientation = ExpandableView.HORIZONTAL
-        expandableConnection.setExpansion(false)
+        expandableConnection.setExpansion(0f)
     }
 
     public override fun onResume() {
