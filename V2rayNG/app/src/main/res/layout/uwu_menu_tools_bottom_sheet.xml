@@ -394,7 +394,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="8.0dip"
                                             android:text="@string/title_sub_setting"
-                                            android:singleLine="false"
+                                            android:singleLine="true"
                                             android:layout_below="@+id/icon_uwu_subs" />
                                     </LinearLayout>
                                 </FrameLayout>

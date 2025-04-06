@@ -94,7 +94,7 @@
                                 android:layout_marginEnd="10.0dip"
                                 android:layout_toStartOf="@+id/scan_button"
                                 android:layout_alignParentStart="true"
-                                app:cardBackgroundColor="?attr/colorCard"
+                                app:cardBackgroundColor="@color/uwu_bg_card"
                                 app:cardCornerRadius="14.0dip"
                                 app:cardElevation="0.0dip"
                                 app:contentPadding="0.0dip">
@@ -137,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8.0dip"
                             android:layout_marginBottom="8.0dip"
-                            app:cardBackgroundColor="?attr/colorCard"
+                            app:cardBackgroundColor="@color/uwu_bg_card"
                             app:cardCornerRadius="14.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout
@@ -167,7 +167,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8.0dip"
                             android:layout_marginBottom="8.0dip"
-                            app:cardBackgroundColor="?attr/colorCard"
+                            app:cardBackgroundColor="@color/uwu_bg_card"
                             app:cardCornerRadius="14.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout

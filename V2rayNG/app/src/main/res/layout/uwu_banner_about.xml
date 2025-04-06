@@ -117,7 +117,7 @@
                     android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/semibold_stencil"
                     android:format12Hour="hh:mm"
                     android:format24Hour="kk:mm"
                     android:fontFeatureSettings="tnum, cv03, cv04" />

@@ -38,7 +38,7 @@
                     android:src="@drawable/uwu_banner_image_3"
                     android:scaleType="centerCrop"
                     android:elevation="0.0dip"
-                    app:radius="1" />
+                    app:radius="2" />
                 <View
                     android:background="@android:color/black"
                     android:layout_width="match_parent"
@@ -52,6 +52,23 @@
                     android:layout_marginTop="-40.0dip"
                     android:src="@drawable/uwu_fluid_bg"
                     android:scaleType="centerCrop" />
+                <TextView
+                    android:textSize="40.0sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20.0dip"
+                    android:text=" @string/app_name"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/uwu_font_typography"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
                 <LinearLayout
                     android:gravity="bottom"
                     android:layout_gravity="bottom"
