@@ -33,11 +33,6 @@
     <string name="menu_item_import_config_manually_trojan">Elle gir [Trojan]</string>
     <string name="menu_item_import_config_manually_wireguard">Elle gir [Wireguard]</string>
     <string name="menu_item_import_config_manually_hysteria2">Elle gir [Hysteria2]</string>
-    <string name="menu_item_import_config_custom">Özel yapılandırma</string>
-    <string name="menu_item_import_config_custom_clipboard">Panodan özel yapılandırma içe aktar</string>
-    <string name="menu_item_import_config_custom_local">Yerel olarak özel yapılandırma içe aktar</string>
-    <string name="menu_item_import_config_custom_url">URLden özel yapılandırma içe aktar</string>
-    <string name="menu_item_import_config_custom_url_scan">URL tarayarak özel yapılandırma içe aktar</string>
     <string name="del_config_comfirm">Silmeyi onaylıyor musunuz?</string>
     <string name="del_invalid_config_comfirm">Lütfen silmeden önce test edin! Silmeyi onaylıyor musunuz?</string>
     <string name="server_lab_remarks">açıklamalar</string>
