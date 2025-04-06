@@ -2,21 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/splash_root"
-    android:background="?attr/colorPrimaryContainer"
+    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.neko.waveview.WaveView
-        android:id="@+id/wave_view"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/colorPrimaryContainer"
-        app:above_wave_color="?attr/colorPrimary"
-        app:blow_wave_color="?attr/colorPrimary"
-        app:progress="30"
-        app:wave_height="large"
-        app:wave_hz="fast"
-        app:wave_length="little" />
+        android:layout_height="450.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:waveAmplitude="5.48"
+        app:waveBackgroundColor="#00000000"
+        app:waveColor="@color/uwu_bg_color"
+        app:waveDensity="2.0"
+        app:waveFrequency="2.0"
+        app:waveNumberOfWaves="7"
+        app:wavePhaseShift="-0.03"
+        app:wavePrimaryLineWidth="1.0"
+        app:waveSecondaryLineWidth="1.5"
+        app:waveXAxisPositionMultiplier="0.4" />
 
     <LinearLayout
         android:gravity="center"
