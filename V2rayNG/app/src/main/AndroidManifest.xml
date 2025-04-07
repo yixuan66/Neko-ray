@@ -58,11 +58,11 @@
         tools:targetApi="o">
 
         <activity
-            android:name="com.neko.splash.SplashActivity"
+            android:name="com.neko.welcome.WelcomeActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/uwu_splash_theme">
+            android:theme="@style/AppTheme.Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -83,6 +83,11 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTask" />
+        <activity
+            android:theme="@style/uwu_splash_theme"
+            android:name="com.neko.splash.SplashActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:exported="false"
             android:theme="@style/AppThemeDayNight.NoActionBar"

@@ -160,6 +160,15 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="AppTheme.Welcome" parent="@style/AppThemeDayNight">
+        <item name="android:statusBarColor">?colorBg</item>
+        <item name="android:navigationBarColor">?colorBg</item>
+        <item name="android:windowLightStatusBar">@bool/navigation_color</item>
+        <item name="android:windowLightNavigationBar">@bool/navigation_color</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="Uwu.Design.FloatingActionButton" parent="@style/Widget.Design.FloatingActionButton">
         <item name="android:background">@null</item>
         <item name="backgroundTint">?attr/colorThemeUwu</item>
@@ -265,5 +274,15 @@
     <style name="AppTheme.EditTextPreference" parent="@style/Preference.DialogPreference.EditTextPreference.Material">
         <item name="dialogLayout">@layout/uwu_dialog_edittext</item>
         <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="@style/Widget.Material3.Button">
+        <item name="android:paddingTop">8.0dip</item>
+        <item name="android:paddingBottom">8.0dip</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">16.0dip</item>
+        <item name="android:paddingEnd">16.0dip</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="elevation">0.0dip</item>
     </style>
 </resources>
