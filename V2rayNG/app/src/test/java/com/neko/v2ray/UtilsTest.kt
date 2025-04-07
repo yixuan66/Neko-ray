@@ -1,6 +1,6 @@
-package com.v2ray.ang
+package com.neko.v2ray
 
-import com.v2ray.ang.util.Utils
+import com.neko.v2ray.util.Utils
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -11,7 +11,7 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class AngUnitTest {
+class UtilsTest {
 
     @Test
     fun test_parseInt() {
