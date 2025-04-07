@@ -43,7 +43,7 @@
                 android:layout_width="180.0dip"
                 android:layout_height="180.0dip"
                 android:src="@drawable/uwu_banner_profile"
-                app:civ_border_color="?attr/colorPrimary"
+                app:civ_border_color="?attr/colorText"
                 app:civ_border_overlay="true"
                 app:civ_border_width="3.0dip"
                 app:civ_circle_background_color="@color/uwu_bg" />
@@ -52,7 +52,7 @@
 
         <TextView
             android:textSize="24.0sp"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="?attr/colorText"
             android:id="@+id/splash_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
