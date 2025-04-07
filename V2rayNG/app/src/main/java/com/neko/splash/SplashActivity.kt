@@ -64,6 +64,6 @@ class SplashActivity : BaseActivity() {
                 }
             }
             finish()
-        }, 2500)
+        }, 2000)
     }
 }

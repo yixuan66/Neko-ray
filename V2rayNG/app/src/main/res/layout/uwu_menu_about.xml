@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="0.0dip"
-    android:layout_marginBottom="0.0dip">
+    android:orientation="vertical"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp">
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0.0dip"
-        android:layout_marginBottom="0.0dip"
-        android:layout_marginStart="0.0dip"
-        android:layout_marginEnd="0.0dip">
+        android:orientation="horizontal"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp">
+
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0.0dip"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.0">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.0"
+                android:layout_marginEnd="8dp"
                 android:onClick="uwuRepository"
-                android:layout_marginEnd="8.0dip"
                 app:cardBackgroundColor="@color/uwu_bg_card"
-                app:cardCornerRadius="24.0dip"
-                app:cardElevation="0.0dip"
-                app:strokeWidth="0.0dip">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
                 <FrameLayout
                     android:background="#00000000"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
                         android:layout_gravity="start|center|top"
                         android:orientation="horizontal"
@@ -43,6 +45,7 @@
                         android:layout_weight="1.0"
                         android:paddingStart="16.0dip"
                         android:paddingEnd="16.0dip">
+
                         <TextView
                             android:textSize="18.0sp"
                             android:textColor="?android:textColorPrimary"
@@ -52,6 +55,7 @@
                             android:text="@string/uwu_github_title"
                             android:singleLine="false" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_gravity="end|center|top"
                         android:orientation="horizontal"
@@ -62,11 +66,13 @@
                         android:layout_weight="1.0"
                         android:paddingStart="16.0dip"
                         android:paddingEnd="16.0dip">
+
                         <LinearLayout
                             android:background="@drawable/uwu_bg_circle_arrow"
                             android:layout_width="28.0dip"
                             android:layout_height="28.0dip"
                             android:backgroundTint="@color/uwu_bg_dialog_bottomshet">
+
                             <ImageView
                                 android:layout_width="25.0dip"
                                 android:layout_height="25.0dip"
@@ -76,12 +82,14 @@
                                 app:tint="?android:textColorPrimary" />
                         </LinearLayout>
                     </LinearLayout>
+
                     <LinearLayout
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:gravity="center"
                             android:layout_gravity="center"
@@ -90,6 +98,7 @@
                             android:src="@drawable/uwu_github"
                             app:tint="?attr/colorPrimary" />
                     </LinearLayout>
+
                     <RelativeLayout
                         android:gravity="bottom|center"
                         android:layout_gravity="bottom|center"
@@ -100,10 +109,12 @@
                         android:layout_weight="1.0"
                         android:layout_marginStart="20.0dip"
                         android:layout_marginEnd="20.0dip">
+
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <TextView
                                 android:textSize="14.0sp"
                                 android:textColor="?android:textColorSecondary"
@@ -120,104 +131,106 @@
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
+
+        <!-- Credits and Update Column -->
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="0.0dip"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.0">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Credits Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0.0dip"
-                android:layout_marginBottom="8.0dip"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
                 android:onClick="uwuCredits"
-                android:layout_marginStart="8.0dip"
                 app:cardBackgroundColor="@color/uwu_bg_card"
-                app:cardCornerRadius="24.0dip"
-                app:cardElevation="0.0dip"
-                app:strokeWidth="0.0dip">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
                 <FrameLayout
-                    android:background="#00000000"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent">
+
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:paddingTop="18.0dip"
-                        android:paddingBottom="16.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:paddingStart="16.0dip"
-                        android:paddingEnd="16.0dip">
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingTop="18dp"
+                        android:paddingBottom="16dp">
+
                         <ImageView
-                            android:gravity="center"
-                            android:layout_gravity="center"
                             android:id="@+id/icon_uwu_credits"
-                            android:layout_width="25.0dip"
-                            android:layout_height="25.0dip"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:src="@drawable/uwu_credits"
-                            app:tint="?attr/colorPrimary" />
+                            app:tint="?attr/colorPrimary"
+                            android:layout_gravity="center" />
+
                         <TextView
-                            android:textSize="14.0sp"
-                            android:textColor="?android:textColorSecondary"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8.0dip"
                             android:text="@string/uwu_credit_title"
+                            android:textColor="?android:textColorSecondary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
                             android:singleLine="true"
-                            android:layout_below="@+id/icon_uwu_credits" />
+                            android:ellipsize="end" />
                     </LinearLayout>
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <!-- Update Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8.0dip"
-                android:layout_marginBottom="0.0dip"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:onClick="uwuUpdater"
-                android:layout_marginStart="8.0dip"
                 app:cardBackgroundColor="@color/uwu_bg_card"
-                app:cardCornerRadius="24.0dip"
-                app:cardElevation="0.0dip"
-                app:strokeWidth="0.0dip">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
                 <FrameLayout
-                    android:background="#00000000"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent">
+
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:paddingTop="18.0dip"
-                        android:paddingBottom="16.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:paddingStart="16.0dip"
-                        android:paddingEnd="16.0dip">
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingTop="18dp"
+                        android:paddingBottom="16dp">
+
                         <ImageView
-                            android:gravity="center"
-                            android:layout_gravity="center"
                             android:id="@+id/icon_uwu_update"
-                            android:layout_width="25.0dip"
-                            android:layout_height="25.0dip"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:src="@drawable/uwu_icon_update"
-                            app:tint="?attr/colorPrimary" />
+                            app:tint="?attr/colorPrimary"
+                            android:layout_gravity="center" />
+
                         <TextView
-                            android:textSize="14.0sp"
-                            android:textColor="?android:textColorSecondary"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8.0dip"
                             android:text="@string/uwu_updater_title"
+                            android:textColor="?android:textColorSecondary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
                             android:singleLine="true"
-                            android:layout_below="@+id/icon_uwu_update" />
+                            android:ellipsize="end" />
                     </LinearLayout>
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>

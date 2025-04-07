@@ -5,8 +5,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.neko.v2ray.R
 
 class NekoAboutFragment : PreferenceFragmentCompat() {
-    override fun onCreatePreferences(bundle: Bundle?, rootKey: String?) {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.uwu_preferences_about, rootKey)
     }
 }
-

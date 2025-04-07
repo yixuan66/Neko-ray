@@ -1,18 +1,11 @@
 package com.neko.v2ray.ui
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebView
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
-import com.google.android.material.appbar.MaterialToolbar
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.appbar.MaterialToolbar
 import com.mikepenz.aboutlibraries.LibsBuilder
 import com.neko.appupdater.AppUpdater
 import com.neko.appupdater.enums.Display
@@ -20,32 +13,39 @@ import com.neko.appupdater.enums.UpdateFrom
 import com.neko.nointernet.callbacks.ConnectionCallback
 import com.neko.nointernet.dialogs.signal.NoInternetDialogSignal
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.util.Utils
-import com.neko.v2ray.extension.toast
 import com.neko.v2ray.R
+import com.neko.v2ray.extension.toast
+import com.neko.v2ray.util.Utils
 
 class NekoAboutActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.uwu_about_activity)
+
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         val toolbarLayout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
+
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportFragmentManager.beginTransaction().replace(R.id.content_wrapper, NekoAboutFragment()).commit()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content_wrapper, NekoAboutFragment())
+            .commit()
     }
 
     fun uwuUpdater(view: View) {
         startNoInternetDialog()
-        val appUpdater = AppUpdater(this)
-        appUpdater.setUpdateFrom(UpdateFrom.JSON)
-        appUpdater.setUpdateJSON(AppConfig.UWU_UPDATE_URL)
-        appUpdater.setDisplay(Display.DIALOG)
-        appUpdater.showAppUpdated(true)
-        appUpdater.setCancelable(false)
-        appUpdater.setButtonDoNotShowAgain("")
-        appUpdater.start()
+
+        AppUpdater(this).apply {
+            setUpdateFrom(UpdateFrom.JSON)
+            setUpdateJSON(AppConfig.UWU_UPDATE_URL)
+            setDisplay(Display.DIALOG)
+            showAppUpdated(true)
+            setCancelable(false)
+            setButtonDoNotShowAgain("")
+            start()
+        }
     }
 
     fun uwuRepository(view: View) {
@@ -89,19 +89,16 @@ class NekoAboutActivity : BaseActivity() {
     }
 
     private fun startNoInternetDialog() {
-        NoInternetDialogSignal.Builder(
-            this,
-            lifecycle
-        ).apply {
+        NoInternetDialogSignal.Builder(this, lifecycle).apply {
             dialogProperties.apply {
-                connectionCallback = object : ConnectionCallback { // Optional
+                connectionCallback = object : ConnectionCallback {
                     override fun hasActiveConnection(hasActiveConnection: Boolean) {
-                        // ...
+                        // Optionally handle connection changes
                     }
                 }
-                cancelable = true // Optional
-                showInternetOnButtons = true // Optional
-                showAirplaneModeOffButtons = true // Optional
+                cancelable = true
+                showInternetOnButtons = true
+                showAirplaneModeOffButtons = true
             }
         }.build()
     }
