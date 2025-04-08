@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
-        android:theme="@style/AppTheme.AppBarOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
         android:fitsSystemWindows="true">
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:theme="@style/Uwu.Material3.CollapsingToolbar"
             android:id="@+id/collapsing_toolbar"
-            android:background="?attr/colorThemeUwu"
-            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            android:background="?attr/colorThemeUwu"
+            android:clipToPadding="false"
             app:contentScrim="?attr/colorThemeUwu"
-            app:expandedTitleMarginBottom="24.0dip"
-            app:expandedTitleMarginEnd="24.0dip"
-            app:expandedTitleMarginStart="24.0dip"
+            app:expandedTitleMarginStart="24dp"
+            app:expandedTitleMarginEnd="24dp"
+            app:expandedTitleMarginBottom="24dp"
             app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
             app:extraMultilineHeightEnabled="true"
             app:forceApplySystemWindowInsetTop="true"
@@ -33,64 +33,225 @@
             app:title="@string/title_user_asset_setting"
             app:titleCollapseMode="scale"
             app:toolbarId="@+id/toolbar">
+
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
         <androidx.appcompat.widget.ActionBarContextView
-            android:theme="?attr/actionModeTheme"
             android:id="@+id/action_context_bar"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:theme="?attr/actionModeTheme" />
     </com.google.android.material.appbar.AppBarLayout>
+
     <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/uwu_background_lengkung"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <androidx.cardview.widget.CardView
-            android:paddingTop="16.0dip"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="16.0dip"
-            android:layout_marginBottom="0.0dip"
-            android:layout_marginStart="16.0dip"
-            android:layout_marginEnd="16.0dip"
-            app:cardBackgroundColor="#00000000"
-            app:cardCornerRadius="28.0dip"
-            app:cardElevation="0.0dip">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingTop="16dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp">
+
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:layout_marginTop="8.0dip"
-                android:layout_marginBottom="8.0dip"
                 android:id="@+id/pb_waiting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="0.0dip"
-                android:paddingBottom="0.0dip"
-                android:paddingStart="8.0dip"
-                android:paddingEnd="8.0dip"
-                android:layout_marginStart="20.0dip"
-                android:layout_marginEnd="20.0dip"
-                android:indeterminate="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:visibility="invisible"
+                android:indeterminate="true"
                 app:indicatorColor="?attr/colorThemeUwu" />
+
             <androidx.core.widget.NestedScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:fillViewport="true"
-                android:layout_marginStart="-16.0dip"
-                android:layout_marginEnd="-16.0dip"
+                android:layout_marginStart="-16dp"
+                android:layout_marginEnd="-16dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="0.0dip"
-                    android:layout_marginBottom="0.0dip"
-                    tools:listitem="@layout/item_recycler_sub_setting" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Top Card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardBackgroundColor="@color/uwu_bg_card"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Icon Row -->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="8dp"
+                                android:clipToPadding="false"
+                                app:cardBackgroundColor="?attr/colorPrimary"
+                                app:cardCornerRadius="19dp"
+                                app:cardElevation="0dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:clipToPadding="false"
+                                    android:gravity="center_vertical">
+
+                                    <!-- Icon Container -->
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="16dp"
+                                        android:gravity="center">
+
+                                        <LinearLayout
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:background="@drawable/uwu_bg_icon"
+                                            android:backgroundTint="?attr/colorIcon">
+
+                                            <ImageView
+                                                android:layout_width="25dp"
+                                                android:layout_height="25dp"
+                                                android:layout_margin="10dp"
+                                                android:gravity="center"
+                                                android:src="@drawable/uwu_ic_baseline_camera_24"
+                                                android:tint="?attr/colorPrimary" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <!-- Texts -->
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:paddingVertical="16dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/asset_geo_files_sources"
+                                                android:textColor="?attr/colorText"
+                                                android:textSize="17sp"
+                                                android:ellipsize="marquee"
+                                                android:singleLine="false" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Select your options below!"
+                                                android:textColor="?attr/colorText"
+                                                android:textSize="14sp"
+                                                android:ellipsize="marquee"
+                                                android:singleLine="true" />
+                                        </LinearLayout>
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- Clickable Row -->
+                            <LinearLayout
+                                android:id="@+id/layout_geo_files_sources"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/edit_height"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="@drawable/uwu_bg_stroke"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?android:selectableItemBackgroundBorderless">
+
+                                <TextView
+                                    android:id="@+id/tv_geo_files_sources_summary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:maxLines="2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Bottom Section -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/uwu_bg_sin"
+                        android:baselineAligned="false"
+                        android:clipToPadding="false"
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingVertical="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="@string/title_user_asset_setting"
+                                android:textColor="?android:textColorPrimary"
+                                android:textAlignment="viewStart"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="true" />
+                </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.cardview.widget.CardView>
     </FrameLayout>

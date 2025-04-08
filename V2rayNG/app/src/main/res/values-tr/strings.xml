@@ -121,6 +121,7 @@
     <string name="title_user_asset_add_url">Varlık URL ekle</string>
     <string name="msg_file_not_found">Dosya bulunamadı</string>
     <string name="msg_remark_is_duplicate">Açıklamalar zaten mevcut</string>
+    <string name="asset_geo_files_sources">Geo files source (optional)</string>
 
     <!-- PerAppProxyActivity -->
     <string name="msg_dialog_progress">Yükleniyor</string>
