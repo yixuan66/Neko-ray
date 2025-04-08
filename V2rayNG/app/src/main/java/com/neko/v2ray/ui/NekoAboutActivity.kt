@@ -4,13 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mikepenz.aboutlibraries.LibsBuilder
 import com.neko.appupdater.AppUpdater
+import com.neko.changelog.ChangelogAdapter
+import com.neko.changelog.ChangelogEntry
 import com.neko.nointernet.callbacks.ConnectionCallback
 import com.neko.nointernet.dialogs.signal.NoInternetDialogSignal
 import com.neko.v2ray.AppConfig
+import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.extension.toast
 import com.neko.v2ray.util.Utils
@@ -85,7 +93,7 @@ class NekoAboutActivity : BaseActivity() {
     }
 
     fun changelog(view: View) {
-        Utils.openUri(this, AppConfig.UWU_CHANGELOG_URL)
+        showChangelogBottomSheet()
     }
 
     private fun startNoInternetDialog() {
@@ -101,5 +109,23 @@ class NekoAboutActivity : BaseActivity() {
                 showAirplaneModeOffButtons = true
             }
         }.build()
+    }
+
+    private fun showChangelogBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.changelog_bottom_sheet, null)
+        bottomSheetDialog.setContentView(view)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.changelogRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = ChangelogAdapter(loadChangelogFromAssets())
+
+        bottomSheetDialog.show()
+    }
+
+    private fun loadChangelogFromAssets(): List<ChangelogEntry> {
+        val json = assets.open("changelog.json").bufferedReader().use { it.readText() }
+        val type = object : TypeToken<List<ChangelogEntry>>() {}.type
+        return Gson().fromJson(json, type)
     }
 }

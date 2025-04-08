@@ -1,0 +1,37 @@
+[
+  {
+    "version": "1.9.45",
+    "date": "2025-04-07",
+    "changes": [
+      "release notes",
+      "Introduct Hostname Finder",
+      "Introduct Setup Wellcome",
+      "Optimized and Improvement WaveView",
+      "Improvements and Optimizatin ExpandableView",
+      "Recode marque text java to kotlin",
+      "Redesighn home activity",
+      "Optimize and improve log",
+      "Added check for updates",
+      "Improvements and Optimizatin Greetings",
+      "Optimized HostChecker",
+      "Recode BlurImageView java to kotlin",
+      "Optimize and improve Utils",
+      "Optimized the test true delay function",
+      "Improvements and Optimizatin gradle build",
+      "Recode NetworkSwitcher java to kotlin",
+      "Optimized CheckBoxPreference",
+      "Update Luri Bakhtiari translation",
+      "If it is the Google Play version, the update check will not be displayed within 2 days after update.",
+      "Improvements and Optimizatin About ExpandableLayout",
+      "Improve icon color",
+      "Little Update",
+      "Remove ADS routing rules",
+      "Delete Unnecessary () around expression",
+      "Update Russian translation",
+      "Update Persian Translation",
+      "Optimized color splash",
+      "Set loading splash in 2sec",
+      "Optimized margin TabLayout"
+    ]
+  }
+]
