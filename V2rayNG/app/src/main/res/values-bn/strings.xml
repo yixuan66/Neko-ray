@@ -386,6 +386,10 @@
     <string name="appupdater_btn_disable">Don\'t show again</string>
     <string name="appupdater_btn_dismiss">Dismiss</string>
     <string name="appupdater_channel_name">Update notifications</string>
+    <string name="appupdater_downloading">Downloading update...</string>
+    <string name="appupdater_btn_pause">Pause</string>
+    <string name="appupdater_btn_resume">Resume</string>
+    <string name="appupdater_btn_cancel">Cancel</string>
     <string name="uwu_host_checker">Host checker</string>
     <string name="uwu_host_checker_summary">Check Your Hostname Here</string>
     <string name="uwu_license_title">License</string>

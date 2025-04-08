@@ -56,8 +56,6 @@ import androidx.annotation.AttrRes
 import android.app.AppOpsManager
 import androidx.core.app.ActivityCompat
 import com.neko.appupdater.AppUpdater
-import com.neko.appupdater.enums.Display
-import com.neko.appupdater.enums.UpdateFrom
 import com.neko.expandable.layout.ExpandableView
 import com.neko.themeengine.ThemeChooserDialogBuilder
 import com.neko.themeengine.ThemeEngine
@@ -256,13 +254,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         // Show new update with dialog
         val appUpdater = AppUpdater(this).apply {
-            setUpdateFrom(UpdateFrom.JSON)
-            setUpdateJSON(AppConfig.UWU_UPDATE_URL)
-            setDisplay(Display.DIALOG)
-            showAppUpdated(false)
-            setCancelable(false)
+            configUrl = AppConfig.UWU_UPDATE_URL
+            showIfUpToDate = false
+            onUpdateAvailable = {
+                // Optional: aksi tambahan jika update tersedia
+            }
+            onUpdateNotAvailable = {
+                // Optional: aksi jika tidak ada update
+            }
         }
-        appUpdater.start()
+        appUpdater.checkForUpdate()
 
         myDB = MyDatabaseHelper(this)
         var usernameuwu = intent.getStringExtra("varName")

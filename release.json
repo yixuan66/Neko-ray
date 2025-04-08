@@ -1,11 +1,14 @@
 {
-  "latestVersion": "1.9.45",
-  "latestVersionCode": 1000645,
-  "url": "https://sfl.gl/st/?api=12009627cdbda7809f8aa8a75007ec876ac0503c&url=https://github.com/MRT-project/Neko-ray/releases/tag/v1.9.45",
+  "latestVersion": "1.9.46",
+  "latestVersionCode": 1000646,
+  "apkUrls": {
+    "arm64-v8a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_arm64-v8a.apk",
+    "armeabi-v7a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_armeabi-v7a.apk",
+    "x86": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_x86.apk",
+    "x86_64": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_x86_64.apk"
+  },
   "releaseNotes": [
-    "",
-    "Neko-ray: v1.9.45",
-    "Build Date: 7 April 2025",
-    ""
+    "New UI improvements",
+    "Bug fixes and performance boosts"
   ]
 }

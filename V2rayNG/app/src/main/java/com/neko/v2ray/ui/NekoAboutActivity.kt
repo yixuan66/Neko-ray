@@ -8,8 +8,6 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.mikepenz.aboutlibraries.LibsBuilder
 import com.neko.appupdater.AppUpdater
-import com.neko.appupdater.enums.Display
-import com.neko.appupdater.enums.UpdateFrom
 import com.neko.nointernet.callbacks.ConnectionCallback
 import com.neko.nointernet.dialogs.signal.NoInternetDialogSignal
 import com.neko.v2ray.AppConfig
@@ -38,13 +36,15 @@ class NekoAboutActivity : BaseActivity() {
         startNoInternetDialog()
 
         AppUpdater(this).apply {
-            setUpdateFrom(UpdateFrom.JSON)
-            setUpdateJSON(AppConfig.UWU_UPDATE_URL)
-            setDisplay(Display.DIALOG)
-            showAppUpdated(true)
-            setCancelable(false)
-            setButtonDoNotShowAgain("")
-            start()
+            configUrl = AppConfig.UWU_UPDATE_URL
+            showIfUpToDate = true
+            onUpdateAvailable = {
+                // Optional: aksi tambahan jika update tersedia
+            }
+            onUpdateNotAvailable = {
+                // Optional: aksi jika tidak ada update
+            }
+            checkForUpdate()
         }
     }
 
