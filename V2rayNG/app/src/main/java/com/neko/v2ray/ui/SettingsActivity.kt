@@ -173,7 +173,7 @@ class SettingsActivity : BaseActivity() {
             }
             delayTestUrl?.setOnPreferenceChangeListener { _, any ->
                 val nval = any as String
-                delayTestUrl?.summary = if (nval == "") AppConfig.DelayTestUrl else nval
+                delayTestUrl?.summary = if (nval == "") AppConfig.DELAY_TEST_URL else nval
                 true
             }
             mode?.setOnPreferenceChangeListener { _, newValue ->
@@ -226,7 +226,7 @@ class SettingsActivity : BaseActivity() {
             remoteDns?.summary = MmkvManager.decodeSettingsString(AppConfig.PREF_REMOTE_DNS, AppConfig.DNS_PROXY)
             domesticDns?.summary = MmkvManager.decodeSettingsString(AppConfig.PREF_DOMESTIC_DNS, AppConfig.DNS_DIRECT)
             dnsHosts?.summary = MmkvManager.decodeSettingsString(AppConfig.PREF_DNS_HOSTS)
-            delayTestUrl?.summary = MmkvManager.decodeSettingsString(AppConfig.PREF_DELAY_TEST_URL, AppConfig.DelayTestUrl)
+            delayTestUrl?.summary = MmkvManager.decodeSettingsString(AppConfig.PREF_DELAY_TEST_URL, AppConfig.DELAY_TEST_URL)
 
             initSharedPreference()
         }
@@ -412,6 +412,6 @@ class SettingsActivity : BaseActivity() {
     }
 
     fun onModeHelpClicked(view: View) {
-        Utils.openUri(this, AppConfig.v2rayNGWikiMode)
+        Utils.openUri(this, AppConfig.APP_WIKI_MODE)
     }
 }

@@ -27,6 +27,7 @@ import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityUserAssetBinding
 import com.neko.v2ray.databinding.ItemRecyclerUserAssetBinding
 import com.neko.v2ray.dto.AssetUrlItem
+import com.neko.v2ray.extension.concatUrl
 import com.neko.v2ray.extension.toTrafficString
 import com.neko.v2ray.extension.toast
 import com.neko.v2ray.extension.toastError
@@ -128,8 +129,11 @@ class UserAssetActivity : BaseActivity() {
     }
 
     private fun setGeoFilesSources() {
-        MaterialAlertDialogBuilder(this).setItems(AppConfig.GEO_FILES_SOURCES
-            .toTypedArray()) { _, i ->
+        MaterialAlertDialogBuilder(this).setItems(
+            AppConfig.GEO_FILES_SOURCES
+                .map { it.replace(AppConfig.GITHUB_URL + "/", "").replace("/" + AppConfig.GITHUB_DOWNLOAD, "") }
+                .toTypedArray()
+        ) { _, i ->
             try {
                 val value = AppConfig.GEO_FILES_SOURCES[i]
                 MmkvManager.encodeSettings(AppConfig.PREF_GEO_FILES_SOURCES, value)
@@ -293,7 +297,8 @@ class UserAssetActivity : BaseActivity() {
                 list.add(
                     Utils.getUuid() to AssetUrlItem(
                         it,
-                        getGeoFilesSources() + it
+                        getGeoFilesSources().concatUrl(it),
+                        locked = true
                     )
                 )
             }
@@ -344,7 +349,7 @@ class UserAssetActivity : BaseActivity() {
                 holder.itemUserAssetBinding.assetProperties.text = getString(R.string.msg_file_not_found)
             }
 
-            if (item.second.remarks in builtInGeoFiles && item.second.url == getGeoFilesSources() + item.second.remarks) {
+            if (item.second.locked == true) {
                 holder.itemUserAssetBinding.layoutEdit.visibility = GONE
                 //holder.itemUserAssetBinding.layoutRemove.visibility = GONE
             } else {

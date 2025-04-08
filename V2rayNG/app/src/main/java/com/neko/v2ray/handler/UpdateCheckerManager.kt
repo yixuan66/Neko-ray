@@ -7,6 +7,7 @@ import com.neko.v2ray.AppConfig
 import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.dto.CheckUpdateResult
 import com.neko.v2ray.dto.GitHubRelease
+import com.neko.v2ray.extension.concatUrl
 import com.neko.v2ray.util.HttpUtil
 import com.neko.v2ray.util.JsonUtil
 import kotlinx.coroutines.Dispatchers
@@ -18,9 +19,9 @@ object UpdateCheckerManager {
     suspend fun checkForUpdate(includePreRelease: Boolean = false): CheckUpdateResult = withContext(Dispatchers.IO) {
         try {
             val url = if (includePreRelease) {
-                AppConfig.v2rayNGAPIUrl
+                AppConfig.APP_API_URL
             } else {
-                "${AppConfig.v2rayNGAPIUrl}/latest"
+                AppConfig.APP_API_URL.concatUrl("latest")
             }
 
             var response = HttpUtil.getUrlContent(url, 5000)

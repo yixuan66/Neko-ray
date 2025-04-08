@@ -57,11 +57,11 @@ class NekoAboutActivity : BaseActivity() {
     }
 
     fun uwuRepository(view: View) {
-        Utils.openUri(this, AppConfig.v2rayNGUrl)
+        Utils.openUri(this, AppConfig.APP_URL)
     }
 
     fun promotion(view: View) {
-        Utils.openUri(this, AppConfig.PromotionUrl)
+        Utils.openUri(this, AppConfig.APP_PROMOTION_URL)
     }
 
     fun license(view: View) {
@@ -81,11 +81,11 @@ class NekoAboutActivity : BaseActivity() {
     }
 
     fun privacypolicy(view: View) {
-        Utils.openUri(this, AppConfig.v2rayNGPrivacyPolicy)
+        Utils.openUri(this, AppConfig.APP_PRIVACY_POLICY)
     }
 
     fun uwumodder(view: View) {
-        Utils.openUri(this, AppConfig.TgChannelUrl)
+        Utils.openUri(this, AppConfig.TG_CHANNEL_URL)
     }
 
     fun uwuCredits(view: View) {
