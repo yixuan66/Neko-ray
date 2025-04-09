@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityRoutingEditBinding
 import com.neko.v2ray.dto.RulesetItem
@@ -140,7 +141,7 @@ class RoutingEditActivity : BaseActivity() {
 
     private fun deleteServer(): Boolean {
         if (position >= 0) {
-            AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
+            MaterialAlertDialogBuilder(this).setMessage(R.string.del_config_comfirm)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     lifecycleScope.launch(Dispatchers.IO) {
                         SettingsManager.removeRoutingRuleset(position)

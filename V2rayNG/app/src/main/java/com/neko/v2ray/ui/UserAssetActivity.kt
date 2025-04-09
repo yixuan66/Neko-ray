@@ -18,6 +18,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -127,7 +128,7 @@ class UserAssetActivity : BaseActivity() {
     }
 
     private fun setGeoFilesSources() {
-        AlertDialog.Builder(this).setItems(AppConfig.GEO_FILES_SOURCES
+        MaterialAlertDialogBuilder(this).setItems(AppConfig.GEO_FILES_SOURCES
             .toTypedArray()) { _, i ->
             try {
                 val value = AppConfig.GEO_FILES_SOURCES[i]
@@ -357,7 +358,7 @@ class UserAssetActivity : BaseActivity() {
                 startActivity(intent)
             }
             holder.itemUserAssetBinding.layoutRemove.setOnClickListener {
-                AlertDialog.Builder(this@UserAssetActivity).setMessage(R.string.del_config_comfirm)
+                MaterialAlertDialogBuilder(this@UserAssetActivity).setMessage(R.string.del_config_comfirm)
                     .setPositiveButton(android.R.string.ok) { _, _ ->
                         file?.delete()
                         MmkvManager.removeAssetUrl(item.first)

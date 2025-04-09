@@ -9,13 +9,14 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neko.splash.SplashActivity
 import com.neko.v2ray.ui.BaseActivity
 import com.neko.v2ray.R
 import java.util.*
 
 class WelcomeActivity : BaseActivity() {
-    private lateinit var dialog: AlertDialog.Builder
+    private lateinit var dialog: MaterialAlertDialogBuilder
     private lateinit var f: SharedPreferences
     private lateinit var imageview1: ImageView
     private lateinit var imageview2: ImageView
@@ -91,7 +92,7 @@ class WelcomeActivity : BaseActivity() {
         imageview5 = findViewById(R.id.imageview5)
         imageview6 = findViewById(R.id.imageview6)
         page_3button = findViewById(R.id.page_3button)
-        dialog = AlertDialog.Builder(this)
+        dialog = MaterialAlertDialogBuilder(this)
         f = getSharedPreferences("f", MODE_PRIVATE)
 
         page_1textview.setOnClickListener {

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.ActivityRoutingSettingBinding
@@ -105,8 +106,8 @@ class RoutingSettingActivity : BaseActivity() {
     }
 
     private fun importPredefined() {
-        AlertDialog.Builder(this).setItems(preset_rulesets.asList().toTypedArray()) { _, i ->
-            AlertDialog.Builder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
+        MaterialAlertDialogBuilder(this).setItems(preset_rulesets.asList().toTypedArray()) { _, i ->
+            MaterialAlertDialogBuilder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     try {
                         lifecycleScope.launch(Dispatchers.IO) {
@@ -128,7 +129,7 @@ class RoutingSettingActivity : BaseActivity() {
     }
 
     private fun importFromClipboard() {
-        AlertDialog.Builder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
+        MaterialAlertDialogBuilder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val clipboard = try {
                     Utils.getClipboard(this)
@@ -172,7 +173,7 @@ class RoutingSettingActivity : BaseActivity() {
     }
 
     private fun importRulesetsFromQRcode(qrcode: String?): Boolean {
-        AlertDialog.Builder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
+        MaterialAlertDialogBuilder(this).setMessage(R.string.routing_settings_import_rulesets_tip)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 lifecycleScope.launch(Dispatchers.IO) {
                     val result = SettingsManager.resetRoutingRulesets(qrcode)
