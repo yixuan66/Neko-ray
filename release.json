@@ -1,14 +1,17 @@
 {
-  "latestVersion": "1.9.46",
-  "latestVersionCode": 1000646,
-  "apkUrls": {
-    "arm64-v8a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_arm64-v8a.apk",
-    "armeabi-v7a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_armeabi-v7a.apk",
-    "x86": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_x86.apk",
-    "x86_64": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.45/Neko-ray_1.9.45_x86_64.apk"
-  },
-  "releaseNotes": [
-    "New UI improvements",
-    "Bug fixes and performance boosts"
-  ]
+    "latestVersion": "1.9.46",
+    "latestVersionCode": 1000646,
+    "apkUrls": {
+        "arm64-v8a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.46/Neko-ray_1.9.46_arm64-v8a.apk",
+        "armeabi-v7a": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.46/Neko-ray_1.9.46_armeabi-v7a.apk",
+        "x86": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.46/Neko-ray_1.9.46_x86.apk",
+        "x86_64": "https://github.com/MRT-project/Neko-ray/releases/download/v1.9.46/Neko-ray_1.9.46_x86_64.apk"
+    },
+    "releaseNotes": [
+        "Optimization and improvement the interface",
+        "When subscribing to updates, private IPs are allowed to use HTTP protocol, others can only use HTTPS",
+        "Added GEO file origin setting in asset settings",
+        "Support download and install in Updater",
+        "Fixed some known issues"
+    ]
 }
