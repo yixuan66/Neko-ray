@@ -95,7 +95,7 @@ object AppConfig {
     /** URLs for various resources. */
     const val GITHUB_URL = "https://github.com"
     const val GITHUB_RAW_URL = "https://raw.githubusercontent.com"
-    const val GITHUB_DOWNLOAD = "releases/latest/download"
+    const val GITHUB_DOWNLOAD_URL = "$GITHUB_URL/%s/releases/latest/download"
     const val ANDROID_PACKAGE_NAME_LIST_URL = "$GITHUB_RAW_URL/2dust/androidpackagenamelist/master/proxy.txt"
     const val APP_URL = "$GITHUB_URL/MRT-project/Neko-ray"
     const val APP_API_URL = "https://api.github.com/repos/MRT-project/Neko-ray/releases"
@@ -234,9 +234,9 @@ object AppConfig {
     )
 
     val GEO_FILES_SOURCES = arrayListOf(
-        "$GITHUB_URL/Loyalsoldier/v2ray-rules-dat/$GITHUB_DOWNLOAD",
-        "$GITHUB_URL/runetfreedom/russia-v2ray-rules-dat/$GITHUB_DOWNLOAD",
-        "$GITHUB_URL/Chocolate4U/Iran-v2ray-rules/$GITHUB_DOWNLOAD",
-        "$GITHUB_URL/malikshi/v2ray-rules-dat/$GITHUB_DOWNLOAD"
+        "Loyalsoldier/v2ray-rules-dat",
+        "runetfreedom/russia-v2ray-rules-dat",
+        "Chocolate4U/Iran-v2ray-rules",
+        "malikshi/v2ray-rules-dat"
     )
 }

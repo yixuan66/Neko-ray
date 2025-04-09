@@ -129,11 +129,7 @@ class UserAssetActivity : BaseActivity() {
     }
 
     private fun setGeoFilesSources() {
-        MaterialAlertDialogBuilder(this).setItems(
-            AppConfig.GEO_FILES_SOURCES
-                .map { it.replace(AppConfig.GITHUB_URL + "/", "").replace("/" + AppConfig.GITHUB_DOWNLOAD, "") }
-                .toTypedArray()
-        ) { _, i ->
+        MaterialAlertDialogBuilder(this).setItems(AppConfig.GEO_FILES_SOURCES.toTypedArray()) { _, i ->
             try {
                 val value = AppConfig.GEO_FILES_SOURCES[i]
                 MmkvManager.encodeSettings(AppConfig.PREF_GEO_FILES_SOURCES, value)
@@ -297,7 +293,7 @@ class UserAssetActivity : BaseActivity() {
                 list.add(
                     Utils.getUuid() to AssetUrlItem(
                         it,
-                        getGeoFilesSources().concatUrl(it),
+                        String.format(AppConfig.GITHUB_DOWNLOAD_URL, getGeoFilesSources()).concatUrl(it),
                         locked = true
                     )
                 )

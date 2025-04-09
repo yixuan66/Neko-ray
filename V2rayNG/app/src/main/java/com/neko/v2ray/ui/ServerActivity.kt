@@ -17,6 +17,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textfield.TextInputEditText
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.AppConfig.DEFAULT_PORT
 import com.neko.v2ray.AppConfig.PREF_ALLOW_INSECURE
@@ -198,14 +199,15 @@ class ServerActivity : BaseActivity() {
                     )
                 )
 
-                et_request_host?.hint = Utils.getEditable(
+                et_request_host?.text = Utils.getEditable(
                     when (networks[position]) {
                         //"quic" -> config?.quicSecurity
                         NetworkType.GRPC.type -> config?.authority
                         else -> config?.host
                     }.orEmpty()
                 )
-                et_path?.hint = Utils.getEditable(
+
+                et_path?.text = Utils.getEditable(
                     when (networks[position]) {
                         NetworkType.KCP.type -> config?.seed
                         //"quic" -> config?.quicKey
@@ -243,7 +245,8 @@ class ServerActivity : BaseActivity() {
                         }
                     )
                 )
-                et_extra?.hint = Utils.getEditable(
+
+                et_extra?.text = Utils.getEditable(
                     when (networks[position]) {
                         NetworkType.XHTTP.type -> config?.xhttpExtra
                         else -> null
