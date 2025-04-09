@@ -7,7 +7,9 @@ import android.util.Log
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.AppConfig.HY2
 import com.neko.v2ray.R
-import com.neko.v2ray.dto.*
+import com.neko.v2ray.dto.EConfigType
+import com.neko.v2ray.dto.ProfileItem
+import com.neko.v2ray.dto.SubscriptionItem
 import com.neko.v2ray.fmt.CustomFmt
 import com.neko.v2ray.fmt.Hysteria2Fmt
 import com.neko.v2ray.fmt.ShadowsocksFmt

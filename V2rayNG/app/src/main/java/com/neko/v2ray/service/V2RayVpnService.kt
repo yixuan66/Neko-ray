@@ -20,7 +20,6 @@ import androidx.annotation.RequiresApi
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.AppConfig.LOOPBACK
 import com.neko.v2ray.BuildConfig
-import com.neko.v2ray.R
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
 import com.neko.v2ray.util.MyContextWrapper
