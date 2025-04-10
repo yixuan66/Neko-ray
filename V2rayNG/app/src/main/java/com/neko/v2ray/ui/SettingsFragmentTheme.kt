@@ -13,37 +13,54 @@ import com.neko.themeengine.ThemeMode
 import com.neko.v2ray.R
 import com.neko.v2ray.databinding.FragmentSettingsThemeBinding
 
+/**
+ * A BottomSheetDialogFragment that allows the user to change the app's theme settings.
+ * Supports theme mode (light, dark, auto), dynamic colors (on Android 12+),
+ * and custom theme selection using ThemeChooserDialog.
+ */
 class SettingsFragmentTheme : BottomSheetDialogFragment() {
 
     private lateinit var themeEngine: ThemeEngine
 
     private var _binding: FragmentSettingsThemeBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Initialize ThemeEngine and inflate the layout
         themeEngine = ThemeEngine.getInstance(requireContext())
         _binding = FragmentSettingsThemeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Handle dynamic color options if device supports them (Android 12+)
         if (hasS()) {
-            binding.dynamicGroup.check(if (themeEngine.isDynamicTheme) R.id.dynamic_on else R.id.dynamic_off)
+            // Check appropriate radio button based on current dynamic theme setting
+            binding.dynamicGroup.check(
+                if (themeEngine.isDynamicTheme) R.id.dynamic_on else R.id.dynamic_off
+            )
+
+            // Listener for dynamic theme toggle
             binding.dynamicGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
                         R.id.dynamic_off -> themeEngine.isDynamicTheme = false
                         R.id.dynamic_on -> themeEngine.isDynamicTheme = true
                     }
+                    // Recreate activity to apply changes
                     requireActivity().recreate()
                 }
             }
         } else {
+            // Hide dynamic theme options if not supported
             binding.dynamicColorLabel.isVisible = false
             binding.dynamicGroup.isVisible = false
         }
+
+        // Set current theme mode (Auto, Light, Dark)
         binding.themeGroup.check(
             when (themeEngine.themeMode) {
                 ThemeMode.AUTO -> R.id.auto_theme
@@ -53,6 +70,7 @@ class SettingsFragmentTheme : BottomSheetDialogFragment() {
             }
         )
 
+        // Listener for theme mode changes
         binding.themeGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 themeEngine.themeMode = when (checkedId) {
@@ -63,6 +81,8 @@ class SettingsFragmentTheme : BottomSheetDialogFragment() {
                 }
             }
         }
+
+        // Launch the custom theme chooser dialog when button is clicked
         binding.changeTheme.setOnClickListener {
             ThemeChooserDialogBuilder(requireContext())
                 .setTitle(R.string.title_choose_theme)

@@ -10,6 +10,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import com.neko.R
 
+/**
+ * ThemeEngine is a utility class to manage light/dark mode, dynamic theming,
+ * and static theme selection across the app.
+ *
+ * @constructor Initializes preferences and applies default values on first launch.
+ */
 class ThemeEngine(context: Context) {
     private val prefs = context.getSharedPreferences("theme_engine_prefs", Context.MODE_PRIVATE)
 
@@ -25,8 +31,12 @@ class ThemeEngine(context: Context) {
     }
 
     /**
-     * Returns current [ThemeMode].
-     * Setting this property applies the given theme mode to the activity.
+     * Returns the current theme mode.
+     * Possible values are [ThemeMode.LIGHT], [ThemeMode.DARK], or [ThemeMode.AUTO].
+     *
+     * Setting this will persist the value and apply the selected mode using AppCompatDelegate.
+     *
+     * @throws IllegalArgumentException if value is outside the valid range.
      */
     var themeMode: Int
         get() = prefs.getInt(THEME_MODE, ThemeMode.AUTO)
@@ -52,37 +62,45 @@ class ThemeEngine(context: Context) {
         }
 
     /**
-     * Returns true if Dynamic Colors are enabled, false otherwise.
-     * Setting this property to true enables dynamic colors, false disables dynamic colors.
-     * Keep in mind that dynamic colors will work only on Android 12 i.e. API 31 and higher devices.
-     * And call Activity.recreate() after changing this property so that the changes get applied to the activity.
+     * Indicates whether dynamic theming is enabled.
+     *
+     * Dynamic theming is available only on Android 12 (API 31) and above.
+     * After changing this value, you should call `Activity.recreate()` to apply the change.
      */
     var isDynamicTheme
         get() = prefs.getBoolean(DYNAMIC_THEME, Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
         set(value) = prefs.edit { putBoolean(DYNAMIC_THEME, value) }
 
     /**
-     * Get current app theme.
-     * @return a dynamic theme if [isDynamicTheme] is enabled or a static theme otherwise.
+     * Returns the current app theme resource ID.
+     *
+     * Uses a dynamic theme if [isDynamicTheme] is enabled and the device supports it,
+     * otherwise returns the static theme.
      */
     fun getTheme(): Int {
         return if (hasS() && isDynamicTheme) R.style.Theme_ThemeEngine_Dynamic else staticTheme.themeId
     }
 
     /**
-     * Get current static app theme, the theme which is used when dynamic color is disabled
+     * Returns or sets the current static theme.
+     *
+     * This is used when dynamic theming is not supported or disabled.
      */
     var staticTheme: Theme
         get() = Theme.values()[prefs.getInt(APP_THEME, 1)]
         set(value) = prefs.edit { putInt(APP_THEME, value.ordinal) }
 
     /**
-     * Resets static theme
+     * Resets the selected static theme to its default.
      */
     fun resetTheme() {
         prefs.edit { remove(APP_THEME) }
     }
 
+    /**
+     * Reads default values from XML resources and stores them in preferences.
+     * Called only on the first launch of the app.
+     */
     private fun setDefaultValues(context: Context) {
         themeMode = context.getIntSafe(R.integer.theme_mode, ThemeMode.AUTO)
         prefs.edit { putInt(APP_THEME, context.getIntSafe(R.integer.static_theme, 1)) }
@@ -92,6 +110,9 @@ class ThemeEngine(context: Context) {
     companion object {
         private var INSTANCE: ThemeEngine? = null
 
+        /**
+         * Returns a singleton instance of ThemeEngine.
+         */
         @JvmStatic
         fun getInstance(context: Context): ThemeEngine {
             val currentInstance = INSTANCE
@@ -108,8 +129,10 @@ class ThemeEngine(context: Context) {
         }
 
         /**
-         * Applies themes and night mode to all activities by registering a [ActivityLifecycleCallbacks] to your application.
-         * @param application Target Application
+         * Applies the selected theme and night mode to all activities in the application
+         * by registering a lifecycle callback.
+         *
+         * @param application The Application to apply themes to.
          */
         @JvmStatic
         fun applyToActivities(application: Application) {
@@ -117,8 +140,9 @@ class ThemeEngine(context: Context) {
         }
 
         /**
-         * Applies themes and night mode to given activity
-         * @param activity Target activity
+         * Applies the selected theme and night mode to a specific activity.
+         *
+         * @param activity The Activity to apply the theme to.
          */
         @JvmStatic
         fun applyToActivity(activity: Activity) {
@@ -135,6 +159,9 @@ class ThemeEngine(context: Context) {
     }
 }
 
+/**
+ * Internal class used to hook into activity lifecycle and apply the theme during creation.
+ */
 private class ThemeEngineActivityCallback : ActivityLifecycleCallbacks {
     override fun onActivityPreCreated(
         activity: Activity,

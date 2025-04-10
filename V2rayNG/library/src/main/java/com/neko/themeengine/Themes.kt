@@ -2,9 +2,16 @@ package com.neko.themeengine
 
 import androidx.annotation.ColorRes
 import androidx.annotation.StyleRes
-
 import com.neko.R
 
+/**
+ * Enum class representing various app themes, each associated with a specific style and primary color.
+ *
+ * @property themeId Resource ID of the style to apply for the theme.
+ * @property primaryColor Resource ID of the primary color used in the theme.
+ *
+ * These themes can be used to dynamically change the look and feel of the app at runtime.
+ */
 enum class Theme(@StyleRes val themeId: Int, @ColorRes val primaryColor: Int) {
     Amber(R.style.Theme_ThemeEngine_Amber, R.color.amber_primary),
     BlueVariant(R.style.Theme_ThemeEngine_BlueVariant, R.color.blue_variant_primary),

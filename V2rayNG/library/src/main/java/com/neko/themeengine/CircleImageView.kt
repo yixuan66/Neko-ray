@@ -13,9 +13,19 @@ import com.google.android.material.shape.CornerSize
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 
+/**
+ * A custom ImageView that renders itself as a circle using Material Components.
+ *
+ * This view:
+ * - Automatically clips to a circular shape using a `ShapeAppearanceModel`.
+ * - Allows background color to be set via both direct color int and resource ID.
+ * - Ensures equal width and height for perfect circular dimensions.
+ * - Animates the corner size slightly on touch for a subtle press effect.
+ *
+ * Useful for avatars, profile pictures, or any circular image display.
+ */
 class CircleImageView @JvmOverloads constructor(
-    context: Context, attrs:
-    AttributeSet? = null, defStyleAttr: Int = -1
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = -1
 ) : ShapeableImageView(context, attrs, defStyleAttr) {
 
     init {
