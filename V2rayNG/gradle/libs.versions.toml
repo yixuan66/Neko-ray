@@ -34,6 +34,7 @@ barcodeScanning = "17.3.0"
 picasso = "2.71828"
 fastadapter = "5.7.0"
 navigationFragment = "2.8.9"
+speedviewlib = "1.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -75,6 +76,7 @@ barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref =
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 fastadapter = { module = "com.mikepenz:fastadapter", version.ref = "fastadapter" }
 navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
+speedviewlib = { module = "com.github.anastr:speedviewlib", version.ref = "speedviewlib" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

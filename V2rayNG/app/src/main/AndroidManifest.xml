@@ -221,7 +221,7 @@
 
         <activity
             android:theme="@style/AppThemeDayNight.NoActionBar"
-            android:name="com.neko.tools.SpeedTestActivity"
+            android:name="com.neko.speedtest.SpeedTestActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
 

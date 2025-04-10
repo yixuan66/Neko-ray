@@ -60,7 +60,7 @@ import com.neko.expandable.layout.ExpandableView
 import com.neko.themeengine.ThemeChooserDialogBuilder
 import com.neko.themeengine.ThemeEngine
 import com.neko.tools.NetworkSwitcher
-import com.neko.tools.SpeedTestActivity
+import com.neko.speedtest.SpeedTestActivity
 import com.neko.ip.HostToIpActivity
 import com.neko.ip.IpLocation
 import com.neko.hostnamefinder.HostnameFinder

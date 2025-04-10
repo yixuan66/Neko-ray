@@ -190,4 +190,5 @@ dependencies {
     implementation(libs.fastadapter)
     implementation(libs.navigation.fragment)
     implementation(libs.picasso)
+    implementation(libs.speedviewlib)
 }
