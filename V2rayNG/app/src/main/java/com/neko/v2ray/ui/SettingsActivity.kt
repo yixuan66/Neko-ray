@@ -182,19 +182,10 @@ class SettingsActivity : BaseActivity() {
             }
             mode?.dialogLayoutResource = R.layout.preference_with_help_link
             //loglevel.summary = "LogLevel"
-
-            findPreference<Preference>(AppConfig.PREF_IGNORE_BATTERY_OPTIMIZATION)?.isVisible =
-                !isBatteryOptimizationPermissionGranted()
-
-            findPreference<Preference>(AppConfig.PREF_IGNORE_BATTERY_OPTIMIZATION)?.setOnPreferenceClickListener {
-                requestBatteryOptimizationPermission()
-                true
-            }
         }
 
         public override fun onResume() {
             super.onResume()
-            updateBatteryOptimizationPreferenceVisibility()
         }
 
         override fun onStart() {
@@ -385,30 +376,6 @@ class SettingsActivity : BaseActivity() {
         private fun updateFragmentInterval(value: String?) {
             fragmentInterval?.summary = value.toString()
         }
-        private fun isBatteryOptimizationPermissionGranted(): Boolean {
-            val powerManager = requireContext().getSystemService(Context.POWER_SERVICE) as PowerManager
-            val packageName = requireContext().packageName
-            return powerManager.isIgnoringBatteryOptimizations(packageName)
-        }
-        private fun requestBatteryOptimizationPermission() {
-            val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                data = Uri.parse("package:${requireContext().packageName}")
-            }
-            startActivity(intent)
-        }
-        private fun updateBatteryOptimizationPreferenceVisibility() {
-            findPreference<Preference>(AppConfig.PREF_IGNORE_BATTERY_OPTIMIZATION)?.apply {
-                isVisible = !isBatteryOptimizationPermissionGranted()
-                setOnPreferenceClickListener {
-                    requestBatteryOptimizationPermission()
-                    true
-                }
-            }
-        }
-    }
-
-    fun uwuIgnoreReadMore(view: View) {
-        Utils.openUri(this, "https://dontkillmyapp.com/")
     }
 
     fun onModeHelpClicked(view: View) {

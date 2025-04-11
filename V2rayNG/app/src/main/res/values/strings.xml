@@ -363,8 +363,10 @@
     <string name="uwu_exit_message">Are you sure you want to leave this application?</string>
     <string name="uwu_text_yes">Yes</string>
     <string name="uwu_text_no">No</string>
-    <string name="uwu_ignore_battery_optimization_summary">Apply for the necessary permissions in order for the VPN to function properly.\n\nIf you are using a device made by a Chinese company, the card may not disappear after the permission is granted.</string>
-    <string name="uwu_ignore_battery_optimization_title">Ignore battery optimizations</string>
+    <string name="battery_optimization_title">Disable Battery Optimization</string>
+    <string name="battery_optimization_message">To allow %1$s to run optimally in the background, please disable battery optimization for this app.</string>
+    <string name="battery_optimization_allow">Allow</string>
+    <string name="battery_optimization_cancel">Cancel</string>
     <string name="read_more">Read More</string>
     <string name="default_title">No Internet</string>
     <string name="default_message">Check your Internet connection and try again.</string>

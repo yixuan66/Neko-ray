@@ -15,7 +15,6 @@ object AppConfig {
 
     /** Legacy configuration keys. */
     const val ANG_CONFIG = "ang_config"
-    const val PREF_IGNORE_BATTERY_OPTIMIZATION = "pref_ignore_battery_optimization"
 
     /** Preferences mapped to MMKV storage. */
     const val PREF_SNIFFING_ENABLED = "pref_sniffing_enabled"
