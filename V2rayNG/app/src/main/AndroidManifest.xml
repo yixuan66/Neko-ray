@@ -268,6 +268,12 @@
             android:screenOrientation="portrait"
             android:exported="false" />
 
+        <activity
+            android:name="com.neko.crashlog.CrashDialogActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDayNight.NoActionBar"/>
+
         <service
             android:name=".service.V2RayVpnService"
             android:enabled="true"

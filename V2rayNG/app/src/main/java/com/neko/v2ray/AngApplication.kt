@@ -7,6 +7,7 @@ import androidx.work.WorkManager
 import com.tencent.mmkv.MMKV
 import com.neko.v2ray.AppConfig.ANG_PACKAGE
 import com.neko.v2ray.handler.SettingsManager
+import com.neko.crashlog.CrashHandler
 
 class AngApplication : MultiDexApplication() {
     companion object {
@@ -42,5 +43,8 @@ class AngApplication : MultiDexApplication() {
         es.dmoral.toasty.Toasty.Config.getInstance()
             .setGravity(android.view.Gravity.BOTTOM, 0, 200)
             .apply()
+        
+        // handler crash log notification dialog
+        Thread.setDefaultUncaughtExceptionHandler(CrashHandler(this))
     }
 }
