@@ -1,6 +1,7 @@
 package com.neko.v2ray
 
 import android.content.Context
+import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
 import androidx.work.WorkManager
@@ -46,5 +47,8 @@ class AngApplication : MultiDexApplication() {
         
         // handler crash log notification dialog
         Thread.setDefaultUncaughtExceptionHandler(CrashHandler(this))
+
+        val lifecycleObserver = AppLifecycleObserver(this)
+        ProcessLifecycleOwner.get().lifecycle.addObserver(lifecycleObserver)
     }
 }
