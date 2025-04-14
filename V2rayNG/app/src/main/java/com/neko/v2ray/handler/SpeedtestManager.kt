@@ -6,8 +6,10 @@ import android.text.TextUtils
 import android.util.Log
 import com.neko.v2ray.AppConfig
 import com.neko.v2ray.R
+import com.neko.v2ray.dto.IPAPIInfo
 import com.neko.v2ray.extension.responseLength
 import com.neko.v2ray.util.HttpUtil
+import com.neko.v2ray.util.JsonUtil
 import kotlinx.coroutines.isActive
 import libv2ray.Libv2ray
 import java.io.IOException
@@ -128,6 +130,19 @@ object SpeedtestManager {
         return Pair(elapsed, result)
     }
 
+    fun getRemoteIPInfo(): String? {
+        val httpPort = SettingsManager.getHttpPort()
+        var content = HttpUtil.getUrlContent(AppConfig.IP_API_Url, 5000, httpPort) ?: return null
+
+        var ipInfo = JsonUtil.fromJson(content, IPAPIInfo::class.java) ?: return null
+        return "(${ipInfo.country_code}) ${ipInfo.ip}"
+    }
+
+    /**
+     * Gets the version of the V2Ray library.
+     *
+     * @return The version of the V2Ray library.
+     */
     fun getLibVersion(): String {
         return Libv2ray.checkVersionX()
     }

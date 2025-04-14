@@ -15,6 +15,7 @@ import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.extension.toast
 import com.neko.v2ray.handler.MmkvManager
 import com.neko.v2ray.handler.SettingsManager
+import com.neko.v2ray.handler.SpeedtestManager
 import com.neko.v2ray.handler.V2rayConfigManager
 import com.neko.v2ray.util.MessageUtil
 import com.neko.v2ray.util.PluginUtil
@@ -231,7 +232,12 @@ object V2RayServiceManager {
             val result = if (time == -1L) {
                 service.getString(R.string.connection_test_error, errstr)
             } else {
-                service.getString(R.string.connection_test_available, time)
+                buildString {
+                    append(service.getString(R.string.connection_test_available, time))
+                    SpeedtestManager.getRemoteIPInfo()?.let { ip ->
+                        append("\n$ip")
+                    }
+                }
             }
 
             MessageUtil.sendMsg2UI(service, AppConfig.MSG_MEASURE_DELAY_SUCCESS, result)
