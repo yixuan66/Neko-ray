@@ -269,10 +269,13 @@
             android:exported="false" />
 
         <activity
+            android:theme="@style/neko_CrashLoggerTheme"
             android:name="com.neko.crashlog.CrashDialogActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDayNight.NoActionBar"/>
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".service.V2RayVpnService"
