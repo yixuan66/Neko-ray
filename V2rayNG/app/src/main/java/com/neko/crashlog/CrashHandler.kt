@@ -19,7 +19,10 @@ class CrashHandler(private val context: Context) : Thread.UncaughtExceptionHandl
         val crashLog = getStackTrace(throwable)
         saveCrashLogToFile(crashLog)
         showCrashNotification()
-        defaultHandler?.uncaughtException(thread, throwable)
+        Thread {
+            Thread.sleep(1000)
+            defaultHandler?.uncaughtException(thread, throwable)
+        }.start()
     }
 
     private fun getStackTrace(throwable: Throwable): String {

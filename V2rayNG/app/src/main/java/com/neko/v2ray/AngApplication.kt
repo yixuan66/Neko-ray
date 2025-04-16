@@ -33,6 +33,8 @@ class AngApplication : MultiDexApplication() {
      */
     override fun onCreate() {
         super.onCreate()
+        // handler crash log notification dialog
+        Thread.setDefaultUncaughtExceptionHandler(CrashHandler(this))
 
         MMKV.initialize(this)
 
@@ -44,9 +46,6 @@ class AngApplication : MultiDexApplication() {
         es.dmoral.toasty.Toasty.Config.getInstance()
             .setGravity(android.view.Gravity.BOTTOM, 0, 200)
             .apply()
-        
-        // handler crash log notification dialog
-        Thread.setDefaultUncaughtExceptionHandler(CrashHandler(this))
 
         val lifecycleObserver = AppLifecycleObserver(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(lifecycleObserver)
