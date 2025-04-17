@@ -62,7 +62,7 @@ import com.neko.themeengine.ThemeEngine
 import com.neko.tools.NetworkSwitcher
 import com.neko.tools.BatteryOptimization
 import com.neko.speedtest.SpeedTestActivity
-import com.neko.ip.HostToIpActivity
+import com.neko.hosttoip.HostToIPActivity
 import com.neko.iplocation.IpLocationActivity
 import com.neko.hostnamefinder.HostnameFinder
 import com.neko.ip.hostchecker.HostChecker
@@ -848,7 +848,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun uwuHostToIp(view: View) {
-        startActivity(Intent(this, HostToIpActivity::class.java))
+        startActivity(Intent(this, HostToIPActivity::class.java))
     }
 
     fun uwuHostCeker(view: View) {

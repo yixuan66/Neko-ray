@@ -99,25 +99,25 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginEnd="10.0dip"
-                                android:layout_toStartOf="@+id/linear7"
+                                android:layout_toStartOf="@+id/resolve_button"
                                 android:layout_alignParentStart="true">
                                 <EditText
                                     android:textSize="17.0sp"
                                     android:textColor="?android:textColorPrimary"
                                     android:textColorHint="#ff607d8b"
                                     android:layout_gravity="start|center"
-                                    android:id="@+id/edittext1"
+                                    android:id="@+id/host_input"
                                     android:background="@android:color/transparent"
                                     android:padding="12.0dip"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="Input IPv4 or IPv6 address here" />
+                                    android:hint="Input a HostName here" />
                             </LinearLayout>
                             <Button
                                 android:textSize="14.0sp"
                                 android:textColor="?attr/colorText"
                                 android:layout_gravity="center"
-                                android:id="@+id/linear7"
+                                android:id="@+id/resolve_button"
                                 android:background="@drawable/uwu_bg_button"
                                 app:backgroundTint="?attr/colorThemeUwu"
                                 android:layout_width="wrap_content"
@@ -139,17 +139,15 @@
                             <TextView
                                 android:textSize="17.0sp"
                                 android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview2"
                                 android:padding="8.0dip"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Results:" />
                             <TextView
                                 android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:gravity="center"
+                                android:textColor="?android:textColorSecondary"
                                 android:autoLink="web"
-                                android:id="@+id/textview1"
+                                android:id="@+id/result_text"
                                 android:padding="8.0dip"
                                 android:focusable="true"
                                 android:clickable="true"
@@ -157,46 +155,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="---"
                                 android:textIsSelectable="true" />
-                            <TextView
-                                android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview9"
-                                android:padding="8.0dip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="---" />
-                            <TextView
-                                android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview10"
-                                android:padding="8.0dip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="---" />
-                            <TextView
-                                android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview11"
-                                android:padding="8.0dip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="---" />
-                            <TextView
-                                android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview12"
-                                android:padding="8.0dip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="---" />
-                            <TextView
-                                android:textSize="17.0dip"
-                                android:textColor="?android:textColorPrimary"
-                                android:id="@+id/textview13"
-                                android:padding="8.0dip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="---" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

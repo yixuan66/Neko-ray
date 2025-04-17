@@ -227,7 +227,7 @@
 
         <activity
             android:theme="@style/AppThemeDayNight.NoActionBar"
-            android:name="com.neko.ip.HostToIpActivity"
+            android:name="com.neko.hosttoip.HostToIPActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:parentActivityName="com.neko.v2ray.ui.MainActivity" />
