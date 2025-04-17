@@ -4,6 +4,8 @@ import com.neko.v2ray.AppConfig
 import com.neko.v2ray.dto.NetworkType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.extension.isNotNullEmpty
+import com.neko.v2ray.handler.MmkvManager
+import com.neko.v2ray.util.HttpUtil
 import com.neko.v2ray.util.Utils
 import java.net.URI
 
@@ -148,4 +150,9 @@ open class FmtBase {
 
         return dicQuery
     }
+
+    fun resolveHostToIP(server: String?): String {
+        return HttpUtil.resolveHostToIP(server.orEmpty(), MmkvManager.decodeSettingsBool(AppConfig.PREF_PREFER_IPV6) == true)
+    }
+
 }
