@@ -84,26 +84,18 @@
                         app:cardElevation="0.0dip">
                         <LinearLayout
                             android:orientation="vertical"
-                            android:paddingTop="15.0dip"
-                            android:paddingBottom="15.0dip"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:paddingStart="12.0dip"
-                            android:paddingEnd="12.0dip">
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:paddingTop="8.0dip"
+                            android:layout_marginStart="16.0dip"
+                            android:layout_marginEnd="16.0dip">
+                            <ListView
+                                android:id="@+id/listView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <ListView
-                                    android:id="@+id/listView"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:transcriptMode="alwaysScroll"
-                                    android:dividerHeight="0.0dip"
-                                    android:choiceMode="none"
-                                    android:nestedScrollingEnabled="true" />
-                            </LinearLayout>
+                                android:layout_height="match_parent"
+                                android:transcriptMode="alwaysScroll"
+                                android:dividerHeight="0.0dip"
+                                android:choiceMode="none"
+                                android:nestedScrollingEnabled="true" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
