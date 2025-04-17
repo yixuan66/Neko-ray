@@ -63,7 +63,7 @@ import com.neko.tools.NetworkSwitcher
 import com.neko.tools.BatteryOptimization
 import com.neko.speedtest.SpeedTestActivity
 import com.neko.ip.HostToIpActivity
-import com.neko.ip.IpLocation
+import com.neko.iplocation.IpLocationActivity
 import com.neko.hostnamefinder.HostnameFinder
 import com.neko.ip.hostchecker.HostChecker
 import android.graphics.Color
@@ -856,7 +856,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun uwuIpLocation(view: View) {
-        startActivity(Intent(this, IpLocation::class.java))
+        startActivity(Intent(this, IpLocationActivity::class.java))
     }
 
     fun uwuHostnameFinder(view: View) {
