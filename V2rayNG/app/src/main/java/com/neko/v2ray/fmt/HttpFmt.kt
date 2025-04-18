@@ -4,6 +4,7 @@ import com.neko.v2ray.dto.EConfigType
 import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.V2rayConfig.OutboundBean
 import com.neko.v2ray.extension.isNotNullEmpty
+import com.neko.v2ray.handler.V2rayConfigManager
 
 object HttpFmt : FmtBase() {
     /**
@@ -13,7 +14,7 @@ object HttpFmt : FmtBase() {
      * @return the converted OutboundBean object, or null if conversion fails
      */
     fun toOutbound(profileItem: ProfileItem): OutboundBean? {
-        val outboundBean = OutboundBean.create(EConfigType.HTTP)
+        val outboundBean = V2rayConfigManager.createOutbound(EConfigType.HTTP)
 
         outboundBean?.settings?.servers?.first()?.let { server ->
             server.address = profileItem.server.orEmpty()

@@ -7,6 +7,7 @@ import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.V2rayConfig.OutboundBean
 import com.neko.v2ray.extension.idnHost
 import com.neko.v2ray.extension.removeWhiteSpace
+import com.neko.v2ray.handler.V2rayConfigManager
 import com.neko.v2ray.util.Utils
 import java.net.URI
 
@@ -105,7 +106,7 @@ object WireguardFmt : FmtBase() {
      * @return the converted OutboundBean object, or null if conversion fails
      */
     fun toOutbound(profileItem: ProfileItem): OutboundBean? {
-        val outboundBean = OutboundBean.create(EConfigType.WIREGUARD)
+        val outboundBean = V2rayConfigManager.createOutbound(EConfigType.WIREGUARD)
 
         outboundBean?.settings?.let { wireguard ->
             wireguard.secretKey = profileItem.secretKey

@@ -5,6 +5,7 @@ import com.neko.v2ray.dto.ProfileItem
 import com.neko.v2ray.dto.V2rayConfig.OutboundBean
 import com.neko.v2ray.extension.idnHost
 import com.neko.v2ray.extension.isNotNullEmpty
+import com.neko.v2ray.handler.V2rayConfigManager
 import com.neko.v2ray.util.Utils
 import java.net.URI
 
@@ -60,7 +61,7 @@ object SocksFmt : FmtBase() {
      * @return the converted OutboundBean object, or null if conversion fails
      */
     fun toOutbound(profileItem: ProfileItem): OutboundBean? {
-        val outboundBean = OutboundBean.create(EConfigType.SOCKS)
+        val outboundBean = V2rayConfigManager.createOutbound(EConfigType.SOCKS)
 
         outboundBean?.settings?.servers?.first()?.let { server ->
             server.address = profileItem.server.orEmpty()

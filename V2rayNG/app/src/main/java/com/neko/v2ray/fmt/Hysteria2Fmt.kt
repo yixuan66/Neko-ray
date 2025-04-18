@@ -9,6 +9,7 @@ import com.neko.v2ray.dto.V2rayConfig.OutboundBean
 import com.neko.v2ray.extension.idnHost
 import com.neko.v2ray.extension.isNotNullEmpty
 import com.neko.v2ray.handler.MmkvManager
+import com.neko.v2ray.handler.V2rayConfigManager
 import com.neko.v2ray.util.Utils
 import java.net.URI
 
@@ -144,7 +145,7 @@ object Hysteria2Fmt : FmtBase() {
      * @return the converted OutboundBean object, or null if conversion fails
      */
     fun toOutbound(profileItem: ProfileItem): OutboundBean? {
-        val outboundBean = OutboundBean.create(EConfigType.HYSTERIA2)
+        val outboundBean = V2rayConfigManager.createOutbound(EConfigType.HYSTERIA2)
         return outboundBean
     }
 }
