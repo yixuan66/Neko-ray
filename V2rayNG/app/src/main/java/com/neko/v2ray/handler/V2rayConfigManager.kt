@@ -46,6 +46,7 @@ import com.neko.v2ray.fmt.TrojanFmt
 import com.neko.v2ray.fmt.VlessFmt
 import com.neko.v2ray.fmt.VmessFmt
 import com.neko.v2ray.fmt.WireguardFmt
+import com.neko.v2ray.util.HttpUtil
 import com.neko.v2ray.util.JsonUtil
 import com.neko.v2ray.util.Utils
 
@@ -149,6 +150,8 @@ object V2rayConfigManager {
             v2rayConfig.stats = null
             v2rayConfig.policy = null
         }
+
+        resolveProxyDomainsToHosts(v2rayConfig)
 
         result.status = true
         result.content = JsonUtil.toJsonPretty(v2rayConfig) ?: ""
@@ -763,4 +766,32 @@ object V2rayConfigManager {
 
     }
 
+    private fun resolveProxyDomainsToHosts(v2rayConfig: V2rayConfig) {
+        val proxyOutboundList = v2rayConfig.getAllProxyOutbound()
+        val dns = v2rayConfig.dns ?: return
+
+        val newHosts = dns.hosts?.toMutableMap() ?: mutableMapOf()
+
+        for (item in proxyOutboundList) {
+            val domain = item.getServerAddress()
+            if (domain.isNullOrEmpty()) continue
+
+            if (newHosts.containsKey(domain)) continue
+
+            val resolvedIps = HttpUtil.resolveHostToIP(
+                domain,
+                MmkvManager.decodeSettingsBool(AppConfig.PREF_PREFER_IPV6) == true
+            )
+
+            if (resolvedIps.isEmpty()) continue
+
+            newHosts[domain] = if (resolvedIps.size == 1) {
+                resolvedIps[0]
+            } else {
+                resolvedIps
+            }
+        }
+
+        dns.hosts = newHosts
+    }
 }
