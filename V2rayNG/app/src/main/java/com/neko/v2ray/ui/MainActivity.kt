@@ -56,6 +56,7 @@ import androidx.annotation.AttrRes
 import android.app.AppOpsManager
 import androidx.core.app.ActivityCompat
 import com.neko.appupdater.AppUpdater
+import com.neko.config.V2rayConfigActivity
 import com.neko.expandable.layout.ExpandableView
 import com.neko.themeengine.ThemeChooserDialogBuilder
 import com.neko.themeengine.ThemeEngine
@@ -873,6 +874,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     fun uwuRoutingSetting(view: View) {
         requestSubSettingActivity.launch(Intent(this, RoutingSettingActivity::class.java))
+    }
+
+    fun uwufreeconfig(view: View) {
+        requestSubSettingActivity.launch(Intent(this, V2rayConfigActivity::class.java))
     }
 
     fun uwuExitApp(view: View) {
