@@ -63,6 +63,7 @@ import com.neko.themeengine.ThemeEngine
 import com.neko.tools.NetworkSwitcher
 import com.neko.tools.BatteryOptimization
 import com.neko.speedtest.SpeedTestActivity
+import com.neko.server.VpnServerActivity
 import com.neko.hosttoip.HostToIPActivity
 import com.neko.iplocation.IpLocationActivity
 import com.neko.hostnamefinder.HostnameFinder
@@ -878,6 +879,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     fun uwufreeconfig(view: View) {
         requestSubSettingActivity.launch(Intent(this, V2rayConfigActivity::class.java))
+    }
+
+    fun uwuServer(view: View) {
+        requestSubSettingActivity.launch(Intent(this, VpnServerActivity::class.java))
     }
 
     fun uwuExitApp(view: View) {

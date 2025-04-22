@@ -83,4 +83,8 @@
     <!-- Provide colors for immersive bars when going edge to edge-->
     <color name="dark_immersive_bars">#99000000</color>
     <color name="dark_nav_bar">@android:color/transparent</color>
+    
+    <color name="server_online_bg">#D0F5D6</color>
+    <color name="server_offline_bg">#FAD2D2</color>
+    <color name="server_card_bg">#EEEEEE</color>
 </resources>

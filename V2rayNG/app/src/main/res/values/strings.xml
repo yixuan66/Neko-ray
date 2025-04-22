@@ -454,5 +454,11 @@
     <string name="uwu_hostcheck_result">Results :</string>
     <string name="uwu_hostname_finder_tittle">Hostname Finder</string>
     <string name="uwu_hostname_finder_summary">Find Other Websites Hosted on a Web Server Here</string>
+    <string name="server_tittle">VPN Monitor</string>
+    <string name="server_summary">View your VPN server monitor here</string>
+    <string name="select_best">Select Best</string>
+    <string name="export">Export</string>
+    <string name="load_servers">Load Servers</string>
+    <string name="enter_servers_hint">Enter servers (one per line)</string>
     <!-- Neko strings -->
 </resources>

@@ -191,4 +191,5 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.picasso)
     implementation(libs.speedviewlib)
+    implementation(libs.opencsv)
 }

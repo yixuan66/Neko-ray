@@ -16,4 +16,8 @@
     <color name="colorText_ActionBar">@color/black_80</color>
     <color name="uwu_bg">@color/m3_sys_color_dark_background</color>
     <color name="uwu_bg_card">#ff21272b</color>
+
+    <color name="server_online_bg">#2E7D32</color>
+    <color name="server_offline_bg">#C62828</color>
+    <color name="server_card_bg">#424242</color>
 </resources>
