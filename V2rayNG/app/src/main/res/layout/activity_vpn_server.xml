@@ -78,7 +78,7 @@
                         android:orientation="horizontal"
                         android:background="@drawable/uwu_card_view_corner"
                         android:layout_width="match_parent"
-                        android:layout_height="135.0dip"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="0.0dip"
                         android:layout_marginBottom="8.0dip">
                         <EditText
@@ -145,6 +145,15 @@
                             android:layout_weight="1.0"
                             app:backgroundTint="?attr/colorThemeUwu" />
                     </LinearLayout>
+                    <ToggleButton
+                        android:id="@+id/btnToggleRefresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8.0dip"
+                        android:layout_marginBottom="8.0dip"
+                        android:textOn="Auto Refresh: ON"
+                        android:textOff="Auto Refresh: OFF"
+                        android:checked="true" />
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"

@@ -1,13 +1,10 @@
 package com.neko.server
 
 import android.content.Intent
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.text.method.ScrollingMovementMethod
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.content.ContextCompat
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +24,9 @@ class VpnServerActivity : BaseActivity() {
 
     private val servers = mutableListOf<VpnServer>()
     private lateinit var adapter: VpnServerAdapter
+    private lateinit var pingManager: PingHistoryManager
+    private var autoRefreshEnabled = true
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,11 @@ class VpnServerActivity : BaseActivity() {
         val etServerInput: EditText = findViewById(R.id.etServerInput)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
 
-        adapter = VpnServerAdapter(servers)
+        pingManager = PingHistoryManager(this)
+
+        adapter = VpnServerAdapter(servers) { server ->
+            PingChartBottomSheet.newInstance(server.name).show(supportFragmentManager, "chart")
+        }
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = adapter
 
@@ -49,6 +53,7 @@ class VpnServerActivity : BaseActivity() {
 
         etServerInput.apply {
             isVerticalScrollBarEnabled = true
+            setTextIsSelectable(true)
             movementMethod = ScrollingMovementMethod.getInstance()  // Enable text scrolling
             maxLines = 5
             isScrollbarFadingEnabled = false
@@ -59,47 +64,63 @@ class VpnServerActivity : BaseActivity() {
             setText(savedInput)
         }
 
-        if (savedInput.isNotBlank()) {
-            servers.clear()
-            savedInput.lines().map { it.trim() }.filter { it.isNotEmpty() }.forEach {
-                val server = VpnServer(it)
-                servers.add(server)
-                pingServer(server)
-            }
-            adapter.notifyDataSetChanged()
-        }
+        if (savedInput.isNotBlank()) loadServers(savedInput)
 
-        val btnLoad: Button = findViewById(R.id.btnLoadServers)
-        val btnBest: Button = findViewById(R.id.btnSelectBest)
-        val btnExport: Button = findViewById(R.id.btnExport)
-
-        btnLoad.setOnClickListener {
+        findViewById<Button>(R.id.btnLoadServers).setOnClickListener {
             val inputText = etServerInput.text.toString()
             if (inputText.isNotBlank()) {
                 getSharedPreferences("vpn_prefs", MODE_PRIVATE).edit()
                     .putString("server_input", inputText).apply()
-
-                servers.clear()
-                inputText.lines().map { it.trim() }.filter { it.isNotEmpty() }.forEach {
-                    val server = VpnServer(it)
-                    servers.add(server)
-                    pingServer(server)
-                }
-                adapter.notifyDataSetChanged()
+                loadServers(inputText)
             } else {
                 Toast.makeText(this, "Please enter at least one server", Toast.LENGTH_SHORT).show()
             }
         }
 
-        btnBest.setOnClickListener {
+        findViewById<Button>(R.id.btnSelectBest).setOnClickListener {
             val best = servers.filter { it.ping > 0 }.minByOrNull { it.ping }
             val message = best?.let { "Best Server: ${it.name}" } ?: "No online server found"
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
-        btnExport.setOnClickListener {
-            exportToCsv()
+        findViewById<Button>(R.id.btnExport).setOnClickListener {
+            val file = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "vpn_history.csv")
+            FileWriter(file).use { it.write(pingManager.exportToCsv()) }
+
+            val uri = FileProvider.getUriForFile(
+                this,
+                "com.neko.v2ray.monitor",
+                file
+            )
+
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/csv"
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+
+            startActivity(Intent.createChooser(intent, "Export History"))
         }
+
+        findViewById<ToggleButton>(R.id.btnToggleRefresh).apply {
+            isChecked = true
+            setOnCheckedChangeListener { _, isChecked ->
+                autoRefreshEnabled = isChecked
+                if (isChecked) startAutoRefresh() else stopAutoRefresh()
+            }
+        }
+
+        startAutoRefresh()
+    }
+
+    private fun loadServers(inputText: String) {
+        servers.clear()
+        inputText.lines().map { it.trim() }.filter { it.isNotEmpty() }.forEach {
+            val server = VpnServer(it)
+            servers.add(server)
+            pingServer(server)
+        }
+        adapter.notifyDataSetChanged()
     }
 
     private fun pingServer(server: VpnServer) {
@@ -110,7 +131,7 @@ class VpnServerActivity : BaseActivity() {
                     it.connect(InetSocketAddress(server.name, 80), 1000)
                 }
                 true
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 false
             }
             val end = System.currentTimeMillis()
@@ -118,32 +139,31 @@ class VpnServerActivity : BaseActivity() {
             runOnUiThread {
                 server.status = if (reachable) "Online" else "Offline"
                 server.ping = if (reachable) (end - start).toInt() else -1
+                if (server.ping >= 0) pingManager.savePing(server.name, server.ping)
                 adapter.notifyDataSetChanged()
             }
         }
     }
 
-    private fun exportToCsv() {
-        val file = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "vpn_servers.csv")
-        FileWriter(file).use { writer ->
-            writer.append("Server,Status,Ping\n")
-            servers.forEach {
-                writer.append("${it.name},${it.status},${it.ping}\n")
+    private val refreshRunnable = object : Runnable {
+        override fun run() {
+            if (autoRefreshEnabled) {
+                servers.forEach { pingServer(it) }
+                handler.postDelayed(this, 60000)
             }
         }
+    }
 
-        val uri = FileProvider.getUriForFile(
-            this,
-            "com.neko.v2ray.monitor",
-            file
-        )
+    private fun startAutoRefresh() {
+        handler.post(refreshRunnable)
+    }
 
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/csv"
-            putExtra(Intent.EXTRA_STREAM, uri)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }
+    private fun stopAutoRefresh() {
+        handler.removeCallbacks(refreshRunnable)
+    }
 
-        startActivity(Intent.createChooser(intent, "Export CSV"))
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAutoRefresh()
     }
 }

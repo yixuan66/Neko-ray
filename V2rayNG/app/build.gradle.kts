@@ -192,4 +192,5 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.speedviewlib)
     implementation(libs.opencsv)
+    implementation(libs.mpandroidchart)
 }
