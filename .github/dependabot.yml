@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "github-actions"
     labels: []
     directory: "/"
-    target-branch: "main"
+    target-branch: "dev"
     schedule:
       interval: "weekly"
       timezone: "Asia/Jakarta"
@@ -16,7 +16,7 @@ updates:
   - package-ecosystem: "gradle"
     labels: []
     directory: "/V2rayNG"
-    target-branch: "main"
+    target-branch: "dev"
     schedule:
       interval: "weekly"
       timezone: "Asia/Jakarta"
