@@ -36,20 +36,31 @@ class PingChartBottomSheet : BottomSheetDialogFragment() {
         val entries = pingHistory.mapIndexed { index, ping -> Entry(index.toFloat(), ping.toFloat()) }
 
         val dataSet = LineDataSet(entries, "Ping (ms)").apply {
-            // Get color from attribute
             color = requireContext().getColorFromAttr(R.attr.colorThemeUwu)
             setDrawCircles(true)
             setDrawValues(false)
             lineWidth = 2f
         }
 
+        val textColor = requireContext().getColorFromAttr(R.attr.colorThemeUwu)
+
         chart.apply {
             data = LineData(dataSet)
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             xAxis.setDrawGridLines(false)
+            xAxis.textColor = textColor
+            xAxis.textSize = 12f
+
+            axisLeft.textColor = textColor
+            axisLeft.textSize = 12f
+
             axisRight.isEnabled = false
+
+            dataSet.valueTextColor = textColor // if drawValues is enabled
+
             description.isEnabled = false
-            legend.isEnabled = false
+            legend.isEnabled = false // set to true if you want legend, then apply legend.textColor
+
             animateX(500)
             invalidate()
         }
