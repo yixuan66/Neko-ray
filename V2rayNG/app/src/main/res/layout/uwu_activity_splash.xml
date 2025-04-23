@@ -43,10 +43,8 @@
                 android:layout_width="180.0dip"
                 android:layout_height="180.0dip"
                 android:src="@drawable/uwu_banner_profile"
-                app:civ_border_color="?attr/colorText"
-                app:civ_border_overlay="true"
-                app:civ_border_width="3.0dip"
-                app:civ_circle_background_color="@color/uwu_bg" />
+                app:borderColor="?attr/colorText"
+                app:borderWidth="3.0dip" />
 
         </LinearLayout>
 
