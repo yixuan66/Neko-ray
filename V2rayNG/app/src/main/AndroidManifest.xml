@@ -45,6 +45,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_LOGS" android:minSdkVersion="30" tools:ignore="ProtectedPermissions"/>
 
     <application
         android:name=".AngApplication"
