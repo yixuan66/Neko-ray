@@ -252,6 +252,7 @@
     <string name="sub_setting_filter">Açıklamalar düzenli filtresi</string>
     <string name="sub_setting_enable">Güncellemeyi etkinleştir</string>
     <string name="sub_auto_update">Otomatik güncellemeyi etkinleştir</string>
+    <string name="sub_allow_insecure_url">Allow insecure HTTP address</string>
     <string name="sub_setting_pre_profile">Önceki proxy yapılandırma açıklamaları</string>
     <string name="sub_setting_next_profile">Sonraki proxy yapılandırma açıklamaları</string>
     <string name="sub_setting_pre_profile_tip">Yapılandırma açıklamaları mevcut ve benzersizdir</string>

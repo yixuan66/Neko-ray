@@ -458,6 +458,25 @@
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8.0dip"
+                            android:layout_marginBottom="8.0dip"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:text="@string/sub_allow_insecure_url" />
+                            <com.neko.switchbutton.SwitchButton
+                                android:id="@+id/allow_insecure_url"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:kswAnimationDuration="300"
+                                app:kswBackDrawable="@drawable/uwu_switch_track"
+                                app:kswThumbDrawable="@drawable/uwu_switch_thumb" />
+                        </LinearLayout>
+                        <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
