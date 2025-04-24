@@ -417,7 +417,7 @@
         <!-- FileProvider for general file sharing -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="com.neko.v2ray.updater"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

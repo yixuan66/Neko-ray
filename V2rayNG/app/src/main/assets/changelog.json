@@ -1,5 +1,28 @@
 [
     {
+        "version": "1.10.0",
+        "date": "2025-04-24",
+        "changes": [
+            "Follow the optimization and improvement of the Lib project",
+            "Add IP display in Connection test",
+            "Allow insecure HTTP addressesTemporarily add options in subscription settings",
+            "Update ThemeEngine",
+            "Update HostnameFinder",
+            "New SpeedTest",
+            "Improvement Battery Optimization in main activity",
+            "Introduct handler log crash dialog",
+            "Make Splash appear when the application is closed for 10 seconds",
+            "Update popup background in dark mode",
+            "Optimized and Improvement IpLocation",
+            "Optimized and Improved HostToIp",
+            "Add domain strategy option to sockopt",
+            "New Hostname Finder",
+            "Introduct Generate Free Config",
+            "Introduct Vpn Monitor",
+            "Update new CircleImageView with animation"
+        ]
+    },
+    {
         "version": "1.9.46",
         "date": "2025-04-10",
         "changes": [
