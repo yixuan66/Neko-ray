@@ -53,15 +53,15 @@ class VpnServerActivity : BaseActivity() {
 
         etServerInput.apply {
             isVerticalScrollBarEnabled = true
-            setTextIsSelectable(true)
-            movementMethod = ScrollingMovementMethod.getInstance()  // Enable text scrolling
-            maxLines = 5
+            movementMethod = ScrollingMovementMethod.getInstance()
             isScrollbarFadingEnabled = false
-            setOnTouchListener { v, _ ->
+            maxLines = 5
+            setText(savedInput)
+
+            setOnTouchListener { v, event ->
                 v.parent.requestDisallowInterceptTouchEvent(true)
                 false
             }
-            setText(savedInput)
         }
 
         if (savedInput.isNotBlank()) loadServers(savedInput)

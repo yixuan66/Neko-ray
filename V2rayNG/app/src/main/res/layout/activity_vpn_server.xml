@@ -82,22 +82,20 @@
                         android:layout_marginTop="0.0dip"
                         android:layout_marginBottom="8.0dip">
                         <EditText
-                            android:textSize="17.0sp"
-                            android:textColor="?android:textColorPrimary"
-                            android:textColorHint="?android:textColorSecondary"
-                            android:layout_gravity="start|center|top"
-                            android:gravity="top|start"
                             android:id="@+id/etServerInput"
-                            android:background="@android:color/transparent"
-                            android:padding="12.0dip"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
                             android:hint="@string/enter_servers_hint"
                             android:minLines="5"
-                            android:overScrollMode="always"
-                            android:imeOptions="flagNoExtractUi"
                             android:scrollbars="vertical"
-                            android:inputType="textMultiLine" />
+                            android:gravity="top|start"
+                            android:textSize="17sp"
+                            android:textColor="?android:textColorPrimary"
+                            android:textColorHint="?android:textColorSecondary"
+                            android:inputType="textMultiLine|textCapSentences"
+                            android:overScrollMode="always"
+                            android:padding="12dp" />
                     </LinearLayout>
                     <Button
                         android:textSize="14.0sp"
