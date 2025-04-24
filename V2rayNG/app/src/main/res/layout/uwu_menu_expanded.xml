@@ -171,14 +171,14 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/uwu_modder"
+                            android:src="@drawable/uwu_telegram"
                             app:tint="?android:textColorSecondary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="@string/uwu_modder_title"
+                            android:text="@string/title_tg_channel"
                             android:textSize="14sp"
                             android:textColor="?android:textColorPrimary"
                             android:gravity="center"
