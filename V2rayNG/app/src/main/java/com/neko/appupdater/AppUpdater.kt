@@ -16,6 +16,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.FileProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neko.v2ray.R
+import com.neko.v2ray.BuildConfig
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.File
@@ -316,7 +317,7 @@ class AppUpdater(private val context: Context) {
     }
 
     fun installApk(file: File) {
-        val uri: Uri = FileProvider.getUriForFile(context, "com.neko.v2ray.updater", file)
+        val uri: Uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file)
         val intent = Intent(Intent.ACTION_VIEW).apply {
             setDataAndType(uri, "application/vnd.android.package-archive")
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION

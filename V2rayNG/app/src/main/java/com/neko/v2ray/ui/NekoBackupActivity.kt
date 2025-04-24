@@ -72,7 +72,7 @@ class NekoBackupActivity : BaseActivity() {
                             .putExtra(
                                 Intent.EXTRA_STREAM,
                                 FileProvider.getUriForFile(
-                                    this, BuildConfig.APPLICATION_ID + ".cache", File(ret.second)
+                                    this, BuildConfig.APPLICATION_ID + ".provider", File(ret.second)
                                 )
                             ), getString(R.string.title_configuration_share)
                     )

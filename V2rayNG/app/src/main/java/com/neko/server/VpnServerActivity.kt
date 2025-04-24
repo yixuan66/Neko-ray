@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.neko.v2ray.R
+import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.ui.BaseActivity
 import java.io.File
 import java.io.FileWriter
@@ -89,7 +90,7 @@ class VpnServerActivity : BaseActivity() {
 
             val uri = FileProvider.getUriForFile(
                 this,
-                "com.neko.v2ray.monitor",
+                BuildConfig.APPLICATION_ID + ".provider",
                 file
             )
 
