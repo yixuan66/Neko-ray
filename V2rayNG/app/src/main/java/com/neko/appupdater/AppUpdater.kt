@@ -31,15 +31,17 @@ class AppUpdater(private val context: Context) {
     }
 
     var installPermissionCallback: InstallPermissionCallback? = null
+    private var apkFilePendingInstall: File? = null
+    private var pendingUpdateResult: UpdateResult? = null
 
     private val TAG = "AppUpdater"
     private val CHANNEL_ID = "update_channel"
     private val NOTIFICATION_ID = 2025
     private val INSTALL_PERMISSION_REQUEST_CODE = 1234
 
-    var configUrl: String = "https://raw.githubusercontent.com/MRT-project/Neko-ray/main/release.json"
+    var configUrl: String = ""
     var showIfUpToDate: Boolean = false
-    var onUpdateAvailable: (() -> Unit)? = null
+    var onUpdateAvailable: ((file: File) -> Unit)? = null
     var onUpdateNotAvailable: (() -> Unit)? = null
 
     private val prefs = context.getSharedPreferences("app_updater_prefs", Context.MODE_PRIVATE)
@@ -71,12 +73,17 @@ class AppUpdater(private val context: Context) {
                     return@launch
                 }
 
-                onUpdateAvailable?.invoke()
+                onUpdateAvailable?.invoke(File(result.updateUrl))
 
                 if (useNotificationIfAvailable) {
                     showNotificationForUpdate(result)
                 } else {
-                    showUpdateDialog(result)
+                    if (canRequestPackageInstalls()) {
+                        showUpdateDialog(result)
+                    } else {
+                        pendingUpdateResult = result
+                        requestInstallPermission()
+                    }
                 }
             } else {
                 if (showIfUpToDate) showNoUpdateDialog()
@@ -102,7 +109,7 @@ class AppUpdater(private val context: Context) {
                 val nativeLibDir = context.applicationInfo.nativeLibraryDir
                 val abi = when {
                     nativeLibDir.contains("arm64") -> "arm64-v8a"
-                    nativeLibDir.contains("armeabi") -> "armeabi-v7a"
+                    nativeLibDir.contains("arm") -> "armeabi-v7a"
                     nativeLibDir.contains("x86_64") -> "x86_64"
                     nativeLibDir.contains("x86") -> "x86"
                     else -> Build.SUPPORTED_ABIS.firstOrNull() ?: "armeabi-v7a"
@@ -110,9 +117,9 @@ class AppUpdater(private val context: Context) {
 
                 val updateUrl = json.optJSONObject("apkUrls")?.optString(abi)
                     ?: json.optString("updateUrl")
+                val webUrl = json.optString("webUrl", null)
 
                 val releaseNotesArray = json.optJSONArray("releaseNotes")
-
                 val releaseNotes = buildString {
                     if (releaseNotesArray != null) {
                         for (i in 0 until releaseNotesArray.length()) {
@@ -124,7 +131,7 @@ class AppUpdater(private val context: Context) {
                 val currentVersionCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
                 val updateAvailable = latestVersionCode > currentVersionCode
 
-                UpdateResult(updateAvailable, latestVersion, updateUrl, releaseNotes)
+                UpdateResult(updateAvailable, latestVersion, updateUrl, webUrl, releaseNotes)
             } else null
         } catch (e: Exception) {
             Log.e(TAG, "fetchUpdate: error", e)
@@ -144,7 +151,25 @@ class AppUpdater(private val context: Context) {
             .setMessage(message)
             .setCancelable(false)
             .setPositiveButton(R.string.appupdater_btn_update) { _, _ ->
-                result.updateUrl?.let { downloadAndInstallApk(it) }
+                val urlToDownload = result.updateUrl
+                val urlToOpen = result.webUrl ?: result.updateUrl
+
+                if (urlToDownload.isNullOrEmpty()) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlToOpen))
+                    context.startActivity(intent)
+                } else {
+                    MaterialAlertDialogBuilder(context)
+                        .setTitle(R.string.appupdater_update_choose_method)
+                        .setMessage(R.string.appupdater_update_choose_method_desc)
+                        .setPositiveButton(R.string.appupdater_btn_direct_install) { _, _ ->
+                            downloadAndInstallApk(urlToDownload)
+                        }
+                        .setNegativeButton(R.string.appupdater_btn_open_link) { _, _ ->
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlToOpen))
+                            context.startActivity(intent)
+                        }
+                        .show()
+                }
             }
             .setNegativeButton(R.string.appupdater_btn_dismiss, null)
             .setNeutralButton(R.string.appupdater_btn_disable) { _, _ ->
@@ -161,7 +186,7 @@ class AppUpdater(private val context: Context) {
     private fun showNotificationForUpdate(result: UpdateResult) {
         createNotificationChannel()
 
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.updateUrl))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.webUrl ?: result.updateUrl))
         val pendingIntent = PendingIntent.getActivity(
             context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
@@ -219,32 +244,16 @@ class AppUpdater(private val context: Context) {
             val progressBar = dialogView.findViewById<ProgressBar>(R.id.progressBar)
             val tvProgressPercent = dialogView.findViewById<TextView>(R.id.tvProgressPercent)
 
-            var isPaused = false
             var isCanceled = false
-            val pauseLock = Object()
 
             val progressDialog = MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.appupdater_downloading)
                 .setView(dialogView)
                 .setCancelable(false)
-                .setPositiveButton(R.string.appupdater_btn_pause, null)
                 .setNegativeButton(R.string.appupdater_btn_cancel) { _, _ ->
                     isCanceled = true
                 }
                 .create()
-
-            progressDialog.setOnShowListener {
-                val pauseResumeBtn = progressDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                pauseResumeBtn.setOnClickListener {
-                    isPaused = !isPaused
-                    pauseResumeBtn.text = if (isPaused) {
-                        context.getString(R.string.appupdater_btn_resume)
-                    } else {
-                        synchronized(pauseLock) { pauseLock.notify() }
-                        context.getString(R.string.appupdater_btn_pause)
-                    }
-                }
-            }
 
             progressDialog.show()
 
@@ -273,12 +282,6 @@ class AppUpdater(private val context: Context) {
                             throw CancellationException("Download canceled")
                         }
 
-                        synchronized(pauseLock) {
-                            while (isPaused) {
-                                pauseLock.wait()
-                            }
-                        }
-
                         total += count
                         output.write(buffer, 0, count)
 
@@ -297,6 +300,7 @@ class AppUpdater(private val context: Context) {
                         if (canRequestPackageInstalls()) {
                             installApk(file)
                         } else {
+                            apkFilePendingInstall = file
                             requestInstallPermission()
                         }
                     }
@@ -325,8 +329,23 @@ class AppUpdater(private val context: Context) {
         }
     }
 
+    fun onInstallPermissionResult(granted: Boolean) {
+        if (granted && apkFilePendingInstall != null) {
+            installApk(apkFilePendingInstall!!)
+            apkFilePendingInstall = null
+        }
+
+        if (granted && pendingUpdateResult != null) {
+            showUpdateDialog(pendingUpdateResult!!)
+            pendingUpdateResult = null
+        }
+    }
+
     private fun showNoUpdateDialog() {
-        val message = context.getString(R.string.appupdater_update_not_available_description, context.getString(R.string.app_name))
+        val message = context.getString(
+            R.string.appupdater_update_not_available_description,
+            context.getString(R.string.app_name)
+        )
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.appupdater_update_not_available)
             .setMessage(message)
@@ -338,6 +357,7 @@ class AppUpdater(private val context: Context) {
         val updateAvailable: Boolean,
         val latestVersion: String?,
         val updateUrl: String?,
+        val webUrl: String?,
         val releaseNotes: String?
     )
 }
