@@ -1,8 +1,6 @@
 package com.neko.appupdater
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -11,7 +9,7 @@ import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ProgressBar
-import android.widget.TextView // <-- ADDED
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -27,9 +25,17 @@ import java.net.URL
 
 class AppUpdater(private val context: Context) {
 
+    interface InstallPermissionCallback {
+        fun requestInstallPermission(intent: Intent, requestCode: Int)
+        fun onInstallPermissionResult(granted: Boolean)
+    }
+
+    var installPermissionCallback: InstallPermissionCallback? = null
+
     private val TAG = "AppUpdater"
     private val CHANNEL_ID = "update_channel"
     private val NOTIFICATION_ID = 2025
+    private val INSTALL_PERMISSION_REQUEST_CODE = 1234
 
     var configUrl: String = "https://raw.githubusercontent.com/MRT-project/Neko-ray/main/release.json"
     var showIfUpToDate: Boolean = false
@@ -92,9 +98,19 @@ class AppUpdater(private val context: Context) {
 
                 val latestVersion = json.getString("latestVersion")
                 val latestVersionCode = json.optInt("latestVersionCode", -1)
-                val abi = Build.SUPPORTED_ABIS.firstOrNull() ?: "armeabi-v7a"
+
+                val nativeLibDir = context.applicationInfo.nativeLibraryDir
+                val abi = when {
+                    nativeLibDir.contains("arm64") -> "arm64-v8a"
+                    nativeLibDir.contains("armeabi") -> "armeabi-v7a"
+                    nativeLibDir.contains("x86_64") -> "x86_64"
+                    nativeLibDir.contains("x86") -> "x86"
+                    else -> Build.SUPPORTED_ABIS.firstOrNull() ?: "armeabi-v7a"
+                }
+
                 val updateUrl = json.optJSONObject("apkUrls")?.optString(abi)
                     ?: json.optString("updateUrl")
+
                 val releaseNotesArray = json.optJSONArray("releaseNotes")
 
                 val releaseNotes = buildString {
@@ -169,15 +185,30 @@ class AppUpdater(private val context: Context) {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Update Notification"
-            val descriptionText = "App update notifications"
-            val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-                description = descriptionText
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "Update Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "App update notifications"
             }
-
             val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun canRequestPackageInstalls(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.packageManager.canRequestPackageInstalls()
+        } else true
+    }
+
+    private fun requestInstallPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val intent = Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+                data = Uri.parse("package:${context.packageName}")
+            }
+            installPermissionCallback?.requestInstallPermission(intent, INSTALL_PERMISSION_REQUEST_CODE)
         }
     }
 
@@ -186,15 +217,13 @@ class AppUpdater(private val context: Context) {
             val dialogView = LayoutInflater.from(context)
                 .inflate(R.layout.uwu_dialog_progress_update, null)
             val progressBar = dialogView.findViewById<ProgressBar>(R.id.progressBar)
-            val tvProgressPercent = dialogView.findViewById<TextView>(R.id.tvProgressPercent) // <-- NEW
+            val tvProgressPercent = dialogView.findViewById<TextView>(R.id.tvProgressPercent)
 
             var isPaused = false
             var isCanceled = false
             val pauseLock = Object()
 
-            lateinit var progressDialog: AlertDialog
-
-            progressDialog = MaterialAlertDialogBuilder(context)
+            val progressDialog = MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.appupdater_downloading)
                 .setView(dialogView)
                 .setCancelable(false)
@@ -256,7 +285,7 @@ class AppUpdater(private val context: Context) {
                         val progress = if (fileLength > 0) (total * 100 / fileLength).toInt() else -1
                         withContext(Dispatchers.Main) {
                             progressBar.progress = progress
-                            tvProgressPercent.text = "$progress%" // <-- NEW
+                            tvProgressPercent.text = "$progress%"
                         }
                     }
 
@@ -265,7 +294,11 @@ class AppUpdater(private val context: Context) {
 
                     withContext(Dispatchers.Main) {
                         progressDialog.dismiss()
-                        installApk(file)
+                        if (canRequestPackageInstalls()) {
+                            installApk(file)
+                        } else {
+                            requestInstallPermission()
+                        }
                     }
 
                 } catch (e: Exception) {
@@ -278,7 +311,7 @@ class AppUpdater(private val context: Context) {
         }
     }
 
-    private fun installApk(file: File) {
+    fun installApk(file: File) {
         val uri: Uri = FileProvider.getUriForFile(context, "com.neko.v2ray.updater", file)
         val intent = Intent(Intent.ACTION_VIEW).apply {
             setDataAndType(uri, "application/vnd.android.package-archive")

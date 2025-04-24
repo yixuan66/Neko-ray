@@ -1,6 +1,7 @@
 package com.neko.v2ray.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +19,15 @@ import com.neko.changelog.ChangelogEntry
 import com.neko.nointernet.callbacks.ConnectionCallback
 import com.neko.nointernet.dialogs.signal.NoInternetDialogSignal
 import com.neko.v2ray.AppConfig
-import com.neko.v2ray.BuildConfig
 import com.neko.v2ray.R
 import com.neko.v2ray.extension.toast
 import com.neko.v2ray.util.Utils
+import java.io.File
 
-class NekoAboutActivity : BaseActivity() {
+class NekoAboutActivity : BaseActivity(), AppUpdater.InstallPermissionCallback {
+
+    private var apkFile: File? = null
+    private lateinit var appUpdater: AppUpdater
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +47,21 @@ class NekoAboutActivity : BaseActivity() {
     fun uwuUpdater(view: View) {
         startNoInternetDialog()
 
-        AppUpdater(this).apply {
+        appUpdater = AppUpdater(this).apply {
             configUrl = AppConfig.UWU_UPDATE_URL
             showIfUpToDate = true
+            installPermissionCallback = this@NekoAboutActivity
+
             onUpdateAvailable = {
-                // Optional: aksi tambahan jika update tersedia
+                // Optional: update ditemukan
             }
+
             onUpdateNotAvailable = {
-                // Optional: aksi jika tidak ada update
+                // Optional: tidak ada update
             }
-            checkForUpdate()
         }
+
+        appUpdater.checkForUpdate()
     }
 
     fun uwuRepository(view: View) {
@@ -96,21 +104,6 @@ class NekoAboutActivity : BaseActivity() {
         showChangelogBottomSheet()
     }
 
-    private fun startNoInternetDialog() {
-        NoInternetDialogSignal.Builder(this, lifecycle).apply {
-            dialogProperties.apply {
-                connectionCallback = object : ConnectionCallback {
-                    override fun hasActiveConnection(hasActiveConnection: Boolean) {
-                        // Optionally handle connection changes
-                    }
-                }
-                cancelable = true
-                showInternetOnButtons = true
-                showAirplaneModeOffButtons = true
-            }
-        }.build()
-    }
-
     private fun showChangelogBottomSheet() {
         val bottomSheetDialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.changelog_bottom_sheet, null)
@@ -127,5 +120,42 @@ class NekoAboutActivity : BaseActivity() {
         val json = assets.open("changelog.json").bufferedReader().use { it.readText() }
         val type = object : TypeToken<List<ChangelogEntry>>() {}.type
         return Gson().fromJson(json, type)
+    }
+
+    private fun startNoInternetDialog() {
+        NoInternetDialogSignal.Builder(this, lifecycle).apply {
+            dialogProperties.apply {
+                connectionCallback = object : ConnectionCallback {
+                    override fun hasActiveConnection(hasActiveConnection: Boolean) {
+                        // Optional
+                    }
+                }
+                cancelable = true
+                showInternetOnButtons = true
+                showAirplaneModeOffButtons = true
+            }
+        }.build()
+    }
+
+    // === AppUpdater Install Permission Callback ===
+
+    override fun requestInstallPermission(intent: Intent, requestCode: Int) {
+        startActivityForResult(intent, requestCode)
+    }
+
+    override fun onInstallPermissionResult(granted: Boolean) {
+        if (granted && apkFile != null) {
+            appUpdater.installApk(apkFile!!)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1234) {
+            val granted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                packageManager.canRequestPackageInstalls()
+            } else true
+            onInstallPermissionResult(granted)
+        }
     }
 }
