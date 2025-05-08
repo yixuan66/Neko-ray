@@ -45,7 +45,7 @@ class ThemeEngine private constructor(context: Context) {
         set(value) = prefs.edit { putBoolean(KEY_DYNAMIC_THEME, value) }
 
     var staticTheme: Theme
-        get() = Theme.values()[prefs.getInt(KEY_STATIC_THEME, Theme.Blue.ordinal)]
+        get() = Theme.values()[prefs.getInt(KEY_STATIC_THEME, Theme.BlueVariant.ordinal)]
         set(value) = prefs.edit { putInt(KEY_STATIC_THEME, value.ordinal) }
 
     fun getTheme(): Int {
@@ -59,7 +59,7 @@ class ThemeEngine private constructor(context: Context) {
 
     private fun applyDefaultValues(context: Context) {
         themeMode = context.getIntSafe(R.integer.theme_mode, ThemeMode.AUTO)
-        staticTheme = Theme.values()[context.getIntSafe(R.integer.static_theme, Theme.Blue.ordinal)]
+        staticTheme = Theme.values()[context.getIntSafe(R.integer.static_theme, Theme.BlueVariant.ordinal)]
         isDynamicTheme = context.getBooleanSafe(R.bool.dynamic_theme, hasS()) && hasS()
     }
 
