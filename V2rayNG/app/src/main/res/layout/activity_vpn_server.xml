@@ -74,18 +74,17 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="16.0dip"
                     android:layout_marginEnd="16.0dip">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:background="@drawable/uwu_card_view_corner"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="0.0dip"
-                        android:layout_marginBottom="8.0dip">
-                        <EditText
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/uwu_card_view_corner"
+                        app:boxBackgroundMode="none">
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etServerInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
                             android:hint="@string/enter_servers_hint"
                             android:minLines="5"
                             android:scrollbars="vertical"
@@ -95,8 +94,9 @@
                             android:textColorHint="?android:textColorSecondary"
                             android:inputType="textMultiLine|textCapSentences"
                             android:overScrollMode="always"
-                            android:padding="12dp" />
-                    </LinearLayout>
+                            android:padding="12dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
                     <Button
                         android:textSize="14.0sp"
                         android:textColor="?attr/colorText"
