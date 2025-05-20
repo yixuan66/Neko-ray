@@ -90,7 +90,7 @@
                         app:sv_speedBackgroundColor="@color/uwu_transparent"
                         app:sv_backgroundCircleColor="@color/uwu_transparent"
                         app:sv_speedometerColor="?attr/colorThemeUwu"
-                        app:sv_speedometerBackColor="?attr/colorPrimaryContainer"
+                        app:sv_speedometerBackColor="?attr/colorPrimaryInverse"
                         app:sv_centerCircleColor="?attr/colorThemeUwu"
                         app:sv_indicatorColor="?attr/colorThemeUwu"
                         app:sv_indicatorLightColor="?attr/colorThemeUwu"
@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8.0dip"
                             android:layout_columnWeight="1.0"
-                            app:cardBackgroundColor="@color/uwu_bg_card"
+                            app:cardBackgroundColor="?attr/colorCard"
                             app:cardCornerRadius="12.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout
@@ -147,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8.0dip"
                             android:layout_columnWeight="1.0"
-                            app:cardBackgroundColor="@color/uwu_bg_card"
+                            app:cardBackgroundColor="?attr/colorCard"
                             app:cardCornerRadius="12.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout
@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8.0dip"
                             android:layout_columnWeight="1.0"
-                            app:cardBackgroundColor="@color/uwu_bg_card"
+                            app:cardBackgroundColor="?attr/colorCard"
                             app:cardCornerRadius="12.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout
@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8.0dip"
                             android:layout_columnWeight="1.0"
-                            app:cardBackgroundColor="@color/uwu_bg_card"
+                            app:cardBackgroundColor="?attr/colorCard"
                             app:cardCornerRadius="12.0dip"
                             app:cardElevation="0.0dip">
                             <LinearLayout

@@ -9,7 +9,7 @@
         <item name="android:overScrollMode">never</item>
         <item name="android:homeAsUpIndicator">@drawable/uwu_back_arrow</item>
         <item name="android:statusBarColor">?attr/colorThemeUwu</item>
-        <item name="android:navigationBarColor">@color/uwu_bg</item>
+        <item name="android:navigationBarColor">?attr/colorBg</item>
         <item name="android:colorEdgeEffect">@null</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">false</item>
@@ -31,7 +31,7 @@
         <item name="actionBarPopupTheme">@style/AppTheme.PopupOverlay</item>
         <item name="popupMenuBackground">@drawable/uwu_bg_popup</item>
         <item name="preferenceCategoryStyle">@style/Uwu.Preference.Category</item>
-        <item name="colorCard">?attr/colorSecondaryContainer</item>
+        <item name="colorCard">@color/uwu_bg_card</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.Material3.Dark">
@@ -80,5 +80,17 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
         <item name="bottomSheetStyle">@style/Widget.Material3.BottomSheet.Modal</item>
         <item name="enableEdgeToEdge">true</item>
+    </style>
+
+    <style name="ThemeOverlay.Black" parent="ThemeOverlay.AppCompat">
+        <item name="colorSurface">#000000</item>
+        <item name="android:colorBackground">#000000</item>
+        <item name="android:windowBackground">#000000</item>
+        <item name="colorBg">#000000</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Black.BottomSheetDialog</item>
+    </style>
+    
+    <style name="ThemeOverlay.Black.BottomSheetDialog" parent="ThemeOverlay.Uwu.Material3.BottomSheetDialog">
+        <item name="android:navigationBarColor">#000000</item>
     </style>
 </resources>

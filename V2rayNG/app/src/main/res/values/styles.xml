@@ -1,5 +1,4 @@
 <resources>
-
     <style name="AppThemeDayNight" parent="@style/Theme.Material3.DayNight">
         <item name="android:colorBackground">?attr/colorBg</item>
         <item name="android:windowBackground">?attr/colorBg</item>
@@ -9,7 +8,7 @@
         <item name="android:overScrollMode">never</item>
         <item name="android:homeAsUpIndicator">@drawable/uwu_back_arrow</item>
         <item name="android:statusBarColor">?attr/colorThemeUwu</item>
-        <item name="android:navigationBarColor">?attr/colorSurfaceVariant</item>
+        <item name="android:navigationBarColor">?attr/colorBg</item>
         <item name="android:colorEdgeEffect">@null</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">true</item>
@@ -128,7 +127,12 @@
         <item name="android:windowAnimationStyle">@style/uwu_modder_app_anim</item>
         <item name="android:windowMinWidthMajor">55.000008%</item>
         <item name="android:windowMinWidthMinor">87.00001%</item>
-        <item name="android:windowElevation">@dimen/m3_sys_elevation_level1</item>
+        <item name="android:windowElevation">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="listDividerAlertDialog">@null</item>
+        <item name="android:listDivider">@null</item>
     </style>
 
     <style name="uwu_modder_app_anim" parent="@style/uwu_modder_app">
@@ -149,8 +153,6 @@
     </style>
 
     <style name="uwu_splash_theme" parent="@style/AppThemeDayNight">
-        <item name="android:statusBarColor">?attr/colorPrimaryContainer</item>
-        <item name="android:navigationBarColor">?attr/colorPrimaryContainer</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="windowActionBar">false</item>
@@ -188,7 +190,7 @@
         <item name="android:windowMinWidthMajor">65.000008%</item>
         <item name="android:windowMinWidthMinor">95.00001%</item>
         <item name="android:checkedTextViewStyle">@style/Widget.Material3.CheckedTextView</item>
-        <item name="android:windowElevation">@dimen/m3_alert_dialog_elevation</item>
+        <item name="android:windowElevation">0dp</item>
         <item name="alertDialogStyle">@style/Uwu.Base.AlertDialog</item>
         <item name="buttonBarButtonStyle">@style/Uwu.TextButton.Dialog.Material3</item>
         <item name="buttonBarNegativeButtonStyle">@style/Uwu.TextButton.Dialog.Material3</item>
@@ -198,6 +200,13 @@
         <item name="materialAlertDialogTitleIconStyle">@style/MaterialAlertDialog.Material3.Title.Icon</item>
         <item name="materialAlertDialogTitlePanelStyle">@style/MaterialAlertDialog.Material3.Title.Panel</item>
         <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="listDividerAlertDialog">@null</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:scrollIndicators">none</item>
+        <item name="android:scrollbars">none</item>
     </style>
     
     <style name="Uwu.Dialog.Body.Text.Material3" parent="@style/MaterialAlertDialog.Material3.Body.Text">
@@ -217,7 +226,12 @@
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
         <item name="backgroundTint">@color/uwu_bg_dialog</item>
         <item name="enforceMaterialTheme">true</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
         <item name="shapeAppearance">?shapeAppearanceCornerExtraLarge</item>
+        <item name="listDividerAlertDialog">@null</item>
+        <item name="android:listDivider">@null</item>
     </style>
 
     <style name="Dialog.Signal" parent="Theme.MaterialComponents.DayNight.Dialog">

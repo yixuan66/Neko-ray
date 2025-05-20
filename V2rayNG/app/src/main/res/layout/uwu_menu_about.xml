@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:onClick="uwuRepository"
-                app:cardBackgroundColor="@color/uwu_bg_card"
+                app:cardBackgroundColor="?attr/colorCard"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -146,7 +146,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="uwuCredits"
-                app:cardBackgroundColor="@color/uwu_bg_card"
+                app:cardBackgroundColor="?attr/colorCard"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -194,7 +194,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="uwuUpdater"
-                app:cardBackgroundColor="@color/uwu_bg_card"
+                app:cardBackgroundColor="?attr/colorCard"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">

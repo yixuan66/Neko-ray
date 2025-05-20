@@ -18,7 +18,7 @@
         android:strokeLineJoin="miter"
         android:fillType="nonZero" />
     <path
-        android:fillColor="?attr/colorPrimaryContainer"
+        android:fillColor="?attr/colorPrimaryInverse"
         android:pathData="M518.25,85.37C425.44,136.33,304.80,150.59,174.94,164.02L517.98,189.22L518.25,85.37z"
         android:strokeLineCap="square"
         android:strokeLineJoin="miter"

@@ -13,7 +13,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/uwu_bg_card"
+        app:cardBackgroundColor="?attr/colorCard"
         app:cardCornerRadius="24.0dip"
         app:cardElevation="0.0dip">
         <LinearLayout

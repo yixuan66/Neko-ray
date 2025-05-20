@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="4.0dip"
         android:paddingEnd="4.0dip"
-        app:cardBackgroundColor="@color/uwu_bg_card"
+        app:cardBackgroundColor="?attr/colorCard"
         app:cardCornerRadius="24.0dip"
         app:cardElevation="0.0dip"
         app:strokeWidth="0.0dip">

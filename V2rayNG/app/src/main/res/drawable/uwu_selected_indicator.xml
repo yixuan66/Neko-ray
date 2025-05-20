@@ -11,7 +11,7 @@
         android:bottom="4.0dip">
         <inset>
             <shape android:shape="rectangle">
-                <solid android:color="@color/uwu_bg_card" />
+                <solid android:color="?attr/colorCard" />
                 <corners android:radius="24.0dip" />
             </shape>
         </inset>

@@ -107,7 +107,7 @@
                                         android:layout_width="20.0dip"
                                         android:layout_height="20.0dip"
                                         android:src="@drawable/ic_rounded"
-                                        app:tint="?attr/colorPrimaryContainer" />
+                                        app:tint="?attr/colorPrimaryInverse" />
                                     <ImageView
                                         android:padding="2.0dip"
                                         android:layout_width="20.0dip"
@@ -140,7 +140,7 @@
                                         android:layout_width="20.0dip"
                                         android:layout_height="20.0dip"
                                         android:src="@drawable/ic_rounded"
-                                        app:tint="?attr/colorPrimaryContainer" />
+                                        app:tint="?attr/colorPrimaryInverse" />
                                     <ImageView
                                         android:padding="2.0dip"
                                         android:layout_width="20.0dip"
