@@ -52,7 +52,7 @@ class IpLocationActivity : BaseActivity() {
             val items = mutableListOf<KeyValueItem>()
 
             try {
-                val request = Request.Builder().url(AppConfig.IP_API_Url).build()
+                val request = Request.Builder().url(AppConfig.IP_API_URL).build()
                 val response = client.newCall(request).execute()
                 val json = JSONObject(response.body?.string() ?: "{}")
 
