@@ -261,7 +261,7 @@ class LibraryItem(internal val library: Library, private val libsBuilder: LibsBu
                 card.setCardBackgroundColor(
                     it.getColor(
                         R.styleable.AboutLibraries_aboutLibrariesCardBackground,
-                        ctx.getThemeColor(R.attr.aboutLibrariesCardBackground, ctx.getSupportColor(R.color.uwu_bg_card))
+                        ctx.getThemeColor(R.attr.aboutLibrariesCardBackground, ctx.getThemeColor(R.attr.aboutLibrariesCardBackground))
                     )
                 )
                 defaultRippleColor = card.rippleColor
