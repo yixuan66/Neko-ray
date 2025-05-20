@@ -1,25 +1,24 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# Dependabot configuration file
+# Documentation: https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically
 
 version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    labels: []
-    directory: "/"
-    target-branch: "dev"
-    schedule:
-      interval: "weekly"
-      timezone: "Asia/Jakarta"
 
-  - package-ecosystem: "gradle"
-    labels: []
-    directory: "/V2rayNG"
-    target-branch: "dev"
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: dev
     schedule:
-      interval: "weekly"
-      timezone: "Asia/Jakarta"
+      interval: weekly
+      timezone: Asia/Jakarta
+    labels: []
+
+  - package-ecosystem: gradle
+    directory: /V2rayNG
+    target-branch: dev
+    schedule:
+      interval: weekly
+      timezone: Asia/Jakarta
+    labels: []
     ignore:
       - dependency-name: "com.tencent:mmkv-static*"
       - dependency-name: "com.github.PhilJay:MPAndroidChart"
