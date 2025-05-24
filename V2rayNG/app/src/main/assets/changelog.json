@@ -1,5 +1,18 @@
 [
     {
+        "version": "1.10.2",
+        "date": "2025-05-24",
+        "changes": [
+            "Perbaikan Koneksi: Stabilitas koneksi untuk protokol VMess dan Trojan telah ditingkatkan",
+            "Pembaruan Dependensi: Sinkronisasi dengan perubahan terbaru dari Xray-core",
+            "Peningkatan Antarmuka: Penyesuaian tampilan tema gelap untuk kesesuaian dengan Material You",
+            "Refaktor Kode: Optimalisasi pengelolaan profil dan pengaturan jaringan untuk performa yang lebih baik",
+            "New Theme Engine",
+            "Fix update from App",
+            "Fix SpeedTest force close when there is no internet connection"
+        ]
+    },
+    {
         "version": "1.10.0",
         "date": "2025-04-24",
         "changes": [
