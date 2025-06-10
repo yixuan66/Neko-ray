@@ -473,9 +473,9 @@
         <item>高</item>
     </string-array>
     <string-array name="contrast_level_values">
-        <item>低</item>
-        <item>中等</item>
-        <item>高</item>
+        <item>DEFAULT</item>
+        <item>MEDIUM</item>
+        <item>HIGH</item>
     </string-array>
     <string-array name="dark_mode_entries">
         <item>根据系统</item>
