@@ -468,14 +468,14 @@
     <string name="amoled_mode">AMOLED 模式</string>
     <string name="dynamic_color">动态颜色</string>
     <string-array name="contrast_level_entries">
-        <item>Default</item>
-        <item>Medium</item>
-        <item>High</item>
+        <item>低</item>
+        <item>中等</item>
+        <item>高</item>
     </string-array>
     <string-array name="contrast_level_values">
-        <item>DEFAULT</item>
-        <item>MEDIUM</item>
-        <item>HIGH</item>
+        <item>低</item>
+        <item>中等</item>
+        <item>高</item>
     </string-array>
     <string-array name="dark_mode_entries">
         <item>根据系统</item>
