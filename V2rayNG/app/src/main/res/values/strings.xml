@@ -497,6 +497,7 @@
     <string name="theme_mode_default_value">0</string>
     <string name="amoled_mode">AMOLED Mode</string>
     <string name="dynamic_color">Dynamic color</string>
+    <string name="free_config">Free Config</string>
     <string-array name="contrast_level_entries">
         <item>Default</item>
         <item>Medium</item>
