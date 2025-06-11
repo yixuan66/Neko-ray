@@ -486,6 +486,7 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
     <string-array name="outbound_tag" translatable="false">
         <item>代理</item>
         <item>直连</item>
