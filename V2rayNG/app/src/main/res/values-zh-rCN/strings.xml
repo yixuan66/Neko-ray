@@ -467,6 +467,7 @@
     <string name="theme_mode_default_value">0</string>
     <string name="amoled_mode">AMOLED 模式</string>
     <string name="dynamic_color">动态颜色</string>
+    <string name="free_config">免费配置</string>
     <string-array name="contrast_level_entries">
         <item>低</item>
         <item>中等</item>
