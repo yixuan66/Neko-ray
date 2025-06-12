@@ -683,7 +683,7 @@
                                     <TextView
                                         android:textSize="14.0sp"
                                         android:textColor="?android:textColorSecondary"
-                                        android:text="@string/get_free_config_for_neko-ray"
+                                        android:text="@string/get_free_config_for_neko_ray"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:alpha="0.7"
