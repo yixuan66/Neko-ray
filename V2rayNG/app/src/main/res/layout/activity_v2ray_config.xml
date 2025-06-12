@@ -183,7 +183,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8.0dip"
-                            android:text="Generate"
+                            android:text="@string/generate"
                             android:paddingStart="16.0dip"
                             android:paddingEnd="16.0dip"
                             android:layout_alignParentEnd="true"

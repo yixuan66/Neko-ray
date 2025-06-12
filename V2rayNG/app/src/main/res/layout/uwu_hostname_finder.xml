@@ -110,7 +110,7 @@
                                     android:clickable="true"
                                     android:longClickable="true"
                                     android:textIsSelectable="true"
-                                    android:hint="Enter host or domain" />
+                                    android:hint="@string/enter_host_or_domain" />
                             </LinearLayout>
                             <Button
                                 android:textSize="14.0sp"
@@ -120,7 +120,7 @@
                                 android:background="@drawable/uwu_bg_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="Search"
+                                android:text="@string/menu_item_search"
                                 android:paddingStart="16.0dip"
                                 android:paddingEnd="16.0dip"
                                 android:layout_alignParentEnd="true"
