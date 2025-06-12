@@ -471,7 +471,7 @@
     <string name="get_free_config_for_neko_ray">获取Neko-Ray的免费配置</string>
     <string name="generate">获取</string>
     <string name="wuw_off">自动刷新: OFF</string>
-    <string name="wuw_on">自动刷新: ON</string>
+    <string name="wuw_no">自动刷新: ON</string>
     <string name="select_your_options_below">在下面选择您的选项！</string>
     <string name="input_a_hosthame_here">在此处输入主机名</string>
     <string name="enter_host_or_domain">输入主机或域名</string>
