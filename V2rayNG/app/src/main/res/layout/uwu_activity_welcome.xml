@@ -62,14 +62,14 @@
                         android:padding="8.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome to" />
+                        android:text="@string/welcome" />
                     <TextView
                         android:textSize="32.0sp"
                         android:textColor="?attr/colorPrimary"
                         android:padding="8.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Neko-ray, A V2Ray client for Android, support Xray core and v2fly core." />
+                        android:text="@string/welcome_a" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
@@ -87,7 +87,7 @@
                         android:paddingBottom="8.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Skip"
+                        android:text="@string/skip"
                         android:textAllCaps="true"
                         android:paddingStart="16.0dip"
                         android:paddingEnd="16.0dip" />
