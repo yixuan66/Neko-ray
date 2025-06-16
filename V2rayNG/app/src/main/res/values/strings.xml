@@ -500,6 +500,9 @@
     <string name="free_config">Free Config</string>
     <string name="get_free_config_for_neko_ray">Get free config for Neko-ray</string>
     <string name="generate">Generate</string>
+    <string name="@string/welcome">Welcome</string>
+    <string name="welcome_a">Neko-ray, A V2Ray client for Android, support Xray core and v2fly core.</string>
+    <string name="skip">SKIP</string>
     <string name="wuw_off">AUTO REFRESH: OFF</string>
     <string name="wuw_no">AUTO REFRESH: ON</string>
     <string name="select_your_options_below">Select your options below!</string>
