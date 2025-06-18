@@ -477,7 +477,7 @@
     <string name="enter_host_or_domain">输入主机或域名</string>
     <string name="lookup">查找</string>
     <string name="results">结果:</string>
-        <string name="welcome">欢迎来到</string>
+    <string name="welcome">欢迎来到</string>
     <string name="welcome_a">Neko-ray是Android的V2RAR客户端，支持Xray核心和V2Fly核心</string>
     <string name="skip">跳过</string>
     <string name="next">下一个</string>
