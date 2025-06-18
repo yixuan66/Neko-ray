@@ -471,12 +471,20 @@
     <string name="get_free_config_for_neko_ray">获取Neko-Ray的免费配置</string>
     <string name="generate">获取</string>
     <string name="wuw_off">自动刷新: OFF</string>
-    <string name="wuw_no">自动刷新: ON</string>
+    <string name="wuw_on">自动刷新: ON</string>
     <string name="select_your_options_below">在下面选择您的选项！</string>
     <string name="input_a_hosthame_here">在此处输入主机名</string>
     <string name="enter_host_or_domain">输入主机或域名</string>
     <string name="lookup">查找</string>
     <string name="results">结果:</string>
+        <string name="welcome">欢迎来到</string>
+    <string name="welcome_a">Neko-ray是Android的V2RAR客户端，支持Xray核心和V2Fly核心</string>
+    <string name="skip">跳过</string>
+    <string name="next">下一个</string>
+    <string name="uwu_team">V2Ray 安卓客户端  
+拥有来自UWU团队的优美UI风格</string>
+    <string name="made_with_gradle_kotlin_java_code_and_more">使用Gradle、Kotlin、Java 代码及更多构建</string>
+    <string name="start">开始</string>
     <string-array name="contrast_level_entries">
         <item>低</item>
         <item>中等</item>
