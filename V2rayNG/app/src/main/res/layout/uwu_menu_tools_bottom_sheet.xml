@@ -676,14 +676,14 @@
                                     <TextView
                                         android:textSize="17.0sp"
                                         android:textColor="?android:textColorPrimary"
-                                        android:text="Free Config"
+                                        android:text="@string/free_config"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textAlignment="viewStart" />
                                     <TextView
                                         android:textSize="14.0sp"
                                         android:textColor="?android:textColorSecondary"
-                                        android:text="Get free config for Neko-ray"
+                                        android:text="@string/get_free_config_for_neko_ray"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:alpha="0.7"

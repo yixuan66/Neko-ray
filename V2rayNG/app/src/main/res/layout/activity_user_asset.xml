@@ -155,7 +155,7 @@
                                                 android:ellipsize="marquee"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="Select your options below!"
+                                                android:text="@string/select_your_options_below"
                                                 android:singleLine="true" />
                                         </LinearLayout>
                                     </RelativeLayout>

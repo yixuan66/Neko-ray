@@ -149,8 +149,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8.0dip"
                         android:layout_marginBottom="8.0dip"
-                        android:textOn="Auto Refresh: ON"
-                        android:textOff="Auto Refresh: OFF"
+                        android:textOn="@string/wuw_no"
+                        android:textOff="@string/wuw_off"
                         android:checked="true" />
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
