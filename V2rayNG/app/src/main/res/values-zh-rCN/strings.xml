@@ -329,7 +329,7 @@
     <string name="uwu_recommended_os_cat">推荐的操作系统</string>
     <string name="uwu_version_sdk_minimum">最小SDK版本</string>
     <string name="uwu_version_sdk_target">目标SDK版本</string>
-    <string name="uwu_package_name">软件名称</string>
+    <string name="uwu_package_name">包名</string>
     <string name="uwu_speedtest_title">快速测试</string>
     <string name="uwu_speedtest_summary">速度网络</string>
     <string name="uwu_status_connection_title">Status</string>
@@ -343,8 +343,8 @@
     <string name="uwu_border_about_summary">点击侧面的箭头图标</string>
     <string name="uwu_devicename_title">设备名称</string>
     <string name="uwu_board_title">Board</string>
-    <string name="uwu_osversion_title">OS版本</string>
-    <string name="uwu_brand_title">Brand</string>
+    <string name="uwu_osversion_title">安卓版本</string>
+    <string name="uwu_brand_title">品牌</string>
     <string name="uwu_buildid_title">构建ID</string>
     <string name="uwu_baseband_title">基带版本</string>
     <string name="uwu_github_title">Github</string>
@@ -489,6 +489,8 @@
 拥有来自UWU团队的优美UI风格</string>
     <string name="made_with_gradle_kotlin_java_code_and_more">使用Gradle、Kotlin、Java 代码及更多构建</string>
     <string name="start">开始</string>
+    <string name="version_core">版本核心</string>
+    <string name="font">字体</string>
     <string-array name="contrast_level_entries">
         <item>低</item>
         <item>中等</item>
@@ -514,5 +516,38 @@
         <item>直连</item>
         <item>屏蔽</item>
     </string-array>
+    <string-array name="font_names">
+        <item>默认</item>
+        <item>Roboto</item>
+        <item>Lato</item>
+        <item>Wintering</item>
+        <item>Stencil</item>
+        <item>Poppins</item>
+        <item>Mistery</item>
+        <item>Dreamhour</item>
+        <item>Grunell</item>
+        <item>Shirouga</item>
+        <item>Bubblez</item>
+        <item>Japan</item>
+        <item>OnePiece</item>
+    </string-array>
+    <string-array name="font_values">
+        <item>DEFAULT</item>
+        <item>ROBOTO</item>
+        <item>LATO</item>
+        <item>WINTERING</item>
+        <item>STENCIL</item>
+        <item>POPPINS</item>
+        <item>MISTERY</item>
+        <item>DREAMHOUR</item>
+        <item>GRUNELL</item>
+        <item>SHIROUGA</item>
+        <item>BUBBLEZ</item>
+        <item>JAPAN</item>
+        <item>ONEPIECE</item>
+    </string-array>
+    <string name="indicator_style_title">选择指示灯样式</string>
+    <string name="pref_indicator_style_title">服务器指示灯样式</string>
+    <string name="pref_indicator_style_summary">选择活动服务器指示灯显示</string>
     <!-- Neko strings -->
 </resources>
