@@ -518,6 +518,8 @@
     <string name="enter_host_or_domain">Enter host or domain</string>
     <string name="lookup">Lookup</string>
     <string name="results">Results:</string>
+    <string name="version_core">Version core</string>
+    <string name="font">Font</string>
     <string-array name="contrast_level_entries">
         <item>Default</item>
         <item>Medium</item>
