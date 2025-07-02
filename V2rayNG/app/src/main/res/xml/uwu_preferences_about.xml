@@ -27,7 +27,7 @@
         <Preference
             android:icon="@drawable/uwu_core"
             android:layout="@layout/uwu_versi_lib"
-            android:title="Version core"/>
+            android:title="@string/version_core"/>
         <Preference
             android:icon="@drawable/uwu_build_date"
             android:layout="@layout/uwu_bot_no_arrow"

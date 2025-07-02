@@ -36,7 +36,7 @@
     <ListPreference
         android:key="font"
         android:layout="@layout/uwu_mid"
-        android:title="Font"
+        android:title="@string/font"
         android:summary="Pilih font aplikasi"
         android:entries="@array/font_names"
         android:entryValues="@array/font_values"
