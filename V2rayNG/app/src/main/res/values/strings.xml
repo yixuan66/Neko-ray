@@ -524,6 +524,7 @@
     <string name="jitter">Jitter</string>
     <string name="download">Download</string>
     <string name="upload">Upload</string>
+    <string name="stop">STOP</string>
     <string-array name="contrast_level_entries">
         <item>Default</item>
         <item>Medium</item>
