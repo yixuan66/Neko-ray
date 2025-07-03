@@ -520,6 +520,10 @@
     <string name="results">Results:</string>
     <string name="version_core">Version core</string>
     <string name="font">Font</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">Jitter</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
     <string-array name="contrast_level_entries">
         <item>Default</item>
         <item>Medium</item>
