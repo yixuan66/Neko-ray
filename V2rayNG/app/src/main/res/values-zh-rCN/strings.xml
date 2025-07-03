@@ -491,6 +491,10 @@
     <string name="start">开始</string>
     <string name="version_core">版本核心</string>
     <string name="font">字体</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">抖动</string>
+    <string name="download">下载</string>
+    <string name="upload">上传</string>
     <string-array name="contrast_level_entries">
         <item>低</item>
         <item>中等</item>
