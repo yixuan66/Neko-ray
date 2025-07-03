@@ -269,7 +269,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16.0dip"
-                        android:text="STOP"
+                        android:text="@string/stop"
                         android:backgroundTint="?attr/colorThemeUwu"
                         android:paddingHorizontal="24.0dip"
                         android:paddingVertical="12.0dip"
