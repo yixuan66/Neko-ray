@@ -131,7 +131,7 @@
                                     android:textColor="?android:textColorPrimary"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Ping" />
+                                    android:text="@string/ping" />
                                 <TextView
                                     android:textSize="14.0sp"
                                     android:textColor="?android:textColorSecondary"
@@ -167,7 +167,7 @@
                                     android:textColor="?android:textColorPrimary"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Jitter" />
+                                    android:text="@string/jitter" />
                                 <TextView
                                     android:textSize="14.0sp"
                                     android:textColor="?android:textColorSecondary"
@@ -203,7 +203,7 @@
                                     android:textColor="?android:textColorPrimary"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Download" />
+                                    android:text="@string/download" />
                                 <TextView
                                     android:textSize="14.0sp"
                                     android:textColor="?android:textColorSecondary"
@@ -239,7 +239,7 @@
                                     android:textColor="?android:textColorPrimary"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Upload" />
+                                    android:text="@string/upload" />
                                 <TextView
                                     android:textSize="14.0sp"
                                     android:textColor="?android:textColorSecondary"
@@ -258,7 +258,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16.0dip"
-                        android:text="START"
+                        android:text="@string/start"
                         android:backgroundTint="?attr/colorThemeUwu"
                         android:paddingHorizontal="24.0dip"
                         android:paddingVertical="12.0dip" />
